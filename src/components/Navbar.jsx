@@ -12,7 +12,7 @@ export default function Navbar() {
           <div className="order-3 w-full md:w-auto md:order-2 flex flex-col md:flex-row">
             <ul className="flex font-semibold justify-between flex-col md:flex-row">
               {menuList.map((item) => (
-                <li className="md:px-4 md:py-2 text-textColor hover:text-themeBrown">
+                <li className="md:px-2 md:py-2 text-textColor hover:text-themeBrown">
                   <a href="#">{item}</a>
                 </li>
               ))}
