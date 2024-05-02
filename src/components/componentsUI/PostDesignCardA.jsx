@@ -12,7 +12,7 @@ export default function PostDesignCardA() {
           <img
             src="https://plus.unsplash.com/premium_photo-1714115034964-16b20994142a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
-            className="h-64 md:max-w-md xl:min-w-[600px] mx-auto"
+            className="h-64 md:max-w-md xl:min-w-[400px] md:mx-4 lg:mx-auto"
             //style={{ border: '1px solid purple' }}
           />
           <div
@@ -35,7 +35,11 @@ export default function PostDesignCardA() {
                 <p className="text-themeBrown text-center">
                   <small>30</small>
                 </p>
-                <img src="./card/heart.svg" alt="heart" className="h-6 w-6" />
+                <img
+                  src="./card/heart.svg"
+                  alt="heart"
+                  className="h-6 w-6 cursor-pointer"
+                />
               </div>
               <div>
                 <p className="text-themeBrown text-center">
@@ -44,14 +48,18 @@ export default function PostDesignCardA() {
                 <img
                   src="./card/comments.svg"
                   alt="comments"
-                  className="h-6 w-6"
+                  className="h-6 w-6 cursor-pointer"
                 />
               </div>
               <div>
                 <p className="text-themeBrown text-center">
                   <small>45</small>
                 </p>
-                <img src="./card/views.svg" alt="views" className="h-6 w-6" />
+                <img
+                  src="./card/views.svg"
+                  alt="views"
+                  className="h-6 w-6 cursor-pointer"
+                />
               </div>
             </div>
           </div>
@@ -62,7 +70,7 @@ export default function PostDesignCardA() {
         >
           <p
             //style={{ border: '1px solid purple' }}
-            className="h-24 w-full text-center py-2 px-2 font-ibm-flex italic"
+            className="mb-2 font-bold tracking-tight text-themeGray dark:text-white"
           >
             Overhead of Panna Cotta with honey and walnuts, and a platter of
             walnuts
@@ -82,7 +90,7 @@ export default function PostDesignCardA() {
             //style={{ border: '1px solid purple' }}
             src="./card/share.svg"
             alt="views"
-            className="h-6 w-6 w-[25px] h-[25px]"
+            className="h-6 w-6 w-[25px] h-[25px] cursor-pointer"
           />
         </div>
       </div>

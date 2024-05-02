@@ -7,7 +7,6 @@ export default function RootLayout() {
     <>
       <Navbar />
       <main
-        style={{ border: '6px solid purple' }}
         className="bg-themeDirtyWhite"
       >
         <Outlet />

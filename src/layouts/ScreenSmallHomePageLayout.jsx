@@ -6,7 +6,7 @@ export default function ScreenSmallHomePageLayout() {
 
   return (
     <div
-      style={{ border: '3px solid red' }}
+      //style={{ border: '3px solid red' }}
       className="container mx-auto px-3 sm:px-1 py-4 my-auto"
     >
       <div
