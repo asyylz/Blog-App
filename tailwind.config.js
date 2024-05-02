@@ -14,7 +14,16 @@ export default {
         themeBrown: '#838280',
         buttonColor: '#838280',
       },
+      keyframes: {
+        fadeLeft: {
+          from: { opacity: '0', transform: 'translateX(-100%)' },
+          to: { opacity: '1', transform: 'translateX(0)' },
+        },
+      },
+      animation: {
+        'fade-left': 'fadeLeft 1.5s ease-in-out forwards',
+      },
     },
-    plugins: [require('tailwindcss-animated')],
+    plugins: [require('tailwindcss-animate')],
   },
 };

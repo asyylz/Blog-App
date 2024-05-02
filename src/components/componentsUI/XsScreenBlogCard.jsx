@@ -12,8 +12,12 @@ export default function XsScreenBlogCard({
     const firstTenWords = words.slice(0, 10).join(' ');
     return firstTenWords;
   }
+
+  const animate = 'animate-fade-left';
   return (
-    <div className="max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div
+      className={`max-w-xs md:max-w-sm lg:max-w-md mx-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ${animate}`}
+    >
       <a href="#">
         <img className="rounded-t-lg" src={image} alt="" />
       </a>
