@@ -9,7 +9,7 @@ export default {
       colors: {
         themeGreen: '#6FA494',
         themeGreenDark: '#376757',
-        themeDirtyWhite: '#F1F1F1',
+        themeDirtyWhite: '#EBEDEC',
         themeCream: '#E6E1DB',
         themeBrown: '#838280',
         buttonColor: '#838280',

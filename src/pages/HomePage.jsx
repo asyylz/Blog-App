@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
-import Navbar from '../components/Navbar';
-import HomePageLayout from '../components/componentsUI/HomePageLayout';
+import ScreenSmallHomePageLayout from '../layouts/ScreenSmallHomePageLayout';
 import { useState } from 'react';
+import ScreenLargeHomePageLayout from '../layouts/ScreenLargeHomePageLayout';
 export default function HomePage() {
-  const [isIpadAir, setIsIpadAir] = useState(false);
+  const [isScreenSmall, setIsScreenSmall] = useState(false);
   useEffect(() => {
     const checkScreenSize = () => {
-      const isIpadAir = window.matchMedia('(max-width: 768px)').matches;
-      setIsIpadAir(isIpadAir);
+      const isScreenSmall = window.matchMedia('(max-width: 768px)').matches;
+      setIsScreenSmall(isScreenSmall);
     };
 
     checkScreenSize();
@@ -16,5 +16,13 @@ export default function HomePage() {
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  return <>{isIpadAir ? <HomePageLayout /> : null}</>;
+  return (
+    <>
+      {isScreenSmall ? (
+        <ScreenSmallHomePageLayout />
+      ) : (
+        <ScreenLargeHomePageLayout />
+      )}
+    </>
+  );
 }

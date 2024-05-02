@@ -1,10 +1,8 @@
-import { useLoaderData } from 'react-router-dom';
-import XsScreenBlogCard from './XsScreenBlogCard';
+import XsScreenBlogCard from '../components/componentsUI/XsScreenBlogCard';
 import { useRouteLoaderData } from 'react-router-dom';
 
-export default function HomePageLayout() {
+export default function ScreenSmallHomePageLayout() {
   const blogPosts = useRouteLoaderData('root');
-  
 
   return (
     <div
@@ -16,8 +14,11 @@ export default function HomePageLayout() {
         className="container flex gap-y-10 justify-center items-center flex-wrap lg:flex-row"
       >
         {blogPosts.map((post) => (
-          <div key={post._id} className="w-full sm:w-1/2 lg:px-2 lg:w-1/2 flex  justify-center">
-            <XsScreenBlogCard {...post}/>
+          <div
+            key={post._id}
+            className="w-full sm:w-1/2 lg:px-2 lg:w-1/2 flex  justify-center"
+          >
+            <XsScreenBlogCard {...post} />
           </div>
         ))}
       </div>
