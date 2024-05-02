@@ -15,6 +15,6 @@ export default {
         buttonColor: '#838280',
       },
     },
-    plugins: [],
+    plugins: [require('tailwindcss-animated')],
   },
 };
