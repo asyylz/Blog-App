@@ -1,4 +1,4 @@
-import XsScreenBlogCard from '../components/componentsUI/XsScreenBlogCard';
+import PostDesignCardB from '../components/componentsUI/PostDesignCardB';
 import { useRouteLoaderData } from 'react-router-dom';
 
 export default function ScreenSmallHomePageLayout() {
@@ -18,7 +18,7 @@ export default function ScreenSmallHomePageLayout() {
             key={post._id}
             className="w-full sm:w-1/2 lg:px-2 lg:w-1/2 flex  justify-center"
           >
-            <XsScreenBlogCard {...post} />
+            <PostDesignCardB {...post} />
           </div>
         ))}
       </div>
