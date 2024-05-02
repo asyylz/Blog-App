@@ -26,7 +26,7 @@ export default {
         },
       },
       animation: {
-        'fade-left': 'fadeLeft 1.5s ease-in-out forwards',
+        'fade-left': 'fadeLeft 1s ease-in-out forwards',
       },
     },
     plugins: [require('tailwindcss-animate')],

@@ -18,7 +18,7 @@ export default function HomePage() {
 
   return (
     <>
-      <p className="text-[3rem] font-thin font-ibm-flex italic text-themeBrown">
+      <p className="text-[3rem] ml-5 font-thin font-ibm-flex italic text-themeBrown">
         Delve into blog world...
       </p>
       {isScreenSmall ? (
