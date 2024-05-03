@@ -10,7 +10,8 @@ const router = createBrowserRouter([
     id: 'root',
     loader: loaderBlogs,
     children: [
-      { index: true, element: <HomePage /> },
+      { index: true,
+      element: <HomePage /> },
 
       {
         path: 'auth',

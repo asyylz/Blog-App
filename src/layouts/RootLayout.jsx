@@ -15,17 +15,20 @@ export default function RootLayout() {
     </>
   );
 }
-export async function loaderBlogs() {
+export async function loaderBlogs({ request, params }) {
+  const url = new URL(request.url);
+  const page = url.searchParams.get('page') || '1';
+  const limit = url.searchParams.get('limit') || '6';
+
   try {
     const response = await axios.get(
-      'https://38110.fullstack.clarusway.com/blogs/?page=1&limit=6'
+      `https://38110.fullstack.clarusway.com/blogs/?page=${page}&limit=${limit}`
     );
     const blogPosts = response.data.data;
-    console.log(blogPosts);
     return blogPosts;
   } catch (error) {
     console.error(error);
 
-    throw error;
+    throw error;s
   }
 }

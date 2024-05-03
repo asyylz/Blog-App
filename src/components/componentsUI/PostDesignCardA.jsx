@@ -1,4 +1,11 @@
-export default function PostDesignCardA() {
+export default function PostDesignCardA({
+  image,
+  likes,
+  comments,
+  countOfVisitors,
+  title,
+  content,
+}) {
   return (
     <div
       //style={{ border: '6px solid purple' }}
@@ -10,7 +17,7 @@ export default function PostDesignCardA() {
           className="container flex flex-col space-even gap-7"
         >
           <img
-            src="https://plus.unsplash.com/premium_photo-1714115034964-16b20994142a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src={image}
             alt=""
             className="h-64 md:max-w-md xl:min-w-[400px] md:mx-4 lg:mx-auto"
             //style={{ border: '1px solid purple' }}
@@ -33,7 +40,7 @@ export default function PostDesignCardA() {
             >
               <div>
                 <p className="text-themeBrown text-center">
-                  <small>30</small>
+                  <small>{likes.length}</small>
                 </p>
                 <img
                   src="./card/heart.svg"
@@ -43,7 +50,7 @@ export default function PostDesignCardA() {
               </div>
               <div>
                 <p className="text-themeBrown text-center">
-                  <small>20</small>
+                  <small>{comments.length}</small>
                 </p>
                 <img
                   src="./card/comments.svg"
@@ -53,7 +60,7 @@ export default function PostDesignCardA() {
               </div>
               <div>
                 <p className="text-themeBrown text-center">
-                  <small>45</small>
+                  <small>{countOfVisitors}</small>
                 </p>
                 <img
                   src="./card/views.svg"
@@ -72,25 +79,20 @@ export default function PostDesignCardA() {
             //style={{ border: '1px solid purple' }}
             className="mb-2 font-bold tracking-tight text-themeGray dark:text-white"
           >
-            Overhead of Panna Cotta with honey and walnuts, and a platter of
-            walnuts
+            {title}
           </p>
           <p className="text-themeBrown">
             <small>Published:24/20/22</small>
           </p>
           <p className="mb-3 font-ibm-flex text-gray-700 dark:text-gray-400">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-            quaerat consequatur, rem sapiente dicta totam, reiciendis at sint,
-            debitis in qui placeat soluta eum nemo consequuntur architecto quae
-            atque eius! Lorem ipsum dolor, sit amet consectetur adipisicing
-            elit. Eaque ducimus velit cum, facilis ipsam possimus saepe.
+            {content}
           </p>
 
           <img
             //style={{ border: '1px solid purple' }}
             src="./card/share.svg"
             alt="views"
-            className="h-6 w-6 w-[25px] h-[25px] cursor-pointer"
+            className="h-6 w-6 cursor-pointer"
           />
         </div>
       </div>

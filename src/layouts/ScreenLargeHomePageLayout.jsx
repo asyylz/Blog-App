@@ -24,21 +24,21 @@ export default function ScreenLargeHomePageLayout() {
 
             switch (patternIndex) {
               case 0:
-                return <PostDesignCardA {...post} />; // 'A'
+                return <PostDesignCardA key={post._id}  {...post} />; // 'A'
               case 1:
               case 2:
                 return (
-                  <div className="max-w-sm min-h-[400px]">
+                  <div key={post._id} className="max-w-sm min-h-[400px]">
                     <PostDesignCardB {...post} />
                   </div>
                 ); // 'B'
               case 3:
-                return <PostDesignCardA {...post} />; // 'A'
+                return <PostDesignCardA key={post._id} {...post} />; // 'A'
               case 4:
               case 5:
               case 6:
                 return (
-                  <div className="max-w-sm min-h-[400px]">
+                  <div key={post._id} className="max-w-sm min-h-[400px]">
                     <PostDesignCardB {...post} />
                   </div>
                 ); // 'B'
@@ -56,7 +56,7 @@ export default function ScreenLargeHomePageLayout() {
           Most seen posts
         </h3>
         {blogPosts.map((post) => (
-          <BlogListItem title={post.title} />
+          <BlogListItem  title={post.title} id={post._id} />
         ))}
       </div>
     </div>

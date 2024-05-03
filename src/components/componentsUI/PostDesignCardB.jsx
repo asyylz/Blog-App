@@ -6,6 +6,7 @@ export default function PostDesignCardB({
   countOfVisitors,
   createdAt,
   content,
+  _id,
   screen,
 }) {
   function getFirstTenWords(text) {
@@ -18,6 +19,7 @@ export default function PostDesignCardB({
   return (
     <div
       //style={{ border: '1px solid purple' }}
+      key={_id}
       className={`max-w-xs md:max-w-sm lg:max-w-md mx-6 shadow-themeShadow bg-[#C2B6B6]/50 ${
         screen === 'small' ? 'my-5' : 'my-20'
       } ${animate}`}
@@ -65,7 +67,11 @@ export default function PostDesignCardB({
         </div>
       </div>
       <a href="#">
-        <img className="rounded-t-lg px-2 py-2" src={image} alt="" />
+        <img
+          className="rounded-t-lg px-2 py-2 max-h-[250px]"
+          src={image}
+          alt=""
+        />
       </a>
       <div
         //style={{ border: '3px solid yellow' }}
