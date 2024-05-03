@@ -5,10 +5,9 @@ import BlogListItem from '../components/componentsUI/BlogListItem';
 
 export default function ScreenLargeHomePageLayout() {
   const blogPosts = useRouteLoaderData('root');
-  console.log(blogPosts);
   return (
     <div
-      style={{ border: '3px solid blue' }}
+      //style={{ border: '3px solid blue' }}
       className="grid grid-cols-12 w-full px-5 gap-2"
     >
       <div

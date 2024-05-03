@@ -2,15 +2,14 @@ import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import axios from 'axios';
 import Footer from '../components/componentsUI/Footer';
-
+import Pagination from '../components/componentsUI/Pagination';
 export default function RootLayout() {
   return (
     <>
       <Navbar />
-      <main
-        className="bg-themeDirtyWhite"
-      >
+      <main className="bg-themeDirtyWhite">
         <Outlet />
+        <Pagination />
         <Footer />
       </main>
     </>
