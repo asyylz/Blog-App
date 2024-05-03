@@ -4,7 +4,7 @@ import PostDesignCardB from '../components/componentsUI/PostDesignCardB';
 import BlogListItem from '../components/componentsUI/BlogListItem';
 
 export default function ScreenLargeHomePageLayout() {
-  const blogPosts = useRouteLoaderData('root');
+  const { blogPosts } = useRouteLoaderData('root');
   return (
     <div
       //style={{ border: '3px solid blue' }}
@@ -24,7 +24,7 @@ export default function ScreenLargeHomePageLayout() {
 
             switch (patternIndex) {
               case 0:
-                return <PostDesignCardA key={post._id}  {...post} />; // 'A'
+                return <PostDesignCardA key={post._id} {...post} />; // 'A'
               case 1:
               case 2:
                 return (
@@ -56,7 +56,7 @@ export default function ScreenLargeHomePageLayout() {
           Most seen posts
         </h3>
         {blogPosts.map((post) => (
-          <BlogListItem  title={post.title} id={post._id} />
+          <BlogListItem title={post.title} id={post._id} />
         ))}
       </div>
     </div>
