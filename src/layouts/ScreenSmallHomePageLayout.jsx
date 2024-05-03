@@ -10,7 +10,7 @@ export default function ScreenSmallHomePageLayout() {
       className="container mx-auto px-3 sm:px-1 py-4 my-auto"
     >
       <div
-        style={{ border: '3px solid green' }}
+        //style={{ border: '3px solid green' }}
         className="container flex gap-y-10 justify-center items-center flex-wrap lg:flex-row"
       >
         {blogPosts.map((post) => (
@@ -18,7 +18,7 @@ export default function ScreenSmallHomePageLayout() {
             key={post._id}
             className="w-full sm:w-1/2 lg:px-2 lg:w-1/2 flex  justify-center"
           >
-            <PostDesignCardB {...post} />
+            <PostDesignCardB {...post} screen='small'/>
           </div>
         ))}
       </div>

@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import axios from 'axios';
+import Footer from '../components/componentsUI/Footer';
 
 export default function RootLayout() {
   return (
@@ -10,6 +11,7 @@ export default function RootLayout() {
         className="bg-themeDirtyWhite"
       >
         <Outlet />
+        <Footer />
       </main>
     </>
   );

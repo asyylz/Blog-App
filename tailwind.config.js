@@ -29,6 +29,6 @@ export default {
         'fade-left': 'fadeLeft 1s ease-in-out forwards',
       },
     },
-    plugins: [require('tailwindcss-animate')],
+    plugins: [],
   },
 };
