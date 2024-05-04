@@ -7,7 +7,8 @@ export default function PostDesignCardA({
   countOfVisitors,
   title,
   content,
-  _id
+  _id,
+  createdAt
 }) {
   return (
     <div
@@ -88,7 +89,7 @@ export default function PostDesignCardA({
             {title}
           </p>
           <p className="text-themeBrown">
-            <small>Published:24/20/22</small>
+            <small>Published:{createdAt.split('T')[0]}</small>
           </p>
           <p className="mb-3 font-ibm-flex text-gray-700 dark:text-gray-400">
             {content}

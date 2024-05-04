@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer
       //style={{ border: '1px solid red' }}
-      className="p-4 bg-themeCream sm:p-6 dark:bg-gray-800 mt-10 shadow-themeShadow"
+      className="bg-themeCream p-8 sm:p-3 bg-fixed mt-20 bottom-0 shadow-themeShadow"
     >
       <div className="mx-auto max-w-screen-xl">
         <div className="md:flex md:justify-between">
@@ -133,5 +133,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }

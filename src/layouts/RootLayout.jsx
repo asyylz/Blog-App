@@ -18,7 +18,9 @@ export default function RootLayout() {
   return (
     <>
       <Navbar />
-      <main className="bg-themeDirtyWhite">
+      <main 
+      style={{border:'2px solid blue'}}
+      className="bg-themeDirtyWhite">
         <Outlet context={totalData} />
         {!isAuthPage && (
           <>
