@@ -3,10 +3,10 @@ import Navbar from '../components/componentsUI/Navbar';
 import axios from 'axios';
 import Footer from '../components/componentsUI/Footer';
 import Pagination from '../components/componentsUI/Pagination';
-import { useLoaderData } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useOutletContext, useLoaderData } from 'react-router-dom';
+import { useRouteLoaderData } from 'react-router-dom';
 export default function RootLayout() {
-  const { totalData } = useLoaderData();
+  const { totalData } = useLoaderData()
   const length = totalData.length;
 
   const location = useLocation();
@@ -19,10 +19,10 @@ export default function RootLayout() {
     <>
       <Navbar />
       <main className="bg-themeDirtyWhite">
-        <Outlet />
+        <Outlet context={totalData} />
         {!isAuthPage && (
           <>
-            <Pagination dataLength={length} />
+            {/* <Pagination dataLength={length} /> */}
             <Footer />
           </>
         )}
@@ -30,6 +30,7 @@ export default function RootLayout() {
     </>
   );
 }
+
 export async function loaderBlogs({ request }) {
   const url = new URL(request.url);
   const page = url.searchParams.get('page') || '1';

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function PostDesignCardA({
   image,
   likes,
@@ -5,6 +7,7 @@ export default function PostDesignCardA({
   countOfVisitors,
   title,
   content,
+  _id
 }) {
   return (
     <div
@@ -26,14 +29,17 @@ export default function PostDesignCardA({
             //style={{ border: '1px solid red' }}
             className="container flex justify-between mx-auto md:gap-2 xl:gap-10"
           >
-            <button className="px-3 py-2 text-themeDirtyWhite bg-themeGreenDark hover:bg-themeGreen hover:animate-bounce delay-150 duration-300 rounded-xl flex items-center gap-2 flex-none text-xs md:text-sm lg:text-lg">
+            <Link 
+            to={_id}
+            //onClick={}
+            className="px-3 py-2 text-themeDirtyWhite bg-themeGreenDark hover:bg-themeGreen hover:animate-bounce delay-150 duration-300 rounded-xl flex items-center gap-2 flex-none text-xs md:text-sm lg:text-lg">
               <img
                 src="./card/arrowRight.svg"
                 alt="login"
                 className="h-5 w-5"
               />
               <span>Read more</span>
-            </button>
+            </Link>
             <div
               //style={{ border: '1px solid purple' }}
               className="container flex-auto flex justify-evenly items-center max-w-[200px] "

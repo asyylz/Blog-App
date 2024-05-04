@@ -5,7 +5,8 @@ import RootLayout from '../layouts/RootLayout';
 import { loaderBlogs } from '../layouts/RootLayout';
 import { action as userAction } from '../pages/AuthPage';
 import ErrorPage from '../pages/ErrorPage';
-
+import BlogDetailPostPage from '../pages/BlogDetailPostPage';
+import BlogDetailLayout from '../layouts/BlogDetailLayout';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,21 @@ const router = createBrowserRouter([
       {
         path: 'logout',
         //action: logoutAction,
+      },
+      {
+        path: ':postId',
+        id: 'blog-detail',
+       // element: <BlogDetailLayout />,
+        children: [
+          {
+            index: true,
+            element: <BlogDetailPostPage />,
+          },
+          {
+            path: 'edit',
+            //element: <EditBlogPostPage />,
+          },
+        ],
       },
     ],
   },
