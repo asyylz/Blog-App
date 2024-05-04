@@ -12,21 +12,22 @@ export default function RootLayout() {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const isAuthPage =
-    location.pathname === '/auth' && query.get('mode') === 'register';
+    (location.pathname === '/auth' && query.get('mode') === 'register') ||
+    query.get('mode') === 'login';
 
   return (
     <>
-    <Navbar />
-    <main className="bg-themeDirtyWhite">
-      <Outlet />
-      {!isAuthPage && (
-        <>
-          <Pagination dataLength={length} />
-          <Footer />
-        </>
-      )}
-    </main>
-  </>
+      <Navbar />
+      <main className="bg-themeDirtyWhite">
+        <Outlet />
+        {!isAuthPage && (
+          <>
+            <Pagination dataLength={length} />
+            <Footer />
+          </>
+        )}
+      </main>
+    </>
   );
 }
 export async function loaderBlogs({ request }) {
