@@ -54,46 +54,46 @@ export default function SearchBar() {
       className="max-w-3xl mx-auto py-5"
     >
       <div className="flex">
-        <button
-          id="dropdown-button"
-          onClick={toggleDropdown}
-          //data-dropdown-toggle="dropdown"
-          className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
-          type="button"
-        >
-          All categories
-          <img
-            src="./searchbar/arrowdown.svg"
-            alt=""
-            className="h-4 w-4 ms-2"
-          />
-        </button>
-
-        <div
-          style={{ border: '3px solid red' }}
-          id="dropdown"
-          className={`bg-white divide-y divide-gray-100 rounded-lg shadow w-44 z-10 ${
-            isOpen ? '' : 'hidden'
-          }`}
-        >
-          <ul
-            className="py-2 text-sm text-gray-700"
-            aria-labelledby="dropdown-button"
-            aria-autocomplete="dropdown-button"
+        <div>
+          <button
+            id="dropdown-button"
+            onClick={toggleDropdown}
+            //data-dropdown-toggle="dropdown"
+            className="flex-shrink-0 z-10 inline-flex items-center  py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 "
+            type="button"
           >
-            {categories.map((category, index) => (
-              <li key={index}>
-                <button
-                  type="button"
-                  className="inline-flex w-full px-4 py-2 hover:bg-gray-100 "
-                >
-                  {category.name}
-                </button>
-              </li>
-            ))}
-          </ul>
+            All categories
+            <img
+              src="./searchbar/arrowdown.svg"
+              alt=""
+              className="h-4 w-4 ms-2"
+            />
+          </button>
+          <div
+            style={{ border: '3px solid red' }}
+            id="dropdown"
+            className={`bg-white divide-y divide-gray-100 rounded-lg shadow w-44 z-10 ${
+              isOpen ? '' : 'hidden'
+            }`}
+          >
+            <ul
+              className="py-2 text-sm text-gray-700"
+              //aria-labelledby="dropdown-button"
+            >
+              {categories.map((category, index) => (
+                <li key={index}>
+                  <button
+                    type="button"
+                    className="inline-flex w-full px-4 py-2 hover:bg-gray-100 "
+                  >
+                    {category.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-
+        
         <div className="relative w-full">
           <input
             type="search"
