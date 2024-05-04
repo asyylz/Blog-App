@@ -46,20 +46,19 @@ const categories = [
 export default function SearchBar() {
   const [isOpen, setIsOpen] = useState(false);
   const toggleDropdown = () => setIsOpen(!isOpen);
-  console.log(isOpen);
 
   return (
     <form
-      //style={{ border: '2px solid red' }}
-      className="max-w-3xl mx-auto py-5"
+      className="relative max-w-3xl mx-auto py-5"
+      style={{ position: 'relative' }}
     >
       <div className="flex">
-        <div>
+        <div className="relative">
           <button
             id="dropdown-button"
             onClick={toggleDropdown}
-            //data-dropdown-toggle="dropdown"
-            className="flex-shrink-0 z-10 inline-flex items-center  py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 "
+            onBlur={toggleDropdown}
+            className="flex-shrink-0 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center h-[50px] text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
             type="button"
           >
             All categories
@@ -70,21 +69,20 @@ export default function SearchBar() {
             />
           </button>
           <div
-            style={{ border: '3px solid red' }}
             id="dropdown"
-            className={`bg-white divide-y divide-gray-100 rounded-lg shadow w-44 z-10 ${
+            className={`absolute w-full bg-white divide-y divide-gray-100 rounded-lg shadow ${
               isOpen ? '' : 'hidden'
             }`}
           >
             <ul
               className="py-2 text-sm text-gray-700"
-              //aria-labelledby="dropdown-button"
+              aria-labelledby="dropdown-button"
             >
               {categories.map((category, index) => (
                 <li key={index}>
                   <button
                     type="button"
-                    className="inline-flex w-full px-4 py-2 hover:bg-gray-100 "
+                    className="inline-flex w-full px-4 py-2 hover:bg-gray-100"
                   >
                     {category.name}
                   </button>
@@ -93,19 +91,18 @@ export default function SearchBar() {
             </ul>
           </div>
         </div>
-        
+
         <div className="relative w-full">
           <input
             type="search"
             id="search-dropdown"
-            className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ml-1 focus:ring-2 focus:ring-themeGreenDark focus:border-themeGreenDark focus:outline-none"
-            placeholder=" To best choice...."
+            className="block p-2.5 w-full z-20 h-[50px] text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ml-1 focus:ring-2 focus:ring-themeGreenDark focus:border-themeGreenDark focus:outline-none"
+            placeholder="To best choice..."
             required
           />
-
           <button
             type="submit"
-            className="absolute top-0 right-[-5px] p-2.5 text-sm font-medium h-full w-[80px] text-white bg-themeGreenDark rounded-e-lg border border-themeGreenDark hover:bg-themeGreen hover:right-[-5px] focus:ring-2 focus:outline-none focus:ring-themeGreenDark"
+            className="absolute top-0 right-[-5px] p-2.5 text-sm font-medium h-[50px] w-[80px] text-white bg-themeGreenDark rounded-e-lg border border-themeGreenDark hover:bg-themeGreen focus:ring-2 focus:outline-none focus:ring-themeGreenDark"
           >
             <img
               src="./searchbar/magnifier.svg"

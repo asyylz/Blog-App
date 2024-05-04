@@ -38,10 +38,12 @@ export default function Pagination({ dataLength }) {
           //{pageNumbers.map((page, index) => (
           <button
             key={index + 1}
-            disabled={currentPage === index + 1}
+            //disabled={currentPage === index + 1}
             onClick={() => setCurrentPage(index + 1)}
-            className={`flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white cursor-pointer ${
-              currentPage === index + 1 ? 'bg-gray-500 text-white' : ''
+            className={`flex items-center justify-center px-4 h-10 leading-tight text-gray border border-gray-300 hover:bg-gray-100 hover:text-gray-700 cursor-pointer ${
+              currentPage === index + 1
+                ? 'bg-themeGreenDark text-themeCream'
+                : 'bg-themeDirtyWhite '
             }`}
           >
             {index + 1}
@@ -50,7 +52,7 @@ export default function Pagination({ dataLength }) {
         <button
           onClick={(e) => handlePagination(e, 'next')}
           disabled={currentPage >= dataLength / 6}
-          className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white cursor-pointer"
+          className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700   cursor-pointer"
         >
           Next
         </button>
