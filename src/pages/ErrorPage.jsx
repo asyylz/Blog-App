@@ -4,6 +4,7 @@ import Navbar from '../components/componentsUI/Navbar';
 export default function ErrorPage() {
   const error = useRouteError();
   console.log(error.status);
+  console.log(error.data);
 
   let title = 'An error occured!';
   let message = 'Something went wrong !';
@@ -13,7 +14,7 @@ export default function ErrorPage() {
   }
   if (error.status === 401) {
     title = 'Unauthorized!';
-    message = 'Email/Password wrong !';
+    message = error.data.message;
   }
   return (
     <>

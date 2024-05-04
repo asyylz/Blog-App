@@ -42,14 +42,7 @@ export async function action({ request, _ }) {
       }
     } catch (error) {
       if (error.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
-        console.error('Error status:', error.response.status);
-        console.error('Error body:', error.response.data);
-        // You can handle based on specific status codes here
-        throw new Error(
-          `Server responded with status code ${error.response.status}`
-        );
+        throw error.response;
       } else if (error.request) {
         // The request was made but no response was received
         console.error('No response received:', error.request);
@@ -82,7 +75,7 @@ export async function action({ request, _ }) {
         userData
       );
       console.log('clicked');
-     console.log(response.data)
+      console.log(response.data);
 
       if (response?.data.token && response?.data.user) {
         const userData = {
