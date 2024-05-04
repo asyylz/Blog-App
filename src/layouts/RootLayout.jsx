@@ -5,7 +5,7 @@ import Footer from '../components/componentsUI/Footer';
 import Pagination from '../components/componentsUI/Pagination';
 import { useLoaderData } from 'react-router-dom';
 export default function RootLayout() {
-  const {totalData } = useLoaderData();
+  const { totalData } = useLoaderData();
   const length = totalData.length;
 
   return (
@@ -33,7 +33,7 @@ export async function loaderBlogs({ request }) {
     );
     const totalData = response2.data.data;
     const blogPosts = response1.data.data;
-
+    console.log(totalData);
     return { blogPosts, totalData };
   } catch (error) {
     console.error(error);

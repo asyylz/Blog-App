@@ -5,7 +5,7 @@ const pageNumbers = ['1', '2', '3', '4', '5'];
 export default function Pagination({ dataLength }) {
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
-  console.log(currentPage);
+  //console.log(currentPage);
 
   useEffect(() => {
     navigate(`/?page=${currentPage}&limit=6`);
