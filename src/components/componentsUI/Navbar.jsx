@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const menuList = ['Dashboard', 'Search', 'Explore', 'About', 'Contact'];
 export default function Navbar() {
   return (
@@ -23,10 +25,13 @@ export default function Navbar() {
           </div>
         </div>
         <div className="order-2 md:order-3">
-          <button className="px-4 py-2 bg-themeGreenDark hover:bg-themeCream hover:text-themeBrown rounded-xl flex items-center gap-2 animate-pulse">
+          <Link
+            to="/auth?mode=register"
+            className="px-4 py-2 bg-themeGreenDark hover:bg-themeCream hover:text-themeBrown rounded-xl flex items-center gap-2 animate-pulse cursor-pointer"
+          >
             <img src="./navbar/login.svg" alt="login" className="h-5 w-5" />
             <span>Login</span>
-          </button>
+          </Link>
         </div>
       </div>
     </nav>

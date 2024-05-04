@@ -1,4 +1,5 @@
 import HomePage from '../pages/HomePage';
+import AuthPage from '../pages/AuthPage';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import RootLayout from '../layouts/RootLayout';
 import { loaderBlogs } from '../layouts/RootLayout';
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
 
       {
         path: 'auth',
-        //element: <AuthPage />,
+        element: <AuthPage />,
       },
 
       {

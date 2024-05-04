@@ -1,22 +1,32 @@
 import { Outlet } from 'react-router-dom';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/componentsUI/Navbar';
 import axios from 'axios';
 import Footer from '../components/componentsUI/Footer';
 import Pagination from '../components/componentsUI/Pagination';
 import { useLoaderData } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 export default function RootLayout() {
   const { totalData } = useLoaderData();
   const length = totalData.length;
 
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const isAuthPage =
+    location.pathname === '/auth' && query.get('mode') === 'register';
+
   return (
     <>
-      <Navbar />
-      <main className="bg-themeDirtyWhite">
-        <Outlet />
-        <Pagination dataLength={length} />
-        <Footer />
-      </main>
-    </>
+    <Navbar />
+    <main className="bg-themeDirtyWhite">
+      <Outlet />
+      {!isAuthPage && (
+        <>
+          <Pagination dataLength={length} />
+          <Footer />
+        </>
+      )}
+    </main>
+  </>
   );
 }
 export async function loaderBlogs({ request }) {
