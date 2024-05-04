@@ -36,7 +36,7 @@ export default function LoginForm({}) {
                   </label>
                   <input
                     type={field.type}
-                    value={event.target.value}
+                    //value={event.target.value}
                     name={field.identifier}
                     id={field.identifier}
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  focus:outline-none focus:ring-1 focus:ring-themeGreenDark focus:border-themeGreenDark block w-full p-2.5"

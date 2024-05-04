@@ -42,7 +42,7 @@ export default function RegisterForm() {
                   <input
                     type={field.type}
                     name={field.identifier}
-                    value={event.target.value}
+                    //value={(event) => event.target.value}
                     id={field.identifier}
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  focus:outline-none focus:ring-1 focus:ring-themeGreenDark focus:border-themeGreenDark block w-full p-2.5"
                     placeholder={field.label}

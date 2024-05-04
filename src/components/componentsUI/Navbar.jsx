@@ -8,6 +8,7 @@ export default function Navbar() {
   //   const [searchParams] = useSearchParams();
   //   navigation.navigate('/auth?mode=login');
   // }
+  
   return (
     <nav className="bg-themeGreen text-themeCream px-6 py-3 md:px-auto font-ibm-flex font-medium italic md:text-xl">
       <div className="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
