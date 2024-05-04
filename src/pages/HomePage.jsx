@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import ScreenSmallHomePageLayout from '../layouts/ScreenSmallHomePageLayout';
 import { useState } from 'react';
 import ScreenLargeHomePageLayout from '../layouts/ScreenLargeHomePageLayout';
+import SearchBar from '../components/componentsUI/SearchBar';
 export default function HomePage() {
   const [isScreenSmall, setIsScreenSmall] = useState(false);
   useEffect(() => {
@@ -17,7 +18,8 @@ export default function HomePage() {
   }, []);
 
   return (
-    <>
+    <div>
+      <SearchBar />
       <p className="text-[3rem] ml-5 font-thin font-ibm-flex italic text-themeBrown">
         Delve into blog world...
       </p>
@@ -26,6 +28,6 @@ export default function HomePage() {
       ) : (
         <ScreenLargeHomePageLayout />
       )}
-    </>
+    </div>
   );
 }

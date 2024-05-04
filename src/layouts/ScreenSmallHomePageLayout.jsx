@@ -2,7 +2,7 @@ import PostDesignCardB from '../components/componentsUI/PostDesignCardB';
 import { useRouteLoaderData } from 'react-router-dom';
 
 export default function ScreenSmallHomePageLayout() {
-  const blogPosts = useRouteLoaderData('root');
+  const {blogPosts} = useRouteLoaderData('root');
 
   return (
     <div
