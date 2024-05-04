@@ -19,12 +19,11 @@ export default function RootLayout() {
     <>
       <Navbar />
       <main 
-      style={{border:'2px solid blue'}}
+      //style={{border:'2px solid blue'}}
       className="bg-themeDirtyWhite">
         <Outlet context={totalData} />
         {!isAuthPage && (
           <>
-            {/* <Pagination dataLength={length} /> */}
             <Footer />
           </>
         )}

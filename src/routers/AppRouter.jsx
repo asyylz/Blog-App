@@ -7,6 +7,7 @@ import { action as userAction } from '../pages/AuthPage';
 import ErrorPage from '../pages/ErrorPage';
 import BlogDetailPostPage from '../pages/BlogDetailPostPage';
 import BlogDetailLayout from '../layouts/BlogDetailLayout';
+import {action as logoutAction} from '../pages/Logout'
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
 
       {
         path: 'logout',
-        //action: logoutAction,
+        action: logoutAction,
       },
       {
         path: ':postId',

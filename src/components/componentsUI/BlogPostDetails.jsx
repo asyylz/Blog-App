@@ -1,3 +1,5 @@
+import CommentBlock from './CommentBlock';
+
 export default function BlogPostDetails({
   _id,
   comments,
@@ -14,10 +16,14 @@ export default function BlogPostDetails({
   console.log(image);
   return (
     <section 
-    className="md:py-10 bg-themeDirtyWhite">
-      <div className="container px-4">
-        <div className="grid grid-cols-12">
-          <div className="col-span-12 md:col-span-7">
+    style={{ border: '1px solid blue' }}
+    className="md:py-10 bg-themeDirtyWhite flex flex-col ">
+      <div
+        style={{ border: '1px solid blue' }}
+       className="container px-4 mx-auto">
+        <div 
+        className="grid grid-cols-12">
+          {/* <div className="col-span-12 md:col-span-7">
             <h2 className="text-2xl leading-none font-bold md:text-6xl md:leading-none mb-6">
               Blog Details
             </h2>
@@ -28,11 +34,13 @@ export default function BlogPostDetails({
               find a teacher of him in his answer. So, being a teacher is an
               amazing thing.
             </p>
-          </div>
+          </div> */}
 
-          <div className="col-span-12">
+          <div 
+       
+          className="col-span-12">
             <div
-              //style={{ border: '1px solid blue' }}
+             
               className="my-6 md:my-12 w-full flex  justify-center"
             >
               <img
@@ -77,6 +85,7 @@ export default function BlogPostDetails({
           </div>
         </div>
       </div>
+      <CommentBlock />
     </section>
   )
 }

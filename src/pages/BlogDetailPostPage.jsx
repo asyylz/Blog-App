@@ -13,8 +13,9 @@ export default function BlogDetailPostPage() {
   //console.log(totalData);
 
   return (
-    <div style={{ border: '1px solid red' }} 
-    className="h-full my-10">
+    <div 
+    style={{ border: '1px solid red' }} 
+    className="min-h-screen py-10 ">
       <BlogPostDetails {...post[0]} />
     </div>
   )

@@ -2,13 +2,8 @@ import { Link } from 'react-router-dom';
 
 const menuList = ['Dashboard', 'Search', 'Explore', 'About', 'Contact'];
 export default function Navbar() {
-
-  // function handleLoginClick() {
-  //   const navigation = useNavigation();
-  //   const [searchParams] = useSearchParams();
-  //   navigation.navigate('/auth?mode=login');
-  // }
-  
+  const user = JSON.parse(localStorage.getItem('user')) || '';
+  console.log(user);
   return (
     <nav className="bg-themeGreen text-themeCream px-6 py-3 md:px-auto font-ibm-flex font-medium italic md:text-xl">
       <div className="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
@@ -31,14 +26,31 @@ export default function Navbar() {
             </ul>
           </div>
         </div>
-        <div className="order-2 md:order-3">
+        <div
+          //style={{border:'1px solid red'}}
+          className="order-2 flex items-center md:order-3 "
+        >
+          {user && (
+            <>
+              <span>Hi {user.userName}</span>
+              <img
+                className="h-8 mx-6"
+                src="./public/navbar/user.svg"
+                alt="user"
+              />
+            </>
+          )}
           <Link
             to="auth?mode=login"
-            //onClick={handleLoginClick}
             className="px-4 py-2 bg-themeGreenDark hover:bg-themeCream hover:text-themeBrown rounded-xl flex items-center gap-2 animate-pulse cursor-pointer"
           >
             <img src="./navbar/login.svg" alt="login" className="h-5 w-5" />
-            <span>Login</span>
+
+            {user ? (
+              <Link to="logout">Logout</Link>
+            ) : (
+              <Link to="auth?mode=login">Login</Link>
+            )}
           </Link>
         </div>
       </div>

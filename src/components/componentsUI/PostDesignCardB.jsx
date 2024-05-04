@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 export default function PostDesignCardB({
   image,
   title,
@@ -90,10 +91,12 @@ export default function PostDesignCardB({
           //style={{ border: '1px solid red' }}
           className="container flex flex-col justify-between mx-auto gap-3"
         >
-          <button className="px-3 py-2 text-themeDirtyWhite bg-themeGreenDark hover:bg-themeGreen hover:animate-bounce delay-150 duration-300 rounded-xl flex items-center  flex-none text-xs md:text-sm md:min-w-[100px] lg:max-w-[130px]">
+          <Link 
+          to={_id}
+          className="px-3 py-2 text-themeDirtyWhite bg-themeGreenDark hover:bg-themeGreen hover:animate-bounce delay-150 duration-300 rounded-xl flex items-center  flex-none text-xs md:text-sm md:min-w-[100px] lg:max-w-[130px]">
             <img src="./card/arrowRight.svg" alt="login" className="h-5 w-5" />
             <span>Read more</span>
-          </button>
+          </Link>
         </div>
       </div>
     </div>
