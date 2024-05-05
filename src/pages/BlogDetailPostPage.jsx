@@ -2,39 +2,40 @@ import { useParams } from 'react-router-dom';
 import BlogPostDetails from '../components/componentsUI/BlogPostDetails';
 import { useOutletContext } from 'react-router-dom';
 import { useLoaderData } from 'react-router-dom';
-import { useRouteLoaderData } from 'react-router-dom';
+import { useRouteLoaderData, json } from 'react-router-dom';
 import axios from 'axios';
-
+import { useAuth } from '../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 export default function BlogDetailPostPage() {
-  //const postId = useParams().postId;
-  //console.log(postId);
-  //const totalData = useOutletContext();
-  //const post = totalData.filter((post) => post._id === postId);
-  //console.log(post);
-  //console.log(totalData);
+  const { isAuthenticated } = useAuth();
+  const post = useRouteLoaderData('blog-detail');
+  console.log(isAuthenticated);
 
-  const post = useRouteLoaderData("blog-detail");
-  console.log(post);
+  useEffect(() => {
+    if (!isAuthenticated) {
+      throw json({}, { status: 401, statusText: 'You should login.' });
+    }
+  }, []);
 
   return (
-    <div style={{ border: '1px solid red' }} className="min-h-screen py-10 ">
-      <BlogPostDetails {...post} />
-    </div>
+    isAuthenticated && (
+      <div style={{ border: '1px solid red' }} className="min-h-screen py-10 ">
+        <BlogPostDetails {...post} />
+      </div>
+    )
   );
 }
 
 export async function loader({ request, params }) {
   const user = JSON.parse(localStorage.getItem('user'));
-  const url = new URL(request.url);
   const id = params.postId;
-  console.log(id);
-
   try {
     const response = await axios.get(
       `https://38110.fullstack.clarusway.com/blogs/${id}/`,
       {
         headers: {
-          Authorization: `Token ${user.token}`,
+          Authorization: `Token ${user?.token}`,
         },
       }
     );
@@ -42,6 +43,8 @@ export async function loader({ request, params }) {
     console.log(post);
     return post;
   } catch (error) {
-    throw error.response;
+    console.log(error);
+    //return  error
+    //json({}, { status: 401, statusText: 'You should login.' });
   }
 }

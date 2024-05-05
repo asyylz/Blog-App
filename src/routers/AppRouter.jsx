@@ -7,8 +7,9 @@ import { action as userAction } from '../pages/AuthPage';
 import ErrorPage from '../pages/ErrorPage';
 import BlogDetailPostPage from '../pages/BlogDetailPostPage';
 import BlogDetailLayout from '../layouts/BlogDetailLayout';
-import {action as logoutAction} from '../pages/Logout'
-import {loader as loaderBlogPost} from '../pages/BlogDetailPostPage'
+import { action as logoutAction } from '../pages/Logout';
+import { loader as loaderBlogPost } from '../pages/BlogDetailPostPage';
+//import { action as actionUserCheck } from '../components/componentsUI/PostDesignCardA';
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,9 @@ const router = createBrowserRouter([
     id: 'root',
     loader: loaderBlogs,
     children: [
-      { index: true, element: <HomePage /> },
+      { index: true, element: <HomePage />, 
+      //action: actionUserCheck 
+    },
 
       {
         path: 'auth',
@@ -33,12 +36,11 @@ const router = createBrowserRouter([
       {
         path: ':postId',
         id: 'blog-detail',
-        loader:loaderBlogPost,
+        loader: loaderBlogPost,
         children: [
           {
             index: true,
             element: <BlogDetailPostPage />,
-            
           },
           {
             path: 'edit',

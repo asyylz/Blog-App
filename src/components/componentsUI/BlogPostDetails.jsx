@@ -84,7 +84,7 @@ export default function BlogPostDetails({
                 </div>
                 <div>
                   <p>
-                    By <b>{`${userId.firstName} ${userId.lastName}`}</b>
+                    By <b>{`${userId?.firstName} ${userId?.lastName}`}</b>
                   </p>
                 </div>
               </div>

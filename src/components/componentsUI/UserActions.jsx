@@ -7,7 +7,7 @@ export default function UserActions({likes,comments,countOfVisitors}) {
     >
       <div>
         <p className="text-themeBrown text-center">
-          <small>{likes.length}</small>
+          <small>{likes?.length}</small>
         </p>
         <img
           src="./card/heart.svg"
@@ -17,7 +17,7 @@ export default function UserActions({likes,comments,countOfVisitors}) {
       </div>
       <div>
         <p className="text-themeBrown text-center">
-          <small>{comments.length}</small>
+          <small>{comments?.length}</small>
         </p>
         <img
           src="./card/comments.svg"

@@ -1,3 +1,10 @@
+import { Link } from 'react-router-dom';
+
+const fields = [
+  { header: 'About', list: ['aaaaaa', 'bbbbb', 'cccccc'] },
+  { header: 'Contact', list: ['aaaaaa', 'bbbbb', 'cccccc'] },
+  { header: 'FAQ', list: ['aaaaaa', 'bbbbb', 'cccccc'] },
+];
 export default function Footer() {
   return (
     <footer
@@ -10,35 +17,35 @@ export default function Footer() {
             //style={{ border: '1px solid red' }}
             className="mb-6 md:mb-0"
           >
-            //TODO
+          
           </div>
-          <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-            <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                header2
-              </h2>
-              <ul className="text-gray-600 dark:text-gray-400">//listTODO</ul>
-            </div>
-            <div>
-              <h2>header2</h2>
-            </div>
-            <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                Legal
-              </h2>
-              <ul className="text-gray-600 dark:text-gray-400">
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Terms &amp; Conditions
-                  </a>
-                </li>
-              </ul>
-            </div>
+          <div
+            //style={{ border: '1px solid red' }}
+            className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3"
+          >
+            {fields.map((field, index) => (
+              <div
+               key={`div-${index}`}
+               //style={{ border: '1px solid red' }}
+               >
+                <h2
+                  key={`h-${index}`}
+                  className="mb-2 text-sm font-semibold text-gray-900 uppercase dark:text-white"
+                >
+                  {field.header}
+                </h2>
+                <ul key={`ul-${index}`} className="text-gray-600 flex flex-col">
+                  {field.list.map((item, i) => (
+                    <Link
+                      key={i}
+                      className="text-themeBrown underline font-ibm-flex"
+                    >
+                      {item}
+                    </Link>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
@@ -133,5 +140,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

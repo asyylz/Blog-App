@@ -13,7 +13,7 @@ export default function Navbar() {
       <div className="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
         {/* <!-- Logo --> */}
         <div className="flex">
-          <div className="text-textColor mr-4 flex items-center md:text-3xl ">
+          <div className="text-textColor mr-10 flex items-center sm:text-3xl ">
             {/* <!-- Heroicon - Chip OutlineTODO --> */}
             LOGO
           </div>
