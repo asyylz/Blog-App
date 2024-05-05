@@ -55,8 +55,8 @@ export default function ScreenLargeHomePageLayout() {
         <h3 className="text-themeBrown text-center py-2 text-2xl font-ibm-flex italic  font-thin">
           Most seen posts
         </h3>
-        {blogPosts.map((post) => (
-          <BlogListItem title={post.title} id={post._id} />
+        {blogPosts.map((post, index) => (
+          <BlogListItem key={index} title={post.title} id={post._id} />
         ))}
       </div>
     </div>

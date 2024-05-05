@@ -74,8 +74,8 @@ export async function action({ request, _ }) {
         'https://38110.fullstack.clarusway.com/users/',
         userData
       );
-      console.log('clicked');
-      console.log(response.data);
+      //console.log('clicked');
+      //console.log(response.data);
 
       if (response?.data.token && response?.data.user) {
         const userData = {
@@ -85,7 +85,19 @@ export async function action({ request, _ }) {
 
         localStorage.setItem('user', JSON.stringify(userData));
       }
-    } catch (error) {}
+      return redirect('/');
+    } catch (error) {
+      if (error.response) {
+        throw error.response;
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error('No response received:', error.request);
+        throw new Error('No response received');
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error('Error', error.message);
+        throw new Error(error.message);
+      }
+    }
   }
-  return redirect('/');
 }

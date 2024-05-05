@@ -58,7 +58,7 @@ export default function SearchBar() {
             id="dropdown-button"
             onClick={toggleDropdown}
             onBlur={toggleDropdown}
-            className="flex-shrink-0 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center h-[50px] text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
+            className="flex-shrink-0 font-ibm-flex italic inline-flex items-center py-2.5 px-4 text-sm font-medium text-center h-[50px] text-themeBrown bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
             type="button"
           >
             All categories
