@@ -3,6 +3,7 @@ import Navbar from '../components/componentsUI/Navbar';
 import axios from 'axios';
 import Footer from '../components/componentsUI/Footer';
 import { useLocation } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
 
 export default function RootLayout() {
   const location = useLocation();
@@ -57,10 +58,4 @@ export async function loaderBlogs({ request }) {
   }
 }
 
-export async function action() {
-  try {
-    const response = await axios.post(
-      `https://38110.fullstack.clarusway.com/${id}/postLike`
-    );
-  } catch {}
-}
+

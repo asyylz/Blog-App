@@ -5,9 +5,8 @@ import { useAuth } from '../hooks/useAuth';
 
 import { useEffect } from 'react';
 export default function BlogDetailPostPage() {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated} = useAuth();
   const post = useRouteLoaderData('blog-detail');
-  console.log(isAuthenticated);
 
   useEffect(() => {
     if (!isAuthenticated) {

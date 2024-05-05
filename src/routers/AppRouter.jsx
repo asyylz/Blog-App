@@ -10,6 +10,7 @@ import BlogDetailLayout from '../layouts/BlogDetailLayout';
 import { action as logoutAction } from '../pages/Logout';
 import { loader as loaderBlogPost } from '../pages/BlogDetailPostPage';
 //import { action as actionUserCheck } from '../components/componentsUI/PostDesignCardA';
+import { action as actionLike } from '../pages/HomePage';
 
 const router = createBrowserRouter([
   {
@@ -18,11 +19,13 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     id: 'root',
     loader: loaderBlogs,
-     //action:actionLike,
     children: [
-      { index: true, element: <HomePage />, 
-      //action: actionUserCheck 
-    },
+      {
+        index: true,
+        element: <HomePage />,
+        //action: actionUserCheck
+        action: actionLike,
+      },
 
       {
         path: 'auth',

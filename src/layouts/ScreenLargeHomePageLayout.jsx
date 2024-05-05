@@ -5,7 +5,7 @@ import BlogListItem from '../components/componentsUI/PopularPostItem';
 
 export default function ScreenLargeHomePageLayout() {
   const { blogPosts, categories } = useRouteLoaderData('root');
-  console.log(categories);
+  //console.log(categories);
   return (
     <div
       //style={{ border: '3px solid blue' }}

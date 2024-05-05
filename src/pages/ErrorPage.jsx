@@ -16,6 +16,11 @@ export default function ErrorPage() {
   if (error.status === 401) {
     title = 'Unauthorized!';
     message = error.statusText;
+  }
+
+  if (error.status === 405) {
+    title = 'Error!';
+    message = error.statusText;
   
   }
   return (

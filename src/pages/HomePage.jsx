@@ -6,6 +6,9 @@ import SearchBar from '../components/componentsUI/SearchBar';
 import Pagination from '../components/componentsUI/Pagination';
 import { useLoaderData } from 'react-router-dom';
 import { useRouteLoaderData } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
+import axios from 'axios';
+import { redirect } from 'react-router-dom';
 export default function HomePage() {
   const [isScreenSmall, setIsScreenSmall] = useState(false);
   const { totalData } = useRouteLoaderData('root');
@@ -42,4 +45,37 @@ export default function HomePage() {
       )}
     </div>
   );
+}
+
+export async function action({ request }) {
+  const formData = await request.formData();
+  const postId = formData.get('id');
+  const { user } = useAuth();
+  console.log(user.token);
+  console.log(postId);
+  try {
+    const response = await axios.post(
+      `https://38110.fullstack.clarusway.com/blogs/${postId}/postLike`,{},
+      {
+        headers: {
+          Authorization: `Token ${user?.token}`,
+        },
+      }
+    );
+    console.log('Like Data:', response.data);
+    // You could redirect or return a JSON response based on your app's needs
+    return new Response(
+      JSON.stringify({ success: true, like: response.data }),
+      {
+        headers: { 'Content-Type': 'application/json' },
+        status: 200,
+      }
+    );
+  } catch (error) {
+    console.error('Error posting like:', error);
+    return new Response(JSON.stringify({ error: error.message }), {
+      headers: { 'Content-Type': 'application/json' },
+      status: error.response?.status || 500,
+    });
+  }
 }
