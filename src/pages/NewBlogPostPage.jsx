@@ -18,7 +18,7 @@ export async function action({ request }) {
   console.log(postData);
   try {
     const response = await axios.post(
-      'https://38110.fullstack.clarusway.com/blogs//',
+      'https://38110.fullstack.clarusway.com/blogs/',
       postData,
       {
         headers: {

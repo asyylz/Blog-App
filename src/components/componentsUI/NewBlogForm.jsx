@@ -25,7 +25,7 @@ export default function NewBlogForm() {
           {fields.map((field, index) => (
             <div key={index} className="col-span-12 mb-3 mt-2">
               <input
-                className="text-gray-900  max-h-14 w-full bg-transparent border-b-2 border-gray-300 placeholder:text-gray-900  opacity-90 transition ease-in-out duration-700 focus:border-b-themeGreenDark  focus:outline-none py-4"
+                className="text-md  text-themeBrown max-h-14 w-full bg-transparent border-b-2 border-gray-300 placeholder:text-themeBrown  opacity-90 transition ease-in-out duration-700 focus:border-b-themeGreenDark  focus:outline-none py-4"
                 type={field.type}
                 name={field.name}
                 placeholder={field.label}
@@ -53,7 +53,7 @@ export default function NewBlogForm() {
               id="content"
               name="content"
               rows="25"
-              className="block p-2.5 w-full ease-in-out duration-600 text-sm text-themeBrown bg-themeDirtyWhite rounded-lg border border-gray-300 focus:outline-none focus:ring-0.5 focus:ring-themeGreenDark focus:border-themeGreenDark"
+              className="block p-2.5 text-lg w-full ease-in-out duration-600 text-themeBrown bg-themeDirtyWhite rounded-lg border border-gray-300 focus:outline-none focus:ring-0.5 focus:ring-themeGreenDark focus:border-themeGreenDark"
               placeholder="Content"
             ></textarea>
           </div>

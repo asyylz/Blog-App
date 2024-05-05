@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 const categories = [
   {
     id: '663515c3c78ea0a82b9220cb',
@@ -41,6 +39,10 @@ const categories = [
     id: '663515c4c78ea0a82b922165',
     name: 'Travel',
   },
+  {
+    id: '6635f34da17ed84f75f35d45',
+    name: 'Food',
+  },
 ];
 
 export default function CategoryDropDown({
@@ -48,11 +50,8 @@ export default function CategoryDropDown({
   onChange,
   name,
   round,
-  title
+  title,
 }) {
-  const [isOpen, setIsOpen] = useState(false);
-  //const toggleDropdown = () => setIsOpen(!isOpen);
-
   return (
     <div
       //style={{ border: '1px solid red' }}
@@ -71,27 +70,6 @@ export default function CategoryDropDown({
           </option>
         ))}
       </select>
-
-      <div
-        id="dropdown"
-        // className={`absolute w-full bg-white divide-y divide-gray-100 rounded-lg shadow ${
-        //   isOpen ? '' : 'hidden'
-        // }`}
-        className={`absolute w-full bg-white divide-y divide-gray-100 ${
-          round === 'left' ? 'rounded-l-lg' : 'rounded-lg'
-        } shadow hidden`}
-      >
-        {list.map((category, index) => (
-          <li key={index}>
-            <button
-              type="button"
-              className="inline-flex w-full px-4 py-2 hover:bg-gray-100"
-            >
-              {category.name}
-            </button>
-          </li>
-        ))}
-      </div>
     </div>
   );
 }
