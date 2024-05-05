@@ -13,9 +13,10 @@ export default function BlogPostDetails({
   categoryId,
   content,
 }) {
-  console.log(image);
+
   return (
     <section 
+    key={_id}
     style={{ border: '1px solid blue' }}
     className="md:py-10 bg-themeDirtyWhite flex flex-col ">
       <div
@@ -67,12 +68,12 @@ export default function BlogPostDetails({
                 </div>
                 <div>
                   <p>
-                    By<b> Alan Bell</b>
+                    By <b>{`${userId.firstName} ${userId.lastName}`}</b>
                   </p>
                 </div>
                 <p className="opacity-75">
                   <i className="fas fa-calendar-alt ml-4 mr-2"></i>
-                  {createdAt.split('T')[0]}
+                  {createdAt?.split('T')[0]}
                 </p>
               </div>
 

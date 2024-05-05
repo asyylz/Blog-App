@@ -7,7 +7,7 @@ const registerationFields = [
   { label: 'Password', identifier: 'password', type: 'password' },
 ];
 
-export default function LoginForm({}) {
+export default function LoginForm({ isSubmitting }) {
   return (
     <section
       style={{
@@ -47,15 +47,15 @@ export default function LoginForm({}) {
               ))}
               <button
                 //type="submit"
-                className="w-full text-white bg-themeGreenDark hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                className="w-full text-themeCream text-sm md:text-xl bg-themeGreenDark hover:bg-themeGreen focus:ring-4 focus:outline-none focus:ring-themeGreenDark font-medium rounded-lg  px-5 py-2.5 text-center"
               >
-                Login
+                {isSubmitting ? 'Submitting...' : 'Login'}
               </button>
               <p className="text-sm font-light text-gray-500 ">
                 Don't have an account?
                 <Link
                   to="/auth?mode=register"
-                  className="font-medium text-primary-600 hover:underline"
+                  className="font-medium text-themeBrown underline mx-1 hover:text-themeGreenDark hover:text-[16px]"
                 >
                   Create an account here
                 </Link>

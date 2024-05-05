@@ -3,8 +3,8 @@ import { Form, Link } from 'react-router-dom';
 const menuList = ['Dashboard', 'Search', 'Explore', 'About', 'Contact'];
 export default function Navbar() {
   const user = JSON.parse(localStorage.getItem('user')) || '';
-
-  console.log(user);
+  //console.log(user);
+  
   return (
     <nav className="bg-themeGreen text-themeCream px-6 py-3 md:px-auto font-ibm-flex font-medium italic md:text-xl">
       <div className="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
@@ -21,7 +21,7 @@ export default function Navbar() {
                   key={index}
                   className="md:px-2 md:py-2 text-textColor hover:text-themeBrown"
                 >
-                  <a href="#">{item}</a>
+                  <a href="/">{item}</a>
                 </li>
               ))}
             </ul>
@@ -41,20 +41,20 @@ export default function Navbar() {
               />
             </>
           )}
-          <div
+          <Form
+            action="/logout"
+            method="POST"
             className={`px-4 py-2 bg-themeGreenDark hover:bg-themeCream hover:text-themeBrown rounded-xl flex items-center gap-2 ${
               !user && 'animate-pulse'
             } cursor-pointer`}
           >
             <img src="./navbar/login.svg" alt="login" className="h-5 w-5" />
             {user ? (
-              <Form action="/logout" method="POST">
-                <button>Logout</button>
-              </Form>
+              <button>Logout</button>
             ) : (
               <Link to="auth?mode=login">Login</Link>
             )}
-          </div>
+          </Form>
         </div>
       </div>
     </nav>

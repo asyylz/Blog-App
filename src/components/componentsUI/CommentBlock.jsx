@@ -3,9 +3,10 @@ export default function CommentBlock() {
     <section className="py-14 md:py-24 bg-themeDirtyWhite relative overflow-hidden z-10">
       <div className="container px-4 mx-auto">
         <div className="flex justify-center max-w-4xl mx-auto">
-          <div 
-        //style={{border:'2px solid red'}}
-        className="bg-themeDirtyWhite  w-screen rounded p-4 lg:p-8">
+          <div
+            //style={{border:'2px solid red'}}
+            className="bg-themeDirtyWhite  w-screen rounded p-4 lg:p-8"
+          >
             <div>
               {/* <div
               style={{border:'2px solid red'}}
@@ -140,32 +141,32 @@ export default function CommentBlock() {
                 <hr className="dark:border-slate-700 my-5" />
                 {/* <!-- item --> */}
                 <div>
-                  <div class="flex items-center mb-6">
-                    <div class="w-12 h-12 rounded-full mr-2 overflow-hidden">
+                  <div className="flex items-center mb-6">
+                    <div className="w-12 h-12 rounded-full mr-2 overflow-hidden">
                       <img
                         src="https://cdn.easyfrontend.com/pictures/users/user18.jpg"
                         alt=""
-                        class="max-w-full h-auto mx-auto"
+                        className="max-w-full h-auto mx-auto"
                       />
                     </div>
-                    <div class="flex flex-grow justify-between">
+                    <div className="flex flex-grow justify-between">
                       <div>
-                        <h5 class="font-medium mb-1">Freya Kemp</h5>
-                        <p class="text-sm">
-                          <span class="text-yellow-500">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                        <h5 className="font-medium mb-1">Freya Kemp</h5>
+                        <p className="text-sm">
+                          <span className="text-yellow-500">
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
                           </span>
-                          <span class="mx-1">5.0</span>
+                          <span className="mx-1">5.0</span>
                         </p>
                       </div>
-                      <p class="text-sm opacity-50 mb-0">july 11,2020</p>
+                      <p className="text-sm opacity-50 mb-0">july 11,2020</p>
                     </div>
                   </div>
-                  <p class="text-sm leading-normal opacity-75 mb-6">
+                  <p className="text-sm leading-normal opacity-75 mb-6">
                     WA wonderful serenity has taken possession of my entire
                     soul, like these sweet mornings of spring which I enjoy with
                     my whole heart. I am alone, and feel the charm of existence
@@ -175,19 +176,20 @@ export default function CommentBlock() {
                     my talents. I should be incapable of drawing a single stroke
                     at the present moment.
                   </p>
-                  <div class="flex justify-end">
-                    <button class="hover:text-blue-600 hover:bg-gray-200 dark:hover:bg-slate-700 rounded inline-flex justify-center items-center duration-300 px-3 py-2 mr-6">
-                      <i class="far fa-thumbs-up fs-6 mr-2"></i> Like (20)
+                  <div className="flex justify-end">
+                    <button className="hover:text-blue-600 hover:bg-gray-200 dark:hover:bg-slate-700 rounded inline-flex justify-center items-center duration-300 px-3 py-2 mr-6">
+                      <i className="far fa-thumbs-up fs-6 mr-2"></i> Like (20)
                     </button>
-                    <button class="hover:text-blue-600 hover:bg-gray-200 dark:hover:bg-slate-700 rounded inline-flex justify-center items-center duration-300 px-3 py-2">
-                      <i class="far fa-thumbs-down fs-6 mr-2"></i> Dislike (6)
+                    <button className="hover:text-blue-600 hover:bg-gray-200 dark:hover:bg-slate-700 rounded inline-flex justify-center items-center duration-300 px-3 py-2">
+                      <i className="far fa-thumbs-down fs-6 mr-2"></i> Dislike
+                      (6)
                     </button>
                   </div>
                 </div>
-                <hr class="dark:border-slate-700 my-5" />
+                <hr className="dark:border-slate-700 my-5" />
               </div>
-              <div class="py-6 lg:py-12 text-center">
-                <button class="bg-blue-600 text-white text-sm hover:bg-opacity-90 rounded py-2.5 px-6 md:px-10">
+              <div className="py-6 lg:py-12 text-center">
+                <button className="bg-blue-600 text-white text-sm hover:bg-opacity-90 rounded py-2.5 px-6 md:px-10">
                   Load More
                 </button>
               </div>

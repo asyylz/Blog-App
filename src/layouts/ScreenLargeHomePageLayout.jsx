@@ -1,10 +1,11 @@
 import { useRouteLoaderData } from 'react-router-dom';
 import PostDesignCardA from '../components/componentsUI/PostDesignCardA';
 import PostDesignCardB from '../components/componentsUI/PostDesignCardB';
-import BlogListItem from '../components/componentsUI/BlogListItem';
+import BlogListItem from '../components/componentsUI/PopularPostItem';
 
 export default function ScreenLargeHomePageLayout() {
-  const { blogPosts } = useRouteLoaderData('root');
+  const { blogPosts, categories } = useRouteLoaderData('root');
+  console.log(categories);
   return (
     <div
       //style={{ border: '3px solid blue' }}
@@ -52,11 +53,21 @@ export default function ScreenLargeHomePageLayout() {
         //style={{ border: '3px solid green' }}
         className="col-span-3 border-l-2 border-[#C2B6B6]"
       >
-        <h3 className="text-themeBrown text-center py-2 text-2xl font-ibm-flex italic  font-thin">
-          Most seen posts
+        <h3 className="text-themeBrown text-center py-2 text-3xl font-ibm-flex italic  font-thin">
+          Popular posts
         </h3>
         {blogPosts.map((post, index) => (
-          <BlogListItem key={index} title={post.title} id={post._id} />
+          <BlogListItem
+            key={index}
+            {...post}
+            rank={index}
+            category={(() => {
+              const match = categories.find(
+                (category) => category._id === post.categoryId
+              );
+              return match ? match.name : 'Default Category Name';
+            })()}
+          />
         ))}
       </div>
     </div>

@@ -6,7 +6,7 @@ import Pagination from '../components/componentsUI/Pagination';
 import { useLocation, useOutletContext, useLoaderData } from 'react-router-dom';
 import { useRouteLoaderData } from 'react-router-dom';
 export default function RootLayout() {
-  const { totalData } = useLoaderData()
+  const { totalData } = useLoaderData();
   const length = totalData.length;
 
   const location = useLocation();
@@ -18,9 +18,10 @@ export default function RootLayout() {
   return (
     <>
       <Navbar />
-      <main 
-      //style={{border:'2px solid blue'}}
-      className="bg-themeDirtyWhite">
+      <main
+        //style={{border:'2px solid blue'}}
+        className="bg-themeDirtyWhite"
+      >
         <Outlet context={totalData} />
         {!isAuthPage && (
           <>
@@ -44,10 +45,16 @@ export async function loaderBlogs({ request }) {
     const response2 = await axios.get(
       'https://38110.fullstack.clarusway.com/blogs/'
     );
+
+    const response3 = await axios.get(
+      'https://38110.fullstack.clarusway.com/categories/'
+    );
+
+    const categories = response3.data.data;
     const totalData = response2.data.data;
     const blogPosts = response1.data.data;
     console.log(totalData);
-    return { blogPosts, totalData };
+    return { blogPosts, totalData,categories };
   } catch (error) {
     console.error(error);
 

@@ -4,6 +4,7 @@ import axios from 'axios';
 export async function action() {
   const userStorage = localStorage.getItem('user');
 console.log(userStorage)
+
   if (!userStorage) {
     console.log('No user found in localStorage.');
     return redirect('/'); // Redirect to home if no user is logged in
@@ -33,6 +34,5 @@ console.log(userStorage)
     // Decide how to handle errors: maybe redirect to an error page or login page?
     throw new Error('Logout failed');
   }
-
 
 }

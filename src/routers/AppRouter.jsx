@@ -8,6 +8,7 @@ import ErrorPage from '../pages/ErrorPage';
 import BlogDetailPostPage from '../pages/BlogDetailPostPage';
 import BlogDetailLayout from '../layouts/BlogDetailLayout';
 import {action as logoutAction} from '../pages/Logout'
+import {loader as loaderBlogPost} from '../pages/BlogDetailPostPage'
 
 const router = createBrowserRouter([
   {
@@ -32,10 +33,12 @@ const router = createBrowserRouter([
       {
         path: ':postId',
         id: 'blog-detail',
+        loader:loaderBlogPost,
         children: [
           {
             index: true,
             element: <BlogDetailPostPage />,
+            
           },
           {
             path: 'edit',
