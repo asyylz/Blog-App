@@ -1,6 +1,10 @@
 import { Form, Link } from 'react-router-dom';
 
-const menuList = ['Dashboard', 'Search', 'Create Your Own'];
+const menuList = [
+  { label: 'Dashboard', path: '/' },
+  { label: 'Search', path: '/' },
+  { label: 'Create Your Own', path: 'new' },
+];
 export default function Navbar() {
   const user = JSON.parse(localStorage.getItem('user')) || '';
   //console.log(user);
@@ -27,7 +31,7 @@ export default function Navbar() {
                   key={index}
                   className=" py-1 sm:px-2 text-textColor hover:text-themeBrown"
                 >
-                  <a href="/">{item}</a>
+                  <a href={item.path}>{item.label}</a>
                 </li>
               ))}
             </ul>

@@ -6,9 +6,9 @@ import { loaderBlogs } from '../layouts/RootLayout';
 import { action as userAction } from '../pages/AuthPage';
 import ErrorPage from '../pages/ErrorPage';
 import BlogDetailPostPage from '../pages/BlogDetailPostPage';
-import BlogDetailLayout from '../layouts/BlogDetailLayout';
 import { action as logoutAction } from '../pages/Logout';
 import { loader as loaderBlogPost } from '../pages/BlogDetailPostPage';
+import NewBlogPostPage from '../pages/NewBlogPostPage';
 //import { action as actionUserCheck } from '../components/componentsUI/PostDesignCardA';
 import { action as actionLike } from '../pages/HomePage';
 
@@ -45,13 +45,13 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <BlogDetailPostPage />,
-            action:actionLike,
-          },
-          {
-            path: 'edit',
-            //element: <EditBlogPostPage />,
+            action: actionLike,
           },
         ],
+      },
+      {
+        path: 'new',
+        element: <NewBlogPostPage />,
       },
     ],
   },

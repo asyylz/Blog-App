@@ -1,59 +1,57 @@
+import { Form } from 'react-router-dom';
+import CategoryDropDown from '../componentsUI/CategoryDropDown';
+const fields = [
+  { label: 'Title', type: 'text' },
+  { label: 'Image URL', type: 'text' },
+];
+
+const listDropDown = ['Published', 'Draft'];
+
 export default function NewBlogForm() {
   return (
-    <section
-      className="ezy__contact13_2qxTOrQ0 bg-center bg-cover bg-no-repeat py-14 md:py-24 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white"
-      style="
-    background-image: url(https://cdn.easyfrontend.com/pictures/contact/contact13.jpg);
-  "
-    >
-      <div className="container px-4 mx-auto">
-        <div className="w-full flex justify-center items-center">
-          <div className="w-full md:w-[80vw] lg:w-[55vw] xl:w-[45vw] bg-white bg-opacity-70 shadow-xl py-28 px-16 backdrop-filter backdrop-blur-md dark:bg-gray-900 dark:bg-opacity-40 text-gray-900 dark:text-white">
-            <div className="text-center pb-8">
-              <h3 className="text-3xl sm:text-5xl font-bold leading-none">
-                Contact Us
-              </h3>
-              <p className="text-base sm:text-lg opacity-80 py-4">
-                Lorem ipsum dolor sit amet consectetur.
-              </p>
+    <section className="flex items-center flex-col text-themeBrown  bg-themeDirtyWhite">
+      <div className="text-center py-8">
+        <h4 className="text-3xl sm:text-5xl font-bold leading-none">
+          Create you own post
+        </h4>
+      </div>
+      <div
+        //style={{ border: '1px solid red' }}
+        className=" w-full sm:w-[90vw] bg-opacity-70 shadow-xl p-8 backdrop-filter backdrop-blur-md text-themeBrown"
+      >
+        {/* <!-- ContactForm component --> */}
+        <Form action="" className="grid grid-cols-12 gap-4 lg:gap-8">
+          {fields.map((field, index) => (
+            <div key={index} className="col-span-12 mb-3 mt-2">
+              <input
+                className="text-gray-900  max-h-14 w-full bg-transparent border-b-2 border-gray-300 placeholder:text-gray-900  opacity-90 transition ease-in-out duration-700 focus:border-b-themeGreenDark  focus:outline-none py-4"
+                type={field.type}
+                name={field.label}
+                placeholder={field.label}
+              />
             </div>
-            {/* <!-- ContactForm component --> */}
-            <form action="" className="grid grid-cols-12 gap-4 lg:gap-8">
-              <div className="col-span-12 md:col-span-6 mb-3 mt-2">
-                <input
-                  className="text-gray-900 dark:text-white max-h-14 w-full bg-transparent border-b-2 border-gray-400 dark:border-white placeholder:text-gray-900 dark:placeholder:text-gray-300 opacity-90 transition ease-in-out duration-700 focus:border-b-blue-700 dark:focus:border-b-blue-700 focus:outline-none py-4"
-                  type="text"
-                  name="name"
-                  placeholder="FULL NAME"
-                />
-              </div>
-              <div className="col-span-12 md:col-span-6 mb-3 mt-2">
-                <input
-                  className="text-gray-900 dark:text-white max-h-14 w-full bg-transparent border-b-2 border-gray-400 dark:border-white placeholder:text-gray-900 dark:placeholder:text-gray-300 opacity-90 transition ease-in-out duration-700 focus:border-b-blue-700 dark:focus:border-b-blue-700 focus:outline-none py-4"
-                  type="text"
-                  name="email"
-                  placeholder="EMAIL"
-                />
-              </div>
-              <div className="col-span-12 md:col-span-12 mb-3">
-                <textarea
-                  className="text-gray-900 dark:text-white w-full bg-transparent border-b-2 border-gray-400 dark:border-white placeholder:text-gray-900 dark:placeholder:text-gray-300 opacity-90 transition ease-in-out duration-700 focus:border-b-blue-700 dark:focus:border-b-blue-700 focus:outline-none py-4"
-                  name="message"
-                  placeholder="MESSAGE"
-                  rows="5"
-                ></textarea>
-              </div>
-
-              <div className="col-span-12">
-                <div className="text-center mt-4">
-                  <button className="bg-blue-600 text-white text-base py-3 px-10 min-w-[44px]">
-                    SEND MESSAGE
-                  </button>
-                </div>
-              </div>
-            </form>
+          ))}
+          <div className="col-span-12 mb-3 mt-2 flex justify-evenly">
+            <CategoryDropDown />
+            <CategoryDropDown list={listDropDown} />
           </div>
-        </div>
+          <div className="col-span-12  mb-3 mt-2 flex justify-evenly">
+            <textarea
+              id="message"
+              rows="25"
+              class="block p-2.5 w-full ease-in-out duration-600 text-sm text-themeBrown bg-themeDirtyWhite rounded-lg border border-gray-300 focus:outline-none focus:ring-0.5 focus:ring-themeGreenDark focus:border-themeGreenDark"
+              placeholder="Content"
+            ></textarea>
+          </div>
+
+          <div className="col-span-12">
+            <div className="text-center mt-4">
+              <button className="bg-themeGreenDark text-themeCream text-xl py-3 px-10 min-w-[44px] rounded-lg border-spacing-1 border-themeGreenDark hover:bg-themeGreen focus:ring-2 focus:outline-none hover:outline-none focus:ring-themeGreenDark">
+                New Blog
+              </button>
+            </div>
+          </div>
+        </Form>
       </div>
     </section>
   );
