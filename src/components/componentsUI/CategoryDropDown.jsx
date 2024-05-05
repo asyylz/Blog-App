@@ -47,19 +47,24 @@ export default function CategoryDropDown({
   list = categories,
   onChange,
   name,
+  round,
+  title
 }) {
   const [isOpen, setIsOpen] = useState(false);
-  const toggleDropdown = () => setIsOpen(!isOpen);
+  //const toggleDropdown = () => setIsOpen(!isOpen);
 
   return (
-    <div className="relative">
+    <div
+      //style={{ border: '1px solid red' }}
+      className="relative w-[250px] sm:w-[300px] md:w-[350px] mt-4"
+    >
       <select
         id={name}
         name={name}
-        className="flex-shrink-0 w-full font-ibm-flex italic inline-flex items-center py-2.5 px-4 text-sm font-medium text-center h-[50px] text-themeBrown border border-gray-300 rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
+        className="bg-themeDirtyWhite flex-shrink-0 w-full font-ibm-flex italic inline-flex items-center py-2.5 px-4 text-sm font-medium text-center h-[50px] text-themeBrown border border-gray-300 rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
         onChange={onChange}
       >
-        <option value="">All categories</option>
+        <option value="">{title}</option>
         {list.map((category, index) => (
           <option key={index} value={category.id}>
             {category.name}
@@ -69,9 +74,12 @@ export default function CategoryDropDown({
 
       <div
         id="dropdown"
-        className={`absolute w-full bg-white divide-y divide-gray-100 rounded-lg shadow ${
-          isOpen ? '' : 'hidden'
-        }`}
+        // className={`absolute w-full bg-white divide-y divide-gray-100 rounded-lg shadow ${
+        //   isOpen ? '' : 'hidden'
+        // }`}
+        className={`absolute w-full bg-white divide-y divide-gray-100 ${
+          round === 'left' ? 'rounded-l-lg' : 'rounded-lg'
+        } shadow hidden`}
       >
         {list.map((category, index) => (
           <li key={index}>

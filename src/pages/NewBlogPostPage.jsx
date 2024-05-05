@@ -7,18 +7,18 @@ export default function NewBlogPostPage() {
 
 export async function action({ request }) {
   const user = useAuth();
-  console.log(user.token)
+  console.log(user.token);
   const data = await request.formData();
   const postData = {
     title: data.get('title'),
     image: data.get('image'),
     categoryId: data.get('categoryId'),
-    isPublish: data.get('isPublish'),
+    isPublish: data.get('isPublish') === 'Published' ? true : false,
   };
   console.log(postData);
   try {
     const response = await axios.post(
-      'https://38110.fullstack.clarusway.com/blogs/',
+      'https://38110.fullstack.clarusway.com/blogs//',
       postData,
       {
         headers: {

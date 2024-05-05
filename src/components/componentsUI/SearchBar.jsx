@@ -1,14 +1,12 @@
-
 import CategoryDropDown from './CategoryDropDown';
 export default function SearchBar() {
- 
   return (
     <form
       className="relative max-w-3xl mx-auto py-5"
       style={{ position: 'relative' }}
     >
       <div className="flex">
-        <CategoryDropDown />
+        <CategoryDropDown round="left"  title='All Categories'/>
         <div className="relative w-full">
           <input
             type="search"

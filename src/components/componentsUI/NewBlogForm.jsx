@@ -32,15 +32,20 @@ export default function NewBlogForm() {
               />
             </div>
           ))}
-          <div className="col-span-12 mb-3 mt-2 flex justify-evenly">
+          <div
+            //style={{ border: '1px solid red' }}
+            className="col-span-12 mb-3 mt-2 flex flex-col sm:flex-row  items-center justify-evenly"
+          >
             <CategoryDropDown
               onChange={(e) => e.target.value}
               name="categoryId"
+              title="All Categories"
             />
             <CategoryDropDown
               list={listDropDown}
               onChange={(e) => e.target.value}
               name="isPublish"
+              title="Status"
             />
           </div>
           <div className="col-span-12  mb-3 mt-2 flex justify-evenly">
