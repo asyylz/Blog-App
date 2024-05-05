@@ -1,25 +1,31 @@
 import { Form, Link } from 'react-router-dom';
 
-const menuList = ['Dashboard', 'Search', 'Explore', 'About', 'Contact'];
+const menuList = ['Dashboard', 'Search', 'Explore'];
 export default function Navbar() {
   const user = JSON.parse(localStorage.getItem('user')) || '';
   //console.log(user);
-  
+
   return (
-    <nav className="bg-themeGreen text-themeCream px-6 py-3 md:px-auto font-ibm-flex font-medium italic md:text-xl">
+    <nav
+      //style={{ border: '2px solid red' }}
+      className="bg-themeGreen text-themeCream px-6 py-3 md:px-auto font-ibm-flex font-medium italic md:text-xl"
+    >
       <div className="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
         {/* <!-- Logo --> */}
         <div className="flex">
-          <div className="text-textColor mr-10 flex items-center md:text-3xl ">
+          <div className="text-textColor mr-4 flex items-center md:text-3xl ">
             {/* <!-- Heroicon - Chip OutlineTODO --> */}
             LOGO
           </div>
-          <div className="order-3 w-full md:w-auto md:order-2 flex flex-col md:flex-row">
-            <ul className="flex font-semibold justify-between flex-col md:flex-row">
+          <div
+            //style={{ border: '1px solid red' }}
+            className="w-full md:w-auto flex flex-col sm:flex-row"
+          >
+            <ul className="flex font-semibold justify-between flex-col sm:flex-row">
               {menuList.map((item, index) => (
                 <li
                   key={index}
-                  className="md:px-2 md:py-2 text-textColor hover:text-themeBrown"
+                  className=" py-1 sm:px-2 text-textColor hover:text-themeBrown"
                 >
                   <a href="/">{item}</a>
                 </li>
@@ -28,23 +34,26 @@ export default function Navbar() {
           </div>
         </div>
         <div
-          //style={{border:'1px solid red'}}
-          className="order-2 flex items-center md:order-3 "
+          //style={{ border: '1px solid red' }}
+          className="flex flex-col sm:flex-row items-center "
         >
           {user && (
-            <>
+            <div
+              //style={{border:'1px solid red'}}
+              className="container flex mb-4 sm:mb-0"
+            >
               <span>Hi {user.userName}</span>
               <img
-                className="h-8 mx-6"
+                className="h-8 ml-3 "
                 src="./public/navbar/user.svg"
                 alt="user"
               />
-            </>
+            </div>
           )}
           <Form
             action="/logout"
             method="POST"
-            className={`px-4 py-2 bg-themeGreenDark hover:bg-themeCream hover:text-themeBrown rounded-xl flex items-center gap-2 ${
+            className={`p-3 pr-7 bg-themeGreenDark hover:bg-themeCream hover:text-themeBrown rounded-xl flex items-center gap-2 ${
               !user && 'animate-pulse'
             } cursor-pointer`}
           >
