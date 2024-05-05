@@ -1,4 +1,5 @@
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import UserActions from '../componentsUI/UserActions';
 export default function PostDesignCardB({
   image,
   title,
@@ -26,52 +27,20 @@ export default function PostDesignCardB({
       } ${animate}`}
     >
       <div
-        //style={{ border: '1px solid purple' }}
-        className="container flex-auto flex justify-evenly items-center max-w-[200px] "
+        //style={{ border: '1px solid red' }}
+        className="container flex justify-end"
       >
-        <div>
-          <p className="text-themeBrown text-center">
-            <small>{likes.length}</small>
-          </p>
-          <img
-            src="./card/heart.svg"
-            alt="heart"
-            className="h-5 w-5 cursor-pointer"
-          />
-        </div>
-        <div>
-          <p className="text-themeBrown text-center">
-            <small>{comments.length}</small>
-          </p>
-          <img
-            src="./card/comments.svg"
-            alt="comments"
-            className="h-5 w-5 cursor-pointer"
-          />
-        </div>
-        <div>
-          <p className="text-themeBrown text-center">
-            <small>{countOfVisitors}</small>
-          </p>
-          <img
-            src="./card/views.svg"
-            alt="views"
-            className="h-5 w-5 cursor-pointer"
-          />
-        </div>
-        <div className="ml-3 mt-4">
-          <img
-            src="./card/share.svg"
-            alt="views"
-            className="h-6 w-6 cursor-pointer"
-          />
-        </div>
+        <UserActions
+          likes={likes}
+          comments={comments}
+          countOfVisitors={countOfVisitors}
+        />
       </div>
       <a href="#">
         <img
           className="rounded-t-lg px-2 py-2 max-h-[250px]"
           src={image}
-          alt=""
+          alt={title}
         />
       </a>
       <div
@@ -89,14 +58,22 @@ export default function PostDesignCardB({
         </p>
         <div
           //style={{ border: '1px solid red' }}
-          className="container flex flex-col justify-between mx-auto gap-3"
+          className="container flex flex-col sm:flex-row justify-between mx-auto gap-3"
         >
-          <Link 
-          to={_id}
-          className="px-3 py-2 text-themeDirtyWhite bg-themeGreenDark hover:bg-themeGreen hover:animate-bounce delay-150 duration-300 rounded-xl flex items-center  flex-none text-xs md:text-sm md:min-w-[100px] lg:max-w-[130px]">
+          <Link
+            to={_id}
+            className="px-3 py-2 text-themeDirtyWhite bg-themeGreenDark hover:bg-themeGreen hover:animate-bounce delay-150 duration-300 rounded-xl flex  items-center  flex-none text-xs md:text-sm md:min-w-[100px] lg:max-w-[130px]"
+          >
             <img src="./card/arrowRight.svg" alt="login" className="h-5 w-5" />
             <span>Read more</span>
           </Link>
+          <div className="ml-3 mt-4">
+            <img
+              src="./card/share.svg"
+              alt="views"
+              className="h-6 w-6 cursor-pointer"
+            />
+          </div>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
+import { Link } from 'react-router-dom';
 import CommentBlock from './CommentBlock';
-
+import UserActions from '../componentsUI/UserActions';
 export default function BlogPostDetails({
   _id,
   comments,
@@ -13,41 +14,56 @@ export default function BlogPostDetails({
   categoryId,
   content,
 }) {
-
   return (
-    <section 
-    key={_id}
-    style={{ border: '1px solid blue' }}
-    className="md:py-10 bg-themeDirtyWhite flex flex-col ">
+    <section
+      key={_id}
+      //style={{ border: '1px solid blue' }}
+      className="md:py-10 bg-themeDirtyWhite flex flex-col "
+    >
       <div
-        style={{ border: '1px solid blue' }}
-       className="container px-4 mx-auto">
-        <div 
-        className="grid grid-cols-12">
-          {/* <div className="col-span-12 md:col-span-7">
-            <h2 className="text-2xl leading-none font-bold md:text-6xl md:leading-none mb-6">
-              Blog Details
-            </h2>
-            <p className="text-lg opacity-80 mb-2">
-              Teaching is a noble profession. Think about the most respected
-              persons in our society. Yes, they are the teachers. If you ask
-              someone about some of his favourite persons, it is most likely to
-              find a teacher of him in his answer. So, being a teacher is an
-              amazing thing.
-            </p>
-          </div> */}
-
-          <div 
-       
-          className="col-span-12">
+        //style={{ border: '1px solid blue' }}
+        className="container px-4 mx-auto"
+      >
+        <div className="grid grid-cols-12">
+          <Link
+            to={-1}
+            className="px-3 py-2 my-4 w-[100px]  sm:w-[200px] text-themeCream bg-themeGreenDark hover:bg-themeGreen hover:animate-bounce delay-150 duration-300 focus:ring-4 focus:outline-none focus:ring-themeGreenDark rounded-xl  text-xs md:text-sm lg:text-lg text-center"
+          >
+            Back
+          </Link>
+          <div className="col-span-12">
             <div
-             
-              className="my-6 md:my-12 w-full flex  justify-center"
+              //style={{ border: '2px solid red' }}
+              className="my-6 md:my-12 w-full flex flex-col  justify-center items-center"
             >
               <img
                 src={image}
                 alt={title}
                 className="w-[700px] max-h-[500px] object-cover"
+              />
+              <p
+                //style={{ border: '1px solid red' }}
+                className="opacity-75 py-6"
+              >
+                <i className="fas fa-calendar-alt ml-4 mr-2">
+                  {' '}
+                  Published:{createdAt?.split('T')[0]}
+                </i>
+                <i className="fas fa-calendar-alt ml-4 mr-2">
+                  {' '}
+                  Updated:{updatedAt?.split('T')[0]}
+                </i>
+              </p>
+            </div>
+
+            <div
+              //style={{ border: '1px solid red' }}
+              className="container flex justify-end"
+            >
+              <UserActions
+                likes={likes}
+                comments={comments}
+                countOfVisitors={countOfVisitors}
               />
             </div>
           </div>
@@ -71,10 +87,6 @@ export default function BlogPostDetails({
                     By <b>{`${userId.firstName} ${userId.lastName}`}</b>
                   </p>
                 </div>
-                <p className="opacity-75">
-                  <i className="fas fa-calendar-alt ml-4 mr-2"></i>
-                  {createdAt?.split('T')[0]}
-                </p>
               </div>
 
               {/* <!-- headline --> */}
@@ -88,5 +100,5 @@ export default function BlogPostDetails({
       </div>
       <CommentBlock />
     </section>
-  )
+  );
 }
