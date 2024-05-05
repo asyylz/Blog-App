@@ -43,46 +43,46 @@ const categories = [
   },
 ];
 
-export default function CategoryDropDown({list=categories}) {
+export default function CategoryDropDown({
+  list = categories,
+  onChange,
+  name,
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const toggleDropdown = () => setIsOpen(!isOpen);
 
   return (
-    <div
-      //style={{ border: '1px solid red' }}
-      className="relative"
-    >
-      <button
-        id="dropdown-button"
-        onClick={toggleDropdown}
-        onBlur={() => setIsOpen(false)}
-        className="flex-shrink-0  w-full font-ibm-flex italic inline-flex items-center py-2.5 px-4 text-sm font-medium text-center h-[50px] text-themeBrown border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
-        type="button"
+    <div className="relative">
+      <select
+        id={name}
+        name={name}
+        className="flex-shrink-0 w-full font-ibm-flex italic inline-flex items-center py-2.5 px-4 text-sm font-medium text-center h-[50px] text-themeBrown border border-gray-300 rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
+        onChange={onChange}
       >
-        All categories
-        <img src="./searchbar/arrowdown.svg" alt="" className="h-4 w-4 ms-2" />
-      </button>
+        <option value="">All categories</option>
+        {list.map((category, index) => (
+          <option key={index} value={category.id}>
+            {category.name}
+          </option>
+        ))}
+      </select>
+
       <div
         id="dropdown"
         className={`absolute w-full bg-white divide-y divide-gray-100 rounded-lg shadow ${
           isOpen ? '' : 'hidden'
         }`}
       >
-        <ul
-          className="py-2 text-sm text-gray-700"
-          aria-labelledby="dropdown-button"
-        >
-          {list.map((category, index) => (
-            <li key={index}>
-              <button
-                type="button"
-                className="inline-flex w-full px-4 py-2 hover:bg-gray-100"
-              >
-                {category.name}
-              </button>
-            </li>
-          ))}
-        </ul>
+        {list.map((category, index) => (
+          <li key={index}>
+            <button
+              type="button"
+              className="inline-flex w-full px-4 py-2 hover:bg-gray-100"
+            >
+              {category.name}
+            </button>
+          </li>
+        ))}
       </div>
     </div>
   );

@@ -9,6 +9,7 @@ import BlogDetailPostPage from '../pages/BlogDetailPostPage';
 import { action as logoutAction } from '../pages/Logout';
 import { loader as loaderBlogPost } from '../pages/BlogDetailPostPage';
 import NewBlogPostPage from '../pages/NewBlogPostPage';
+import { action as actionNewPost } from '../pages/NewBlogPostPage';
 //import { action as actionUserCheck } from '../components/componentsUI/PostDesignCardA';
 import { action as actionLike } from '../pages/HomePage';
 
@@ -52,6 +53,7 @@ const router = createBrowserRouter([
       {
         path: 'new',
         element: <NewBlogPostPage />,
+        action: actionNewPost,
       },
     ],
   },

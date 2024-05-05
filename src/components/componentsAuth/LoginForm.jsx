@@ -46,7 +46,6 @@ export default function LoginForm({ isSubmitting }) {
                 </div>
               ))}
               <button
-                //type="submit"
                 className="w-full text-themeCream text-sm md:text-xl bg-themeGreenDark hover:bg-themeGreen focus:ring-4 focus:outline-none focus:ring-themeGreenDark font-medium rounded-lg  px-5 py-2.5 text-center"
               >
                 {isSubmitting ? 'Submitting...' : 'Login'}

@@ -17,11 +17,14 @@ export default function ErrorPage() {
     title = 'Unauthorized!';
     message = error.statusText;
   }
+  if (error.status === 403) {
+    title = 'Unauthorized!';
+    message = error.data.message;
+  }
 
   if (error.status === 405) {
     title = 'Error!';
     message = error.statusText;
-  
   }
   return (
     <>
