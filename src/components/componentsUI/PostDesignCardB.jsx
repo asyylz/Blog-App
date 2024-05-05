@@ -34,6 +34,7 @@ export default function PostDesignCardB({
           likes={likes}
           comments={comments}
           countOfVisitors={countOfVisitors}
+          id={_id}
         />
       </div>
       <a href="#">

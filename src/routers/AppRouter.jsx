@@ -45,7 +45,7 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <BlogDetailPostPage />,
-            //action:actionLike,
+            action:actionLike,
           },
           {
             path: 'edit',

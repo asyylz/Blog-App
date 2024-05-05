@@ -64,6 +64,7 @@ export default function BlogPostDetails({
                 likes={likes}
                 comments={comments}
                 countOfVisitors={countOfVisitors}
+                id={_id}
               />
             </div>
           </div>

@@ -1,6 +1,6 @@
 import { Form, Link } from 'react-router-dom';
 
-const menuList = ['Dashboard', 'Search', 'Explore'];
+const menuList = ['Dashboard', 'Search', 'Create Your Own'];
 export default function Navbar() {
   const user = JSON.parse(localStorage.getItem('user')) || '';
   //console.log(user);

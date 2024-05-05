@@ -1,10 +1,10 @@
 import { useSubmit } from 'react-router-dom';
 
-export default function UserActions({ likes, comments,countOfVisitors,id }) {
+export default function UserActions({ likes, comments, countOfVisitors, id }) {
   const submit = useSubmit();
 
   const handleLikeClick = () => {
-    submit({id:id}, { method: 'post' });
+    submit({ id: id }, { method: 'post' });
   };
 
   return (
@@ -45,5 +45,3 @@ export default function UserActions({ likes, comments,countOfVisitors,id }) {
     </div>
   );
 }
-
-

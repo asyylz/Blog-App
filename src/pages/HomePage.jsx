@@ -63,7 +63,7 @@ export async function action({ request }) {
       }
     );
     console.log('Like Data:', response.data);
-    // You could redirect or return a JSON response based on your app's needs
+  
     return new Response(
       JSON.stringify({ success: true, like: response.data }),
       {
