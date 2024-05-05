@@ -1,11 +1,8 @@
-import { useParams } from 'react-router-dom';
 import BlogPostDetails from '../components/componentsUI/BlogPostDetails';
-import { useOutletContext } from 'react-router-dom';
-import { useLoaderData } from 'react-router-dom';
 import { useRouteLoaderData, json } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../hooks/useAuth';
-import { useNavigate } from 'react-router-dom';
+
 import { useEffect } from 'react';
 export default function BlogDetailPostPage() {
   const { isAuthenticated } = useAuth();

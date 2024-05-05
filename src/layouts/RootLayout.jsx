@@ -49,10 +49,18 @@ export async function loaderBlogs({ request }) {
     const blogPosts = response1.data.data;
     const categories = response3.data.data;
     console.log(totalData);
-    return { blogPosts, totalData,categories };
+    return { blogPosts, totalData, categories };
   } catch (error) {
     console.error(error);
 
     throw error;
   }
+}
+
+export async function action() {
+  try {
+    const response = await axios.post(
+      `https://38110.fullstack.clarusway.com/${id}/postLike`
+    );
+  } catch {}
 }

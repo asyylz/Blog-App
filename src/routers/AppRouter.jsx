@@ -18,6 +18,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     id: 'root',
     loader: loaderBlogs,
+     //action:actionLike,
     children: [
       { index: true, element: <HomePage />, 
       //action: actionUserCheck 
@@ -41,6 +42,7 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <BlogDetailPostPage />,
+            //action:actionLike,
           },
           {
             path: 'edit',
