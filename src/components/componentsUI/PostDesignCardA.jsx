@@ -10,6 +10,7 @@ export default function PostDesignCardA({
   content,
   _id,
   createdAt,
+  userId
 
 }) {
   return (
@@ -52,6 +53,7 @@ export default function PostDesignCardA({
                 comments={comments}
                 countOfVisitors={countOfVisitors}
                 id={_id}
+                userId={userId}
               />
             </div>
           </div>

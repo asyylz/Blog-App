@@ -10,6 +10,7 @@ export default function PostDesignCardB({
   content,
   _id,
   screen,
+  userId
 }) {
   function getFirstTenWords(text) {
     const words = text.split(/\s+/);
@@ -35,6 +36,7 @@ export default function PostDesignCardB({
           comments={comments}
           countOfVisitors={countOfVisitors}
           id={_id}
+          userId={userId}
         />
       </div>
       <a href="#">
