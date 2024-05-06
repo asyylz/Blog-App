@@ -14,6 +14,7 @@ export default function BlogDetailPostPage() {
     }
   }, []);
 
+
   return (
     isAuthenticated && (
       <div

@@ -79,7 +79,7 @@ export default function BlogPostDetails({
               className="flex items-center mb-6">
                 <div className="mr-2">
                   <img
-                    src="public/assets/useravatar.svg"
+                    src="./assets/useravatar.svg"
                     alt=""
                     className="max-w-full h-auto rounded-full border"
                     width="47"

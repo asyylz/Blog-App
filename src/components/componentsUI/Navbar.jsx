@@ -1,7 +1,7 @@
 import { Form, Link } from 'react-router-dom';
 
 const menuList = [
-  { label: 'Dashboard', path: '/' },
+  { label: 'Home', path: '/' },
   { label: 'Search', path: '/' },
   { label: 'Create Your Own', path: 'new' },
 ];

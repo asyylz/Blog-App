@@ -33,8 +33,7 @@ export default function PostDesignCardA({
           >
             <Link
               to={_id}
-              //onClick={}
-              className="px-3 py-2 text-themeDirtyWhite bg-themeGreenDark hover:bg-themeGreen hover:animate-bounce delay-150 duration-300 rounded-xl flex items-center gap-2 flex-none text-xs md:text-sm lg:text-lg"
+              className="px-3 py-2 text-themeDirtyWhite bg-themeGreenDark hover:bg-themeGreen hover:animate-pulse hover:animation-delay-150 duration-300 rounded-xl flex items-center gap-2 flex-none text-xs md:text-sm lg:text-lg"
             >
               <img
                 src="./card/arrowRight.svg"

@@ -11,7 +11,8 @@ import { loader as loaderBlogPost } from '../pages/BlogDetailPostPage';
 import NewBlogPostPage from '../pages/NewBlogPostPage';
 import { action as actionNewPost } from '../pages/NewBlogPostPage';
 import { action as actionLike } from '../pages/HomePage';
-import {action as actionNewComment} from '../pages/BlogDetailPostPage'
+import { action as actionNewComment } from '../pages/BlogDetailPostPage';
+import UserActions from '../components/componentsUI/UserActions';
 
 const router = createBrowserRouter([
   {
@@ -23,8 +24,8 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
+        errorElement: <ErrorPage />,
         element: <HomePage />,
-        //action: actionUserCheck
         action: actionLike,
       },
 
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
         action: logoutAction,
       },
       {
+        path: 'new',
+        element: <NewBlogPostPage />,
+        action: actionNewPost,
+      },
+      {
         path: ':postId',
         id: 'blog-detail',
         loader: loaderBlogPost,
@@ -50,11 +56,6 @@ const router = createBrowserRouter([
             action: actionNewComment,
           },
         ],
-      },
-      {
-        path: 'new',
-        element: <NewBlogPostPage />,
-        action: actionNewPost,
       },
     ],
   },

@@ -8,7 +8,7 @@ function PageContent({ title, children }) {
     >
       <div
         //style={{ border: '1px solid blue' }}
-        className="container rounded-lg mx-auto h-[230px] max-w-[300px] sm:max-w-xl bg-red-300 py-10  flex flex-col items-center"
+        className="container rounded-lg mx-auto h-[270px] max-w-[300px] sm:max-w-xl bg-red-300 py-10  flex flex-col items-center"
       >
         <h1 className="text-center text-xl sm:text-4xl font-ibm-flex">
           {title}

@@ -1,10 +1,22 @@
 import { useSubmit } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
+import { useActionData } from 'react-router-dom';
+import { json } from 'react-router-dom';
 
 export default function UserActions({ likes, comments, countOfVisitors, id }) {
+  const { isAuthenticated } = useAuth();
+  const data = useActionData();
+  console.log(data?.like.didUserLike);
   const submit = useSubmit();
 
   const handleLikeClick = () => {
-    submit({ id: id }, { method: 'post' });
+    if (isAuthenticated) {
+      submit({ id: id }, { method: 'post' });
+    } else {
+      console.log('clicked')
+      throw json({}, { status: 401, statusText: 'You should login.' });
+
+    }
   };
 
   return (
@@ -16,11 +28,16 @@ export default function UserActions({ likes, comments, countOfVisitors, id }) {
         <p className="text-themeBrown text-center">
           <small>{likes?.length}</small>
         </p>
-        <img
-          src={`./card/heart${likes?.length === 1 ? 'Filled' : ''}.svg`}
-          alt="heart"
-          className="h-6 w-6 cursor-pointer"
-        />
+        
+          <img
+            //src={`./card/heart${likes?.length === 1 ? 'Filled' : ''}.svg`}
+            src={`./card/heart${
+            isAuthenticated && data?.like.didUserLike ? 'Filled' : ''
+            }.svg`}
+            alt="heart"
+            className="h-6 w-6 cursor-pointer"
+          />
+        
       </div>
       <div>
         <p className="text-themeBrown text-center">

@@ -1,10 +1,28 @@
+import { useEffect } from 'react';
 import NewBlogForm from '../components/componentsUI/NewBlogForm';
 import { useAuth } from '../hooks/useAuth';
 import axios from 'axios';
+import { json } from 'react-router-dom';
 export default function NewBlogPostPage() {
-  return <NewBlogForm />;
-}
+  const { isAuthenticated } = useAuth();
 
+  useEffect(() => {
+    if (!isAuthenticated) {
+      throw json({}, { status: 401, statusText: 'You should login.' });
+    }
+  }, []);
+
+  return (
+    isAuthenticated && (
+      <div
+        //style={{ border: '1px solid red' }}
+        className="min-h-screen py-10 "
+      >
+        <NewBlogForm />
+      </div>
+    )
+  );
+}
 export async function action({ request }) {
   const { user } = useAuth();
   const data = await request.formData();
@@ -21,8 +39,8 @@ export async function action({ request }) {
       postData,
       {
         headers: {
-            Authorization: `Token ${user?.token}`,
-          },
+          Authorization: `Token ${user?.token}`,
+        },
       }
     );
     console.log(response.data);
