@@ -1,5 +1,3 @@
-//import { Form } from 'react-router-dom';
-import { redirect } from 'react-router-dom';
 import { Link, Form } from 'react-router-dom';
 
 const registerationFields = [
@@ -10,11 +8,8 @@ const registerationFields = [
 export default function LoginForm({ isSubmitting }) {
   return (
     <section
-      style={{
-        backgroundImage: 'url("/public/assets/background.jpg")',
-        //border: '1px solid red',
-      }}
-      className="bg-center"
+      style={{ backgroundImage: "url('/assets/background.jpg')" }}
+      className="bg-palePattern bg-center h-screen"
     >
       <div
         //style={{ border: '1px solid red' }}
@@ -45,9 +40,7 @@ export default function LoginForm({ isSubmitting }) {
                   />
                 </div>
               ))}
-              <button
-                className="w-full text-themeCream text-sm md:text-xl bg-themeGreenDark hover:bg-themeGreen focus:ring-4 focus:outline-none focus:ring-themeGreenDark font-medium rounded-lg  px-5 py-2.5 text-center"
-              >
+              <button className="w-full text-themeCream text-sm md:text-xl bg-themeGreenDark hover:bg-themeGreen focus:ring-4 focus:outline-none focus:ring-themeGreenDark font-medium rounded-lg  px-5 py-2.5 text-center">
                 {isSubmitting ? 'Submitting...' : 'Login'}
               </button>
               <p className="text-sm font-light text-gray-500 ">

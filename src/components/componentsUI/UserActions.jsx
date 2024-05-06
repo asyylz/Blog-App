@@ -4,18 +4,15 @@ import { useActionData } from 'react-router-dom';
 import { json } from 'react-router-dom';
 //import ErrorPage from '../../pages/ErrorPage';
 //import { ErrorResponse } from 'react-router-dom';
+import axios from 'axios';
 
 export default function UserActions({ likes, comments, countOfVisitors, id }) {
-  const { isAuthenticated, user } = useAuth();
-  const data = useActionData();
-  console.log(data?.like?.didUserLike);
+  const { user } = useAuth();
+  //const data = useActionData();
   const submit = useSubmit();
 
   const handleLikeClick = () => {
-    // if (isAuthenticated) {
-    submit({ id: id }, { method: 'post' });
-    //} else {
-    //throw json({}, { status: 401, statusText: 'You should login.' });
+    submit({ id: id, actionType: 'like' }, { method: 'post' });
   };
 
   return (
@@ -29,7 +26,6 @@ export default function UserActions({ likes, comments, countOfVisitors, id }) {
         </p>
 
         <img
-          //src={`./card/heart${likes?.length === 1 ? 'Filled' : ''}.svg`}
           src={`./card/heart${
             likes.some((like) => like === user?.userId) ? 'Filled' : ''
           }.svg`}
@@ -59,4 +55,71 @@ export default function UserActions({ likes, comments, countOfVisitors, id }) {
       </div>
     </div>
   );
+}
+
+export async function action({ request, params }) {
+  const formData = await request.formData();
+  const { user } = useAuth();
+  const actionType = formData.get('actionType');
+
+/* ---------------------- like case --------------------- */
+  if (actionType === 'like') {
+    const postId = formData.get('id');
+    console.log('new: clicked');
+
+    try {
+      console.log('clicked');
+      const response = await axios.post(
+        `https://38110.fullstack.clarusway.com/blogs/${postId}/postLike`,
+        {actionTime},
+        {
+          headers: {
+            Authorization: `Token ${user?.token}`,
+          },
+        }
+      );
+      console.log('Like Data:', response.data);
+
+      return new Response(
+        JSON.stringify({ success: true, like: response.data }),
+        {
+          headers: { 'Content-Type': 'application/json' },
+          status: 200,
+        }
+      );
+    } catch (error) {
+      throw json(
+        {
+          message: 'You should login to be able to do like action.',
+        },
+        { statusText: 'Unauthorised!', status: 401 }
+      );
+    }
+  }
+/* -------------------- comment case -------------------- */
+  if (actionType === 'comment') {
+    const id = params.postId;
+
+    const commentData = {
+      blogId: id,
+      comment: formData.get('comment'),
+    };
+    console.log(commentData);
+    try {
+      const response = await axios.post(
+        'https://38110.fullstack.clarusway.com/comments/',
+        commentData,
+        {
+          headers: {
+            Authorization: `Token ${user?.token}`,
+          },
+        }
+      );
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      throw error.response;
+    }
+  }
 }

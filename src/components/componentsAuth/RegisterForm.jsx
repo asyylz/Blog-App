@@ -12,13 +12,10 @@ const registerationFields = [
   { label: 'Confirm Password', identifier: 'password2', type: 'password' },
 ];
 
-export default function RegisterForm({isSubmitting}) {
+export default function RegisterForm({ isSubmitting }) {
   return (
     <section
-      style={{
-        backgroundImage: 'url("/public/assets/background.jpg")',
-        //border: '1px solid red',
-      }}
+      style={{ backgroundImage: "url('/assets/background.jpg')" }}
       className="bg-center"
     >
       <div
@@ -28,7 +25,7 @@ export default function RegisterForm({isSubmitting}) {
         <div className="w-full bg-white rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 ">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-themeBrown md:text-2xl ">
-            {isSubmitting ? 'Submitting...' : 'Create an account'}
+              {isSubmitting ? 'Submitting...' : 'Create an account'}
             </h1>
             <Form method="POST" className="space-y-4 md:space-y-6" action="#">
               {registerationFields.map((field, index) => (

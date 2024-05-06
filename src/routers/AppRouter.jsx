@@ -10,9 +10,9 @@ import { action as logoutAction } from '../pages/Logout';
 import { loader as loaderBlogPost } from '../pages/BlogDetailPostPage';
 import NewBlogPostPage from '../pages/NewBlogPostPage';
 import { action as actionNewPost } from '../pages/NewBlogPostPage';
-import { action as actionLike } from '../pages/HomePage';
-import { action as actionNewComment } from '../pages/BlogDetailPostPage';
-import UserActions from '../components/componentsUI/UserActions';
+import { action as combinedAction } from '../components//componentsUI/UserActions';
+//import { action as actionLike } from '../pages/HomePage';
+//mport { action as actionNewComment } from '../pages/BlogDetailPostPage';
 
 const router = createBrowserRouter([
   {
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
-        action: actionLike,
+        action: combinedAction,
       },
 
       {
@@ -51,8 +51,8 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <BlogDetailPostPage />,
-            //action: actionLike,
-            action: actionNewComment,
+            action: combinedAction,
+            //action: actionNewComment,
           },
         ],
       },

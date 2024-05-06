@@ -55,6 +55,9 @@ export default function CommentBlock({ comments }) {
                     >
                       Cancel
                     </button>
+
+                    {/* this two fields are used for action identifier */}
+                    <input type="hidden" name="actionType" value="comment" />
                   </div>
                 </Form>
               ) : (
