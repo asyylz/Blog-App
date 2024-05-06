@@ -57,6 +57,7 @@ export async function action({ request, _ }) {
         const userData = {
           token: response.data.token,
           userName: response.data.user.username,
+          userId: response.data.user._id,
         };
         localStorage.setItem('user', JSON.stringify(userData));
       }

@@ -10,6 +10,7 @@ export default function PostDesignCardA({
   content,
   _id,
   createdAt,
+
 }) {
   return (
     <div
