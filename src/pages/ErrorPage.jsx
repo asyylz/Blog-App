@@ -14,8 +14,8 @@ export default function ErrorPage() {
     //message = error.data.message; // since we use json function here we dont need to parse
   }
   if (error.status === 401) {
-    title = 'Unauthorized!';
-    message = error.statusText;
+    title = error.statusText;
+    message = error.data.message;
   }
   if (error.status === 403) {
     title = 'Unauthorized!';

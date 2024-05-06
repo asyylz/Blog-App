@@ -19,7 +19,7 @@ export default function PopularPostItem({
         <div>
           {/* <!-- item --> */}
           <div className="flex items-start mt-6">
-            <h1 className="opacity-75 font-medium text-5xl">{rank + 1}</h1>
+            <h1 className="opacity-75 font-medium text-5xl">{rank}</h1>
             <div className="ml-3">
               <h6 className="font-medium text-base mb-2">{title}</h6>
               <p className="text-sm opacity-75">
