@@ -9,25 +9,23 @@ export default function Footer() {
   return (
     <footer
       //style={{ border: '1px solid red' }}
-      className="bg-themeCream p-8 sm:p-6 bg-fixed mt-20 bottom-0 shadow-themeShadow"
+      className="bg-themeCream p-8 sm:p-6 bg-fixed bottom-0 mt-20 shadow-themeShadow"
     >
       <div className="mx-auto max-w-screen-xl">
         <div className="md:flex md:justify-between">
           <div
             //style={{ border: '1px solid red' }}
             className="mb-6 md:mb-0"
-          >
-          
-          </div>
+          ></div>
           <div
             //style={{ border: '1px solid red' }}
             className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3"
           >
             {fields.map((field, index) => (
               <div
-               key={`div-${index}`}
-               //style={{ border: '1px solid red' }}
-               >
+                key={`div-${index}`}
+                //style={{ border: '1px solid red' }}
+              >
                 <h2
                   key={`h-${index}`}
                   className="mb-2 text-sm font-semibold text-gray-900 uppercase dark:text-white"

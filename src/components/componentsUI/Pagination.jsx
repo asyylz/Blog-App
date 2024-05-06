@@ -5,7 +5,6 @@ const pageNumbers = ['1', '2', '3', '4', '5'];
 export default function Pagination({ dataLength }) {
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
-  //console.log(currentPage);
 
   useEffect(() => {
     navigate(`/?page=${currentPage}&limit=6`);
@@ -34,21 +33,23 @@ export default function Pagination({ dataLength }) {
         >
           Previous
         </button>
-        {Array.from({ length: dataLength / 6 }, (_, index) => (
-          //{pageNumbers.map((page, index) => (
-          <button
-            key={index + 1}
-            //disabled={currentPage === index + 1}
-            onClick={() => setCurrentPage(index + 1)}
-            className={`flex items-center justify-center px-4 h-10 leading-tight text-gray border border-gray-300 hover:bg-gray-100 hover:text-gray-700 cursor-pointer ${
-              currentPage === index + 1
-                ? 'bg-themeGreenDark text-themeCream'
-                : 'bg-themeDirtyWhite '
-            }`}
-          >
-            {index + 1}
-          </button>
-        ))}
+        {Array.from(
+          { length: dataLength / 6 + (dataLength % 6) },
+          (_, index) => (
+            <button
+              key={index + 1}
+              disabled={currentPage === index + 1}
+              onClick={() => setCurrentPage(index + 1)}
+              className={`flex items-center justify-center px-4 h-10 leading-tight text-gray border border-gray-300 hover:bg-gray-100 hover:text-gray-700 cursor-pointer ${
+                currentPage === index + 1
+                  ? 'bg-themeGreenDark text-themeCream'
+                  : 'bg-themeDirtyWhite '
+              }`}
+            >
+              {index + 1}
+            </button>
+          )
+        )}
         <button
           onClick={(e) => handlePagination(e, 'next')}
           disabled={currentPage >= dataLength / 6}

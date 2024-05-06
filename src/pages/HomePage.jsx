@@ -4,15 +4,15 @@ import { useState } from 'react';
 import ScreenLargeHomePageLayout from '../layouts/ScreenLargeHomePageLayout';
 import SearchBar from '../components/componentsUI/SearchBar';
 import Pagination from '../components/componentsUI/Pagination';
-import { useLoaderData } from 'react-router-dom';
 import { useRouteLoaderData } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import axios from 'axios';
-import { redirect } from 'react-router-dom';
+
 export default function HomePage() {
   const [isScreenSmall, setIsScreenSmall] = useState(false);
   const { totalData } = useRouteLoaderData('root');
   const length = totalData.length;
+  console.log(length)
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -27,7 +27,8 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div>
+    <div
+    className='min-h-screen'>
       <SearchBar />
       <p className="text-[3rem] ml-5 font-thin font-ibm-flex italic text-themeBrown">
         Delve into blog world...

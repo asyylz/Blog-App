@@ -5,7 +5,7 @@ import { useAuth } from '../hooks/useAuth';
 
 import { useEffect } from 'react';
 export default function BlogDetailPostPage() {
-  const { isAuthenticated} = useAuth();
+  const { isAuthenticated } = useAuth();
   const post = useRouteLoaderData('blog-detail');
 
   useEffect(() => {
@@ -16,7 +16,10 @@ export default function BlogDetailPostPage() {
 
   return (
     isAuthenticated && (
-      <div style={{ border: '1px solid red' }} className="min-h-screen py-10 ">
+      <div
+        //style={{ border: '1px solid red' }}
+        className="min-h-screen py-10 "
+      >
         <BlogPostDetails {...post} />
       </div>
     )

@@ -57,10 +57,10 @@ export default function CommentBlock() {
                     at the present moment.
                   </p>
                   <div className="flex justify-end">
-                    <button className="hover:text-blue-600 hover:bg-gray-200 dark:hover:bg-slate-700 rounded inline-flex justify-center items-center duration-300 px-3 py-2 mr-6">
+                    <button className="hover:text-themeGreenDark hover:bg-gray-200 dark:hover:bg-slate-700 rounded inline-flex justify-center items-center duration-300 px-3 py-2 mr-6">
                       <i className="far fa-thumbs-up fs-6 mr-2"></i> Like (20)
                     </button>
-                    <button className="hover:text-blue-600 hover:bg-gray-200 dark:hover:bg-slate-700 rounded inline-flex justify-center items-center duration-300 px-3 py-2">
+                    <button className="hover:text-themeGreenDark hover:bg-gray-200 dark:hover:bg-slate-700 rounded inline-flex justify-center items-center duration-300 px-3 py-2">
                       <i className="far fa-thumbs-down fs-6 mr-2"></i> Dislike
                       (6)
                     </button>
@@ -69,7 +69,7 @@ export default function CommentBlock() {
                 <hr className="dark:border-slate-700 my-5" />
               </div>
               <div className="py-6 lg:py-12 text-center">
-                <button className="bg-blue-600 text-white text-sm hover:bg-opacity-90 rounded py-2.5 px-6 md:px-10">
+                <button className="text-themeCream bg-themeGreenDark hover:text-themeCream hover:bg-themeGreen rounded py-2 px-5 md:px-6">
                   Load More
                 </button>
               </div>

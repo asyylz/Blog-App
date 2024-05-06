@@ -10,7 +10,7 @@ const listDropDown = [{ name: 'Published' }, { name: 'Draft' }];
 
 export default function NewBlogForm() {
   return (
-    <section className="flex items-center flex-col text-themeBrown  bg-themeDirtyWhite">
+    <section className="flex items-center flex-col text-themeBrown mb-40 bg-themeDirtyWhite">
       <div className="text-center py-8">
         <h4 className="text-3xl sm:text-5xl font-bold leading-none">
           Create you own post
@@ -52,7 +52,7 @@ export default function NewBlogForm() {
             <textarea
               id="content"
               name="content"
-              rows="25"
+              rows="18"
               className="block p-2.5 text-lg w-full ease-in-out duration-600 text-themeBrown bg-themeDirtyWhite rounded-lg border border-gray-300 focus:outline-none focus:ring-0.5 focus:ring-themeGreenDark focus:border-themeGreenDark"
               placeholder="Content"
             ></textarea>

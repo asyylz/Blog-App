@@ -5,7 +5,8 @@ import BlogListItem from '../components/componentsUI/PopularPostItem';
 
 export default function ScreenLargeHomePageLayout() {
   const { blogPosts, categories } = useRouteLoaderData('root');
-  //console.log(categories);
+  console.log(blogPosts)
+  
   return (
     <div
       //style={{ border: '3px solid blue' }}
@@ -20,7 +21,6 @@ export default function ScreenLargeHomePageLayout() {
           className="grid grid-cols-3 gap-2"
         >
           {blogPosts.map((post, index) => {
-            // Calculate position in the repeating pattern
             const patternIndex = index % 4;
 
             switch (patternIndex) {
