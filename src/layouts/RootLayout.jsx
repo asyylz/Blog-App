@@ -3,7 +3,6 @@ import Navbar from '../components/componentsUI/Navbar';
 import axios from 'axios';
 import Footer from '../components/componentsUI/Footer';
 import { useLocation } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
 
 export default function RootLayout() {
   const location = useLocation();
@@ -57,5 +56,3 @@ export async function loaderBlogs({ request }) {
     throw error;
   }
 }
-
-

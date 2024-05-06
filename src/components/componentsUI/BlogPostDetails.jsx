@@ -101,7 +101,7 @@ export default function BlogPostDetails({
           </div>
         </div>
       </div>
-      <CommentBlock />
+      <CommentBlock comments={comments}/>
     </section>
   );
 }

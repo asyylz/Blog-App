@@ -10,8 +10,8 @@ import { action as logoutAction } from '../pages/Logout';
 import { loader as loaderBlogPost } from '../pages/BlogDetailPostPage';
 import NewBlogPostPage from '../pages/NewBlogPostPage';
 import { action as actionNewPost } from '../pages/NewBlogPostPage';
-//import { action as actionUserCheck } from '../components/componentsUI/PostDesignCardA';
 import { action as actionLike } from '../pages/HomePage';
+import {action as actionNewComment} from '../pages/BlogDetailPostPage'
 
 const router = createBrowserRouter([
   {
@@ -46,7 +46,8 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <BlogDetailPostPage />,
-            action: actionLike,
+            //action: actionLike,
+            action: actionNewComment,
           },
         ],
       },

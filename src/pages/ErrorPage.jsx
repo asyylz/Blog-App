@@ -13,17 +13,26 @@ export default function ErrorPage() {
   if (error.status === 500) {
     //message = error.data.message; // since we use json function here we dont need to parse
   }
+  // if (error.status === 401) {
+  //   title = error.statusText;
+  //   message = error.data.message;
+  // }
   if (error.status === 401) {
     title = error.statusText;
-    message = error.data.message;
+    //message ='LOGIN pls'
+    message = error.statusText;
   }
   if (error.status === 403) {
-    title = 'Unauthorized!';
+    title = error.statusText ? error.statusText : 'Unauthorized!!';
     message = error.data.message;
   }
 
   if (error.status === 405) {
-    title = 'Error!';
+    title = error.statusText ? error.statusText : 'Error!';
+    message = error.statusText;
+  }
+  if (error.status === 404) {
+    title = error.statusText ? error.statusText : 'Error!';
     message = error.statusText;
   }
   return (

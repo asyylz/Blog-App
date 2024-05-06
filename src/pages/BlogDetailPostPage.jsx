@@ -27,7 +27,7 @@ export default function BlogDetailPostPage() {
 }
 
 export async function loader({ params }) {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const { user } = useAuth();
   const id = params.postId;
   try {
     const response = await axios.get(
@@ -45,5 +45,34 @@ export async function loader({ params }) {
     console.log(error);
     //return  error
     //json({}, { status: 401, statusText: 'You should login.' });
+  }
+}
+
+export async function action({ request, params }) {
+  console.log(request.url)
+  const { user } = useAuth();
+  console.log(user.token)
+  const id = params.postId;
+  const formData = await request.formData();
+  const commentData = {
+    blogId: id,
+    comment: formData.get('comment'),
+  };
+  console.log(commentData);
+  try {
+    const response = await axios.post(
+      'https://38110.fullstack.clarusway.com/comments/',
+      commentData,
+      {
+        headers: {
+          Authorization: `Token ${user?.token}`,
+        },
+      }
+    );
+    console.log(response.data);
+    return response.data
+  } catch (error) {
+    console.log(error);
+    throw error.response
   }
 }
