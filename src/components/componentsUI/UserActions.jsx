@@ -71,7 +71,7 @@ export async function action({ request, params }) {
       console.log('clicked');
       const response = await axios.post(
         `https://38110.fullstack.clarusway.com/blogs/${postId}/postLike`,
-        {actionTime},
+        {},
         {
           headers: {
             Authorization: `Token ${user?.token}`,

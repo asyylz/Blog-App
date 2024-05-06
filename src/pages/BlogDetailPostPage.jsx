@@ -1,12 +1,10 @@
 import BlogPostDetails from '../components/componentsUI/BlogPostDetails';
-import { useRouteLoaderData, json } from 'react-router-dom';
+import {json } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../hooks/useAuth';
-
 import { useEffect } from 'react';
 export default function BlogDetailPostPage() {
   const { isAuthenticated } = useAuth();
-  const post = useRouteLoaderData('blog-detail');
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -21,7 +19,7 @@ export default function BlogDetailPostPage() {
         //style={{ border: '1px solid red' }}
         className="min-h-screen py-10 "
       >
-        <BlogPostDetails {...post} />
+        <BlogPostDetails />
       </div>
     )
   );

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Form } from 'react-router-dom';
+import Comments from './Comments';
 
-export default function CommentBlock({ comments }) {
+export default function CommentsBlockHeader() {
   const [openComment, setOpenComment] = useState(false);
 
   return (
@@ -40,9 +41,10 @@ export default function CommentBlock({ comments }) {
                     placeholder="Your comments..."
                     required
                   ></textarea>
-                  <div 
-                  //style={{border:'1px solid red'}}
-                  className="w-full flex justify-center items-center">
+                  <div
+                    //style={{border:'1px solid red'}}
+                    className="w-full flex justify-center items-center"
+                  >
                     <button
                       type="submit"
                       className="text-themeCream bg-themeGreenDark  w-[100px] sm:w-[200px] hover:bg-themeGreen rounded my-2 py-2 px-3 mx-2 md:px-6"
@@ -79,54 +81,9 @@ export default function CommentBlock({ comments }) {
                 <h2 className="text-2xl font-medium">Reader Comments</h2>
               </div>
               <hr className="my-5" />
-              {/* <!-- comment item --> */}
-
-              {comments.map((comment, index) => (
-                <div
-                  key={index}
-                  className={`flex flex-col min-w-full ${
-                    (index + 1) % 2 === 1 ? 'items-start' : 'items-end'
-                  } `}
-                  //style={{ border: '1px solid blue' }}
-                >
-                  <div
-                    //style={{ border: '1px solid red' }}
-                    className="w-full rounded-2xl border border-themeBrown p-5 my-3 max-w-lg"
-                  >
-                    <div
-                      //style={{ border: '1px solid red' }}
-                      className="flex items-center mb-6"
-                    >
-                      <div className="w-12 h-12 rounded-full mr-2 overflow-hidden">
-                        <img
-                          src="./assets/useravatar.svg"
-                          alt=""
-                          className="max-w-full h-auto mx-auto"
-                        />
-                      </div>
-                      <div className="flex flex-grow justify-between">
-                        <div>
-                          <h5 className="font-medium mb-1">
-                            {comment.userId.username}
-                          </h5>
-                        </div>
-                        <p className="text-sm opacity-50 mb-0">
-                          {comment.createdAt.split('T')[0]}
-                        </p>
-                      </div>
-                    </div>
-                    <p className="text-sm sm:text-[18px] leading-normal opacity-75 mb-6">
-                      {comment.comment}
-                    </p>
-                  </div>
-                </div>
-              ))}
+              {/* <!-- comments --> */}
+              <Comments />
               <hr className="my-5" />
-            </div>
-            <div className="py-6 lg:py-12 text-center">
-              <button className="text-themeCream bg-themeGreenDark hover:text-themeCream hover:bg-themeGreen rounded py-2 px-5 md:px-6">
-                Load More
-              </button>
             </div>
           </div>
         </div>

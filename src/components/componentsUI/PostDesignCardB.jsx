@@ -22,7 +22,7 @@ export default function PostDesignCardB({
     <div
       //style={{ border: '1px solid purple' }}
       key={_id}
-      className={`max-w-xs md:max-w-sm lg:max-w-md mx-6 shadow-themeShadow bg-[#C2B6B6]/50 ${
+      className={`rounded-lg max-w-xs md:max-w-sm lg:max-w-md mx-6 shadow-themeShadow bg-[#C2B6B6]/50 ${
         screen === 'small' ? 'my-5' : 'my-20'
       } ${animate}`}
     >
@@ -63,9 +63,13 @@ export default function PostDesignCardB({
         >
           <Link
             to={_id}
-            className="px-3 py-2 text-themeDirtyWhite bg-themeGreenDark hover:bg-themeGreen hover:animate-bounce delay-150 duration-300 rounded-xl flex  items-center  flex-none text-xs md:text-sm md:min-w-[100px] lg:max-w-[130px]"
+            className="px-3 py-2 text-themeDirtyWhite bg-themeGreenDark hover:bg-themeGreen hover:animate-bounce delay-150 duration-300 rounded-xl flex  items-center justify-center flex-none text-xs md:text-sm md:min-w-[200px] lg:max-w-[130px]"
           >
-            <img src="./card/arrowRight.svg" alt="login" className="h-5 w-5" />
+            <img
+              src="./card/arrowRight.svg"
+              alt="login"
+              className="h-5 w-5 mr-2 -ml-6 sm:ml-0"
+            />
             <span>Read more</span>
           </Link>
           <div className="ml-3 mt-4">

@@ -1,21 +1,13 @@
 import { Link } from 'react-router-dom';
-import CommentBlock from './CommentBlock';
+import CommentsBlockHeader from './CommentsBlockHeader';
 import UserActions from '../componentsUI/UserActions';
-export default function BlogPostDetails({
-  _id,
-  comments,
-  countOfVisitors,
-  createdAt,
-  image,
-  likes,
-  title,
-  updatedAt,
-  userId,
-  content,
-}) {
+import { useRouteLoaderData } from 'react-router-dom';
+export default function BlogPostDetails() {
+  const post = useRouteLoaderData('blog-detail');
+
   return (
     <section
-      key={_id}
+      key={post._id}
       //style={{ border: '1px solid blue' }}
       className="md:py-10 bg-themeDirtyWhite flex flex-col "
     >
@@ -36,8 +28,8 @@ export default function BlogPostDetails({
               className="my-6 md:my-12 w-full flex flex-col  justify-center items-center"
             >
               <img
-                src={image}
-                alt={title}
+                src={post.image}
+                alt={post.title}
                 className="w-[700px] max-h-[500px] object-cover"
               />
               <p
@@ -46,11 +38,11 @@ export default function BlogPostDetails({
               >
                 <i className="fas fa-calendar-alt ml-4 mr-2">
                   {' '}
-                  Published:{createdAt?.split('T')[0]}
+                  Published:{post.createdAt?.split('T')[0]}
                 </i>
                 <i className="fas fa-calendar-alt ml-4 mr-2">
                   {' '}
-                  Updated:{updatedAt?.split('T')[0]}
+                  Updated:{post.updatedAt?.split('T')[0]}
                 </i>
               </p>
             </div>
@@ -60,10 +52,10 @@ export default function BlogPostDetails({
               className="container flex justify-end"
             >
               <UserActions
-                likes={likes}
-                comments={comments}
-                countOfVisitors={countOfVisitors}
-                id={_id}
+                likes={post.likes}
+                comments={post.comments}
+                countOfVisitors={post.countOfVisitors}
+                id={post._id}
               />
             </div>
           </div>
@@ -87,21 +79,24 @@ export default function BlogPostDetails({
                 </div>
                 <div>
                   <p>
-                    by <b>{`${userId?.firstName} ${userId?.lastName}`}</b>
+                    by{' '}
+                    <b>{`${post.userId?.firstName} ${post.userId?.lastName}`}</b>
                   </p>
                 </div>
               </div>
 
               {/* <!-- headline --> */}
               <h3 className="text-2xl md:text-3xl leading-snug font-medium mb-6">
-                {title}
+                {post.title}
               </h3>
-              <p className="text-lg leading-relaxed opacity-75">{content}</p>
+              <p className="text-lg leading-relaxed opacity-75">
+                {post.content}
+              </p>
             </div>
           </div>
         </div>
       </div>
-      <CommentBlock comments={comments} />
+      <CommentsBlockHeader />
     </section>
   );
 }
