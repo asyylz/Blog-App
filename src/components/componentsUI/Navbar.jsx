@@ -49,7 +49,7 @@ export default function Navbar() {
               <span>Hi {user.userName}</span>
               <img
                 className="h-8 ml-3 "
-                src="./public/navbar/user.svg"
+                src="./navbar/user.svg"
                 alt="user"
               />
             </div>

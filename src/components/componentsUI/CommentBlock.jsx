@@ -1,7 +1,12 @@
 export default function CommentBlock() {
   return (
-    <section className="py-14 md:py-24 bg-themeDirtyWhite relative overflow-hidden z-10">
-      <div className="container px-4 mx-auto">
+    <section
+      //style={{ border: '1px slid red' }}
+      className="py-14 md:py-24 bg-themeDirtyWhite relative overflow-hidden z-10"
+    >
+      <div 
+      //style={{ border: '1px slid red' }}
+      className="container px-4 mx-auto">
         <div className="flex justify-center max-w-4xl mx-auto">
           <div
             //style={{border:'2px solid red'}}

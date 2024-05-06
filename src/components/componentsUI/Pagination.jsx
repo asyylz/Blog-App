@@ -34,7 +34,7 @@ export default function Pagination({ dataLength }) {
           Previous
         </button>
         {Array.from(
-          { length: dataLength / 6 + (dataLength % 6) },
+          { length: Math.floor(dataLength / 6) + 1 },
           (_, index) => (
             <button
               key={index + 1}

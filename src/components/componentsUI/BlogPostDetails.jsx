@@ -74,10 +74,12 @@ export default function BlogPostDetails({
           <div className="col-span-12 md:col-span-10 md:col-start-2">
             <div className="md:px-20">
               {/* avatar */}
-              <div className="flex items-center mb-6">
+              <div 
+              //style={{border:'1px solid red'}}
+              className="flex items-center mb-6">
                 <div className="mr-2">
                   <img
-                    src="https://images.unsplash.com/photo-1554151228-14d9def656e4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZmFjZXxlbnwwfHwwfHx8MA%3D%3D"
+                    src="public/assets/useravatar.svg"
                     alt=""
                     className="max-w-full h-auto rounded-full border"
                     width="47"

@@ -26,7 +26,7 @@ export default function BlogDetailPostPage() {
   );
 }
 
-export async function loader({ request, params }) {
+export async function loader({ params }) {
   const user = JSON.parse(localStorage.getItem('user'));
   const id = params.postId;
   try {
