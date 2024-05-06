@@ -1,4 +1,4 @@
-import { useRouteLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function PopularPostItem({
   title,
@@ -6,9 +6,14 @@ export default function PopularPostItem({
   rank,
   createdAt,
   category,
+  countOfVisitors,
 }) {
   return (
-    <div key={_id} className="col-span-12 md:col-span-4 cursor-pointer">
+    <Link
+      to={_id}
+      key={_id}
+      className="col-span-12 md:col-span-4 cursor-pointer"
+    >
       <div className="md:p-4 pt-0">
         <div className="bg-themeGreenDark border-t-4 border-b-gray-800"></div>
         <div>
@@ -26,11 +31,14 @@ export default function PopularPostItem({
                   {category}
                 </a>
               </p>
-              <p className="opacity-50 text-sm">{createdAt.split('T')[0]}</p>
+              <div className="flex items-center space-x-4">
+                <p className="opacity-50 text-sm">{createdAt.split('T')[0]}</p>
+                <p className="opacity-50 text-sm">View:{countOfVisitors}</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

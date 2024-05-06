@@ -1,12 +1,14 @@
 import { useRouteLoaderData } from 'react-router-dom';
 import PostDesignCardA from '../components/componentsUI/PostDesignCardA';
 import PostDesignCardB from '../components/componentsUI/PostDesignCardB';
-import BlogListItem from '../components/componentsUI/PopularPostItem';
+import PopularPostItem from '../components/componentsUI/PopularPostItem';
 
 export default function ScreenLargeHomePageLayout() {
-  const { blogPosts, categories } = useRouteLoaderData('root');
-  console.log(blogPosts)
-  
+  const { totalData, blogPosts, categories } = useRouteLoaderData('root');
+  const sortedData = [...totalData].sort(
+    (a, b) => b.countOfVisitors - a.countOfVisitors
+  );
+
   return (
     <div
       //style={{ border: '3px solid blue' }}
@@ -56,19 +58,26 @@ export default function ScreenLargeHomePageLayout() {
         <h3 className="text-themeBrown text-center py-2 text-3xl font-ibm-flex italic  font-thin">
           Popular posts
         </h3>
-        {blogPosts.map((post, index) => (
-          <BlogListItem
-            key={index}
-            {...post}
-            rank={index}
-            category={(() => {
-              const match = categories.find(
-                (category) => category._id === post.categoryId
-              );
-              return match ? match.name : 'Default Category Name';
-            })()}
-          />
-        ))}
+
+        {sortedData.map((post, index) => {
+          // Render only the first 13 posts (index 0 through 12)
+          if (index < 12) {
+            return (
+              <PopularPostItem
+                key={post._id || index}
+                {...post}
+                rank={index + 1}
+                category={(() => {
+                  const match = categories.find(
+                    (category) => category._id === post.categoryId
+                  );
+                  return match ? match.name : 'Default Category Name';
+                })()}
+              />
+            );
+          }
+          return null;
+        })}
       </div>
     </div>
   );

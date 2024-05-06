@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 
 const fields = [
-  { header: 'About', list: ['aaaaaa', 'bbbbb', 'cccccc'] },
-  { header: 'Contact', list: ['aaaaaa', 'bbbbb', 'cccccc'] },
-  { header: 'FAQ', list: ['aaaaaa', 'bbbbb', 'cccccc'] },
+  {
+    header: 'Social Media',
+    list: ['Facebook', 'Instgram', 'Linkedin', 'Twitter'],
+  },
+  { header: 'Quick Links', list: ['Terms & Conditions', 'Privacy Policy'] },
 ];
 export default function Footer() {
   return (
@@ -15,8 +17,10 @@ export default function Footer() {
         <div className="md:flex md:justify-between">
           <div
             //style={{ border: '1px solid red' }}
-            className="mb-6 md:mb-0"
-          ></div>
+            className="mb-6 md:mb-0 text-3xl text-themeBrown italic font-thin  flex items-center"
+          >
+            BLOG WORLD
+          </div>
           <div
             //style={{ border: '1px solid red' }}
             className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3"
