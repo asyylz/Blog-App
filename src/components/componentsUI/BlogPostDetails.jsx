@@ -11,7 +11,6 @@ export default function BlogPostDetails({
   title,
   updatedAt,
   userId,
-  categoryId,
   content,
 }) {
   return (
@@ -74,9 +73,10 @@ export default function BlogPostDetails({
           <div className="col-span-12 md:col-span-10 md:col-start-2">
             <div className="md:px-20">
               {/* avatar */}
-              <div 
-              //style={{border:'1px solid red'}}
-              className="flex items-center mb-6">
+              <div
+                //style={{border:'1px solid red'}}
+                className="flex items-center mb-6"
+              >
                 <div className="mr-2">
                   <img
                     src="./assets/useravatar.svg"
@@ -87,7 +87,7 @@ export default function BlogPostDetails({
                 </div>
                 <div>
                   <p>
-                    By <b>{`${userId?.firstName} ${userId?.lastName}`}</b>
+                    by <b>{`${userId?.firstName} ${userId?.lastName}`}</b>
                   </p>
                 </div>
               </div>
@@ -101,7 +101,7 @@ export default function BlogPostDetails({
           </div>
         </div>
       </div>
-      <CommentBlock comments={comments}/>
+      <CommentBlock comments={comments} />
     </section>
   );
 }

@@ -3,7 +3,6 @@ import { Form } from 'react-router-dom';
 
 export default function CommentBlock({ comments }) {
   const [openComment, setOpenComment] = useState(false);
-  console.log(comments);
 
   return (
     <section
@@ -41,16 +40,18 @@ export default function CommentBlock({ comments }) {
                     placeholder="Your comments..."
                     required
                   ></textarea>
-                  <div className="flex flex-col sm:flex-row">
+                  <div 
+                  //style={{border:'1px solid red'}}
+                  className="w-full flex justify-center items-center">
                     <button
                       type="submit"
-                      className="text-themeCream bg-themeGreenDark w-[100px] sm:w-[200px] hover:bg-themeGreen rounded py-2 px-3 mx-2 md:px-6"
+                      className="text-themeCream bg-themeGreenDark  w-[100px] sm:w-[200px] hover:bg-themeGreen rounded my-2 py-2 px-3 mx-2 md:px-6"
                     >
                       Save
                     </button>
                     <button
                       type="submit"
-                      className="text-themeCream bg-themeGreenDark w-[100px] sm:w-[200px] hover:bg-themeGreen rounded py-2 px-5 md:px-6"
+                      className="text-themeCream bg-themeGreenDark w-[100px] sm:w-[200px] hover:bg-themeGreen rounded my-2 py-2 px-3 mx-2  md:px-6"
                       onClick={() => setOpenComment(!openComment)}
                     >
                       Cancel
@@ -98,7 +99,7 @@ export default function CommentBlock({ comments }) {
                     >
                       <div className="w-12 h-12 rounded-full mr-2 overflow-hidden">
                         <img
-                          src="public/assets/useravatar.svg"
+                          src="./assets/useravatar.svg"
                           alt=""
                           className="max-w-full h-auto mx-auto"
                         />
@@ -120,7 +121,7 @@ export default function CommentBlock({ comments }) {
                   </div>
                 </div>
               ))}
-              <hr className="dark:border-slate-700 my-5" />
+              <hr className="my-5" />
             </div>
             <div className="py-6 lg:py-12 text-center">
               <button className="text-themeCream bg-themeGreenDark hover:text-themeCream hover:bg-themeGreen rounded py-2 px-5 md:px-6">
