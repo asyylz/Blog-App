@@ -55,28 +55,11 @@ export default function UserActions({
 
       <div
         //style={{ border: '1px solid purple' }}
-        className="container flex-auto flex justify-evenly items-center max-w-[200px] "
+        className="container flex  w-full justify-between items-center "
       >
-        {userId === user?.userId && (
-          <div className="mt-5" onClick={handleDeleteClick}>
-            <img
-              src={`./card/delete.svg`}
-              alt="heart"
-              className="h-6 w-6 cursor-pointer"
-            />
-          </div>
-        )}
-
-        {userId === user?.userId && (
-          <div className="mt-5" onClick={handleEditClick}>
-            <img
-              src={`./card/edit.svg`}
-              alt="heart"
-              className="h-6 w-6 cursor-pointer"
-            />
-          </div>
-        )}
-
+        <div 
+         //style={{ border: '1px solid purple' }}
+        className='flex lg:ml-4'>
         <div onClick={handleLikeClick}>
           <p className="text-themeBrown text-center">
             <small>{likes?.length}</small>
@@ -87,7 +70,7 @@ export default function UserActions({
               likes.some((like) => like === user?.userId) ? 'Filled' : ''
             }.svg`}
             alt="heart"
-            className="h-6 w-6 cursor-pointer"
+            className="h-6 w-6 lg:h-7 lg:w-7 cursor-pointer mr-2"
           />
         </div>
         <div>
@@ -97,7 +80,7 @@ export default function UserActions({
           <img
             src="./card/comments.svg"
             alt="comments"
-            className="h-6 w-6 cursor-pointer"
+            className="h-6 w-6 lg:h-7 lg:w-7 cursor-pointer mr-2"
           />
         </div>
         <div>
@@ -107,8 +90,32 @@ export default function UserActions({
           <img
             src="./card/views.svg"
             alt="views"
-            className="h-6 w-6 cursor-pointer"
+            className="h- w-5 lg:h-7 lg:w-7 cursor-pointer mr-2"
           />
+        </div>
+      </div>
+      <div 
+      //style={{border:'1px solid red'}}
+      className='flex'>
+        {userId === user?.userId && (
+          <div className="mt-5 ml-3 md:ml-0" onClick={handleDeleteClick}>
+            <img
+              src={`./card/delete.svg`}
+              alt="heart"
+              className="h-6 w-6 lg:h-7 lg:w-7 cursor-pointer"
+            />
+          </div>
+        )}
+
+        {userId === user?.userId && (
+          <div className="mt-5 md:mx-1 lg:mx-3" onClick={handleEditClick}>
+            <img
+              src={`./card/edit.svg`}
+              alt="heart"
+              className="h-6 w-6 lg:h-7 lg:w-7 cursor-pointer"
+            />
+          </div>
+        )}
         </div>
       </div>
     </>

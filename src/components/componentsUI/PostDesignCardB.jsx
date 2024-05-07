@@ -13,24 +13,19 @@ export default function PostDesignCardB({
   screen,
   userId,
 }) {
-  function getFirstTenWords(text) {
-    const words = text.split(/\s+/);
-    const firstTenWords = words.slice(0, 10).join(' ');
-    return firstTenWords;
-  }
 
   const animate = 'animate-fade-left';
   return (
     <div
       //style={{ border: '1px solid purple' }}
       key={_id}
-      className={`rounded-lg max-w-xs md:max-w-sm lg:max-w-md mx-6 shadow-themeShadow bg-[#C2B6B6]/50 ${
-        screen === 'small' ? 'my-5' : 'my-20'
+      className={`rounded-lg  mx-5 shadow-themeShadow bg-[#C2B6B6]/50 ${
+        screen === 'small' ? 'my-5 w-[400px]' : 'my-20'
       } ${animate}`}
     >
       <div
-        //style={{ border: '1px solid red' }}
-        className="container flex justify-end"
+        //style={{ border: '1px solid yellow' }}
+        className={`container ${screen ==='small' ? "px-10":""}`}
       >
         <UserActions
           likes={likes}
@@ -42,7 +37,7 @@ export default function PostDesignCardB({
       </div>
       <a href="#">
         <img
-          className="rounded-t-lg px-2 py-2 max-h-[250px]"
+          className="rounded-t-lg px-2 py-2 max-h-[250px] mx-auto"
           src={image}
           alt={title}
         />
@@ -62,16 +57,16 @@ export default function PostDesignCardB({
         </p>
         <div
           //style={{ border: '1px solid red' }}
-          className="container flex flex-col sm:flex-row justify-between mx-auto gap-3"
+          className="container flex flex-col xl:flex-row justify-between mx-auto gap-3"
         >
           <Link
             to={_id}
-            className="px-3 py-2 text-themeDirtyWhite bg-themeGreenDark hover:bg-themeGreen hover:animate-bounce delay-150 duration-300 rounded-xl flex  items-center justify-center flex-none text-xs md:text-sm md:min-w-[200px] lg:max-w-[130px]"
+            className={`px-3 py-2 text-themeDirtyWhite bg-themeGreenDark hover:bg-themeGreen hover:animate-bounce delay-150 duration-300 rounded-xl flex  items-center justify-center flex-none text-xs md:text-sm ${screen === 'small' ? 'w-full':''} lg:w-[150px]`}
           >
             <img
               src="./card/arrowRight.svg"
               alt="login"
-              className="h-5 w-5 mr-2 -ml-6 sm:ml-0"
+              className="h-5 w-5 mr-2 sm:ml-0"
             />
             <span>Read more</span>
           </Link>

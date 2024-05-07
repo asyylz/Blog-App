@@ -14,7 +14,7 @@ export default function PostDesignCardA({
 }) {
   return (
     <div
-      //style={{ border: '6px solid purple' }}
+      style={{ border: '6px solid purple' }}
       className="col-span-2 min-h-[400px] "
     >
       <div className="container flex md:flex-col py-3 px-3 gap-3">
@@ -25,12 +25,12 @@ export default function PostDesignCardA({
           <img
             src={image}
             alt=""
-            className="h-64 md:max-w-md xl:min-w-[400px] md:mx-4 lg:mx-auto"
+            className="h-64 md:max-w-md xl:min-w-[450px] md:mx-4 lg:mx-auto"
             //style={{ border: '1px solid purple' }}
           />
           <div
             //style={{ border: '1px solid red' }}
-            className="container flex justify-between mx-auto md:gap-2 xl:gap-10"
+            className="container flex justify-between md:min-w-[350px] md:max-w-[500px] mx-auto md:gap-2 xl:gap-10"
           >
             <Link
               to={_id}
@@ -45,7 +45,7 @@ export default function PostDesignCardA({
             </Link>
             <div
               //style={{ border: '1px solid red' }}
-              className="container flex justify-end"
+              className="container flex justify-end w-[400px] md:mr-10 lg:mr-20"
             >
               <UserActions
                 likes={likes}
