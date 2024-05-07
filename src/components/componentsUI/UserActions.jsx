@@ -19,7 +19,7 @@ export default function UserActions({
     status: false,
   });
 
-  const [confirm, setConfirm] = useState(false);
+  //const [confirm, setConfirm] = useState(false);
   const navigate = useNavigate();
 
   const { user } = useAuth();
@@ -46,7 +46,7 @@ export default function UserActions({
     <>
       {openModal.status && (
         <ModalNotification
-          setConfirm={setConfirm}
+          //setConfirm={setConfirm}
           openModal={openModal}
           setOpenModal={setOpenModal}
           id={id}

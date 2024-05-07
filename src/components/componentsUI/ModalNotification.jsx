@@ -1,16 +1,14 @@
+import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useSubmit } from 'react-router-dom';
 export default function ModalConfirmation({
   openModal,
-  setConfirm,
+  //setConfirm,
   setOpenModal,
   id,
 }) {
   const submit = useSubmit();
-
-  //   async function submit(data, options) {
-  //     return new Promise((resolve) => setTimeout(resolve, 1000));
-  //   }
+  const [confirm, setConfirm] = useState(false);
 
   const handleClick = () => {
     setOpenModal({ text: '', modalType: '', status: false });
@@ -18,10 +16,7 @@ export default function ModalConfirmation({
 
   const handleClickConfirm = async () => {
     setConfirm(true);
-    //setLoading(true);
-    // stimulate the delete request
     submit({ id: id, actionType: 'delete' }, { method: 'delete' });
-    //setLoading(false);
     setOpenModal({
       text: 'Post successfully deleted.',
       modalType: 'success',

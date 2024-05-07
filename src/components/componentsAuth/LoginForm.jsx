@@ -1,3 +1,4 @@
+import { useActionData } from 'react-router-dom';
 import { Link, Form } from 'react-router-dom';
 
 const registerationFields = [
@@ -6,6 +7,8 @@ const registerationFields = [
 ];
 
 export default function LoginForm({ isSubmitting }) {
+  const errors = useActionData();
+
   return (
     <section
       style={{ backgroundImage: "url('/assets/background.jpg')" }}
@@ -31,7 +34,6 @@ export default function LoginForm({ isSubmitting }) {
                   </label>
                   <input
                     type={field.type}
-                    //value={event.target.value}
                     name={field.identifier}
                     id={field.identifier}
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  focus:outline-none focus:ring-1 focus:ring-themeGreenDark focus:border-themeGreenDark block w-full p-2.5"

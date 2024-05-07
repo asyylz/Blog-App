@@ -5,7 +5,13 @@ import { redirect } from 'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigation } from 'react-router-dom';
+import { useActionData } from 'react-router-dom';
 export default function AuthPage() {
+
+  
+  const errors = useActionData();
+  console.log(errors);
+
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const isAuthPage =
@@ -13,7 +19,6 @@ export default function AuthPage() {
 
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
-  console.log(isSubmitting);
 
   return (
     <>
@@ -35,18 +40,10 @@ export async function action({ request, _ }) {
       email: data.get('email'),
       password: data.get('password'),
     };
+    const errors = {};
+
     console.log(userData);
     try {
-      //To see isSubmitting finctionality
-      // const response = await new Promise((resolve, reject) => {
-      //   setTimeout(() => {
-      //     // Perform the axios post inside the setTimeout
-      //     axios.post('https://38110.fullstack.clarusway.com/auth/login/', userData)
-      //       .then(resolve)  // Resolve the outer promise with the response from axios
-      //       .catch(reject); // Reject the outer promise if axios fails
-      //   }, 2000); // Delay of 2000 milliseconds
-      // });
-
       const response = await axios.post(
         'https://38110.fullstack.clarusway.com/auth/login/',
         userData
@@ -64,6 +61,7 @@ export async function action({ request, _ }) {
       return redirect('/');
     } catch (error) {
       if (error.response) {
+        console.log(error.response.data);
         throw error.response;
       } else if (error.request) {
         // The request was made but no response was received
@@ -96,9 +94,6 @@ export async function action({ request, _ }) {
         'https://38110.fullstack.clarusway.com/users/',
         userData
       );
-      //console.log('clicked');
-      //console.log(response.data);
-
       if (response?.data.token && response?.data.user) {
         const userData = {
           token: response.data.token,
@@ -123,3 +118,4 @@ export async function action({ request, _ }) {
     }
   }
 }
+

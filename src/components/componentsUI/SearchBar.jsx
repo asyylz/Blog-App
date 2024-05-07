@@ -1,13 +1,16 @@
 import { Form } from 'react-router-dom';
 import CategoryDropDown from './CategoryDropDown';
+import { useRouteLoaderData } from 'react-router-dom';
 export default function SearchBar() {
+  const { categories } = useRouteLoaderData("root");
+  console.log(categories)
   return (
     <Form
       className="relative w-[250px] sm:min-w-[500px] md:min-w-[700px]  mx-auto py-5"
       style={{ position: 'relative' }}
     >
       <div className="flex">
-        <CategoryDropDown round="left" title="All Categories" />
+        <CategoryDropDown round="left" title="All Categories" list={categories} />
         <div className="relative w-full">
           <input
             type="search"

@@ -30,6 +30,7 @@ export async function action({ request }) {
     content: data.get('content'),
     isPublish: data.get('isPublish') === 'Published' ? true : false,
   };
+  console.log(postData)
   try {
     const response = await axios.put(
       `https://38110.fullstack.clarusway.com/blogs/${postId}`,

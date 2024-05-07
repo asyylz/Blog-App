@@ -1,53 +1,52 @@
-const categories = [
-  {
-    id: '663515c3c78ea0a82b9220cb',
-    name: 'World',
-  },
-  {
-    id: '663515c3c78ea0a82b9220dd',
-    name: 'Technology',
-  },
-  {
-    id: '663515c3c78ea0a82b9220ee',
-    name: 'Design',
-  },
-  {
-    id: '663515c3c78ea0a82b9220ff',
-    name: 'Culture',
-  },
-  {
-    id: '663515c3c78ea0a82b922110',
-    name: 'Business',
-  },
-  {
-    id: '663515c3c78ea0a82b922121',
-    name: 'Politics',
-  },
-  {
-    id: '663515c4c78ea0a82b922132',
-    name: 'Science',
-  },
-  {
-    id: '663515c4c78ea0a82b922143',
-    name: 'Health',
-  },
-  {
-    id: '663515c4c78ea0a82b922154',
-    name: 'Style',
-  },
-  {
-    id: '663515c4c78ea0a82b922165',
-    name: 'Travel',
-  },
-  {
-    id: '6635f34da17ed84f75f35d45',
-    name: 'Food',
-  },
-];
+// const categories = [
+//   {
+//     id: '663515c3c78ea0a82b9220cb',
+//     name: 'World',
+//   },
+//   {
+//     id: '663515c3c78ea0a82b9220dd',
+//     name: 'Technology',
+//   },
+//   {
+//     id: '663515c3c78ea0a82b9220ee',
+//     name: 'Design',
+//   },
+//   {
+//     id: '663515c3c78ea0a82b9220ff',
+//     name: 'Culture',
+//   },
+//   {
+//     id: '663515c3c78ea0a82b922110',
+//     name: 'Business',
+//   },
+//   {
+//     id: '663515c3c78ea0a82b922121',
+//     name: 'Politics',
+//   },
+//   {
+//     id: '663515c4c78ea0a82b922132',
+//     name: 'Science',
+//   },
+//   {
+//     id: '663515c4c78ea0a82b922143',
+//     name: 'Health',
+//   },
+//   {
+//     id: '663515c4c78ea0a82b922154',
+//     name: 'Style',
+//   },
+//   {
+//     id: '663515c4c78ea0a82b922165',
+//     name: 'Travel',
+//   },
+//   {
+//     id: '6635f34da17ed84f75f35d45',
+//     name: 'Food',
+//   },
+// ];
 
 export default function CategoryDropDown({
-  list = categories,
-  onChange,
+  list,
   name,
   round,
   title,
@@ -73,7 +72,7 @@ export default function CategoryDropDown({
         {list.map((category, index) => (
           <option
             key={index}
-            value={category.id} // backend den cek kategorileri
+            value={category._id} // backend den cek kategorileri
           >
             {category.name}
           </option>

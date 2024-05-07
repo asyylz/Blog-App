@@ -1,5 +1,6 @@
 import { Form } from 'react-router-dom';
 import CategoryDropDown from '../componentsUI/CategoryDropDown';
+import { useRouteLoaderData } from 'react-router-dom';
 
 const fields = [
   { label: 'Title', type: 'text', name: 'title' },
@@ -9,7 +10,8 @@ const fields = [
 const listDropDown = [{ name: 'Published' }, { name: 'Draft' }];
 
 export default function NewBlogForm({ post }) {
-
+  const { categories } = useRouteLoaderData('root');
+  
   return (
     <section className="flex items-center flex-col text-themeBrown mb-40 bg-themeDirtyWhite">
       <div className="text-center py-8 border-b-4  border-themeGreenDark">
@@ -39,7 +41,7 @@ export default function NewBlogForm({ post }) {
             className="col-span-12 mb-3 mt-2 flex flex-col sm:flex-row  items-center justify-evenly"
           >
             <CategoryDropDown
-              //onChange={(e) => e.target.value}
+              list={categories}
               name="categoryId"
               title="All Categories"
               defaultValue={post ? post.categoryId._id : ''}

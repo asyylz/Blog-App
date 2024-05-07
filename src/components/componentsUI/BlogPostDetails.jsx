@@ -6,7 +6,7 @@ import { useAuth } from '../../hooks/useAuth';
 export default function BlogPostDetails() {
   const post = useRouteLoaderData('blog-detail');
   const { user } = useAuth();
-
+console.log(post)
   return (
     <section
       key={post._id}
@@ -58,7 +58,7 @@ export default function BlogPostDetails() {
                 comments={post.comments}
                 countOfVisitors={post.countOfVisitors}
                 id={post._id}
-                userId={user.userId}
+                userId={post.userId._id}
               />
             </div>
           </div>

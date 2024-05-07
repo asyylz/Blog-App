@@ -56,3 +56,21 @@ export async function loaderBlogs({ request }) {
     throw error;
   }
 }
+
+// async function loadCategories() {
+//   try {
+//     const response = await axios.get(
+//       'https://38110.fullstack.clarusway.com/categories/'
+//     );
+//     const categories = response.data.data;
+//     console.log(categories);
+//     return categories;
+//   } catch (error) {
+//     console.error(error);
+//     throw error;
+//   }
+// }
+
+// export async function loader({ request, params }) {
+//   return { categories: loadCategories(), };
+// }
