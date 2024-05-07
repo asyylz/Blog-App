@@ -2,8 +2,8 @@ import { useSubmit } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { json } from 'react-router-dom';
 import axios from 'axios';
-import ModalConfirmation from './ModalConfirmation';
-import { useState, useEffect } from 'react';
+import ModalNotification from './ModalNotification';
+import { useState } from 'react';
 
 export default function UserActions({
   likes,
@@ -12,9 +12,17 @@ export default function UserActions({
   id,
   userId,
 }) {
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState({
+    modalType: '',
+    text: '',
+    status: false,
+  });
+
   const [confirm, setConfirm] = useState(false);
+
+  console.log(confirm);
   console.log(openModal);
+
   const { user } = useAuth();
   //const data = useActionData();
   const submit = useSubmit();
@@ -24,32 +32,24 @@ export default function UserActions({
   };
 
   const handleDeleteClick = () => {
-    console.log('clicked');
-    console.log(openModal);
-    setOpenModal(true); // Open the modal when the delete button is clicked
+    setOpenModal({
+      modalType: 'warning',
+      status: true,
+      text: ' Are you sure you want to delete this post?',
+    });
   };
-
-  const handleConfirm = (confirmation) => {
-    setOpenModal(false); // Close the modal
-    setConfirm(confirmation); // Set the confirmation state
-  };
-
-  useEffect(() => {
-    if (confirm) {
-      submit({ id: id, actionType: 'delete' }, { method: 'DELETE' });
-      setConfirm(false); // Reset confirmation state
-    }
-  }, [confirm]);
 
   return (
     <>
-      {openModal && (
-        <ModalConfirmation
+      {openModal.status && (
+        <ModalNotification
           setConfirm={setConfirm}
           openModal={openModal}
           setOpenModal={setOpenModal}
+          id={id}
         />
       )}
+
       <div
         //style={{ border: '1px solid purple' }}
         className="container flex-auto flex justify-evenly items-center max-w-[200px] "
@@ -106,6 +106,7 @@ export async function action({ request, params }) {
   const formData = await request.formData();
   const { user } = useAuth();
   const actionType = formData.get('actionType');
+  // console.log(actionType)
 
   /* ---------------------- like case --------------------- */
   if (actionType === 'like') {
@@ -164,12 +165,12 @@ export async function action({ request, params }) {
       throw error.response;
     }
   }
-
+  /* --------------------- delete case -------------------- */
   if (actionType === 'delete') {
+    const postId = formData.get('id');
     try {
       const response = await axios.delete(
-        `https://38110.fullstack.clarusway/blogs/${id}`,
-        {},
+        `https://38110.fullstack.clarusway.com/blogs/${postId}`,
         {
           headers: {
             Authorization: `Token ${user?.token}`,
