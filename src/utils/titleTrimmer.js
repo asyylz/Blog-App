@@ -1,5 +1,5 @@
-export function titleTrimmer(text) {
+export function titleTrimmer(text,numberOfWords) {
     const words = text.split(/\s+/);
-    const firstTenWords = words.slice(0, 10).join(' ');
+    const firstTenWords = words.slice(0, numberOfWords).join(' ');
     return firstTenWords;
   }

@@ -38,7 +38,6 @@ export async function loader({ params }) {
       }
     );
     const post = response.data.data;
-    //console.log(post);
     return post;
   } catch (error) {
     console.log(error);

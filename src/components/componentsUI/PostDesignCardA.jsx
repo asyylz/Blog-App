@@ -14,7 +14,7 @@ export default function PostDesignCardA({
 }) {
   return (
     <div
-      style={{ border: '6px solid purple' }}
+      //style={{ border: '6px solid purple' }}
       className="col-span-2 min-h-[400px] "
     >
       <div className="container flex md:flex-col py-3 px-3 gap-3">
@@ -63,22 +63,22 @@ export default function PostDesignCardA({
         >
           <p
             //style={{ border: '1px solid purple' }}
-            className="mb-2 font-bold tracking-tight text-themeGray dark:text-white"
+            className="mb-2 pl-20 font-bold tracking-tight text-themeGray dark:text-white"
           >
             {title}
           </p>
-          <p className="text-themeBrown">
+          <p className="text-themeBrown pl-20">
             <small>Published:{createdAt.split('T')[0]}</small>
           </p>
-          <p className="mb-3 font-ibm-flex text-gray-700 dark:text-gray-400">
-            {titleTrimmer(content)}
+          <p className="mb-3 pl-20 font-ibm-flex text-gray-700">
+            {titleTrimmer(content,50)}
           </p>
 
           <img
             //style={{ border: '1px solid purple' }}
             src="./card/share.svg"
             alt="views"
-            className="h-6 w-6 cursor-pointer"
+            className="h-6 w-6 ml-20 cursor-pointer"
           />
         </div>
       </div>

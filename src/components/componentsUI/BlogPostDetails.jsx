@@ -24,7 +24,7 @@ export default function BlogPostDetails() {
           >
             Back
           </Link>
-          <div className="col-span-12">
+          <div className="col-span-12 flex flex-col items-center">
             <div
               //style={{ border: '2px solid red' }}
               className="my-6 md:my-12 w-full flex flex-col  justify-center items-center"
@@ -32,7 +32,7 @@ export default function BlogPostDetails() {
               <img
                 src={post.image}
                 alt={post.title}
-                className="w-[700px] max-h-[500px] object-cover"
+                className="max-h-[500px] object-cover"
               />
               <p
                 //style={{ border: '1px solid red' }}
@@ -51,7 +51,7 @@ export default function BlogPostDetails() {
 
             <div
               //style={{ border: '1px solid red' }}
-              className="container flex justify-end"
+              className="container flex justify-end sm:w[600px] lg:max-w-[700px]"
             >
               <UserActions
                 likes={post.likes}

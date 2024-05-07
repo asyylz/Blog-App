@@ -31,11 +31,13 @@ export default function HomePage() {
       </p>
       {isScreenSmall ? (
         <>
+          <Pagination dataLength={length} />
           <ScreenSmallHomePageLayout />
           <Pagination dataLength={length} />
         </>
       ) : (
         <>
+          <Pagination dataLength={length} />
           <ScreenLargeHomePageLayout />
           <Pagination dataLength={length} />
         </>

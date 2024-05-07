@@ -53,7 +53,7 @@ export default function PostDesignCardB({
           <small>Published:{createdAt.split('T')[0]}</small>
         </p>
         <p className="mb-3 font-ibm-flex text-gray-700 dark:text-gray-400">
-          {`${titleTrimmer(content)}...`}
+          {`${titleTrimmer(content,30)}...`}
         </p>
         <div
           //style={{ border: '1px solid red' }}

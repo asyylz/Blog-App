@@ -24,7 +24,7 @@ export default function PopularPostItem({
               <h6 className="font-medium text-base mb-2">{title}</h6>
               <p className="text-sm opacity-75">
                 <a href="#" className="text-themeGreenDark">
-                  Default Post Owner
+                  Asiye Yaliz
                 </a>{' '}
                 in{' '}
                 <a href="#" className="text-themeGreenDark">

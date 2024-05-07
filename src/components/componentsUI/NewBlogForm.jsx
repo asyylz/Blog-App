@@ -46,7 +46,6 @@ export default function NewBlogForm({ post }) {
             />
             <CategoryDropDown
               list={listDropDown}
-              //onChange={(e) => e.target.value}
               name="isPublish"
               title="Status"
               defaultValue={
