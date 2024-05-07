@@ -3,7 +3,7 @@ import { Form, Link } from 'react-router-dom';
 const menuList = [
   { label: 'Home', path: '/' },
   { label: 'Search', path: '/' },
-  { label: 'Create Your Own', path: 'new' },
+  { label: 'Create Your Own', path: '/new' },
 ];
 export default function Navbar() {
   const user = JSON.parse(localStorage.getItem('user')) || '';

@@ -2,8 +2,10 @@ import { Link } from 'react-router-dom';
 import CommentsBlockHeader from './CommentsBlockHeader';
 import UserActions from '../componentsUI/UserActions';
 import { useRouteLoaderData } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
 export default function BlogPostDetails() {
   const post = useRouteLoaderData('blog-detail');
+  const { user } = useAuth();
 
   return (
     <section
@@ -56,6 +58,7 @@ export default function BlogPostDetails() {
                 comments={post.comments}
                 countOfVisitors={post.countOfVisitors}
                 id={post._id}
+                userId={user.userId}
               />
             </div>
           </div>

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import UserActions from '../componentsUI/UserActions';
-
+import { titleTrimmer } from '../../utils/titleTrimmer';
 export default function PostDesignCardA({
   image,
   likes,
@@ -10,8 +10,7 @@ export default function PostDesignCardA({
   content,
   _id,
   createdAt,
-  userId
-
+  userId,
 }) {
   return (
     <div
@@ -72,7 +71,7 @@ export default function PostDesignCardA({
             <small>Published:{createdAt.split('T')[0]}</small>
           </p>
           <p className="mb-3 font-ibm-flex text-gray-700 dark:text-gray-400">
-            {content}
+            {titleTrimmer(content)}
           </p>
 
           <img

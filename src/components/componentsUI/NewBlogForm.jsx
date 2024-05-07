@@ -8,17 +8,18 @@ const fields = [
 
 const listDropDown = [{ name: 'Published' }, { name: 'Draft' }];
 
-export default function NewBlogForm() {
+export default function NewBlogForm({ post }) {
+
   return (
     <section className="flex items-center flex-col text-themeBrown mb-40 bg-themeDirtyWhite">
-      <div className="text-center py-8">
+      <div className="text-center py-8 border-b-4  border-themeGreenDark">
         <h4 className="text-3xl sm:text-5xl font-bold leading-none">
           Create you own post
         </h4>
       </div>
       <div
         //style={{ border: '1px solid red' }}
-        className=" w-full sm:w-[90vw] bg-opacity-70 shadow-xl p-8 backdrop-filter backdrop-blur-md text-themeBrown"
+        className="w-full sm:w-[90vw] bg-opacity-70 shadow-xl p-8 backdrop-filter backdrop-blur-md text-themeBrown"
       >
         {/* <!-- ContactForm component --> */}
         <Form method="POST" className="grid grid-cols-12 gap-4 lg:gap-8">
@@ -29,6 +30,7 @@ export default function NewBlogForm() {
                 type={field.type}
                 name={field.name}
                 placeholder={field.label}
+                defaultValue={post ? post[field.name] : ''}
               />
             </div>
           ))}
@@ -37,31 +39,37 @@ export default function NewBlogForm() {
             className="col-span-12 mb-3 mt-2 flex flex-col sm:flex-row  items-center justify-evenly"
           >
             <CategoryDropDown
-              onChange={(e) => e.target.value}
+              //onChange={(e) => e.target.value}
               name="categoryId"
               title="All Categories"
+              defaultValue={post ? post.categoryId._id : ''}
             />
             <CategoryDropDown
               list={listDropDown}
-              onChange={(e) => e.target.value}
+              //onChange={(e) => e.target.value}
               name="isPublish"
               title="Status"
+              defaultValue={
+                post ? (post.isPublish ? 'Published' : 'Draft') : ''
+              }
             />
+            {post && <input type="hidden" name="postId" value={post._id} />}
           </div>
           <div className="col-span-12  mb-3 mt-2 flex justify-evenly">
             <textarea
               id="content"
               name="content"
-              rows="18"
+              rows="14"
               className="block p-2.5 text-lg w-full ease-in-out duration-600 text-themeBrown bg-themeDirtyWhite rounded-lg border border-gray-300 focus:outline-none focus:ring-0.5 focus:ring-themeGreenDark focus:border-themeGreenDark"
               placeholder="Content"
+              defaultValue={post ? post.content : ''}
             ></textarea>
           </div>
 
           <div className="col-span-12">
             <div className="text-center mt-4">
               <button className="bg-themeGreenDark text-themeCream text-xl py-3 px-10 min-w-[44px] rounded-lg border-spacing-1 border-themeGreenDark hover:bg-themeGreen focus:ring-2 focus:outline-none hover:outline-none focus:ring-themeGreenDark">
-                New Blog
+                {post ? 'Update' : 'New Blog'}
               </button>
             </div>
           </div>

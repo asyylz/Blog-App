@@ -4,6 +4,7 @@ import { json } from 'react-router-dom';
 import axios from 'axios';
 import ModalNotification from './ModalNotification';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function UserActions({
   likes,
@@ -19,9 +20,7 @@ export default function UserActions({
   });
 
   const [confirm, setConfirm] = useState(false);
-
-  console.log(confirm);
-  console.log(openModal);
+  const navigate = useNavigate();
 
   const { user } = useAuth();
   //const data = useActionData();
@@ -37,6 +36,10 @@ export default function UserActions({
       status: true,
       text: ' Are you sure you want to delete this post?',
     });
+  };
+
+  const handleEditClick = () => {
+    navigate('edit');
   };
 
   return (
@@ -58,6 +61,16 @@ export default function UserActions({
           <div className="mt-5" onClick={handleDeleteClick}>
             <img
               src={`./card/delete.svg`}
+              alt="heart"
+              className="h-6 w-6 cursor-pointer"
+            />
+          </div>
+        )}
+
+        {userId === user?.userId && (
+          <div className="mt-5" onClick={handleEditClick}>
+            <img
+              src={`./card/edit.svg`}
               alt="heart"
               className="h-6 w-6 cursor-pointer"
             />

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import UserActions from '../componentsUI/UserActions';
+import { titleTrimmer } from '../../utils/titleTrimmer';
 export default function PostDesignCardB({
   image,
   title,
@@ -10,7 +11,7 @@ export default function PostDesignCardB({
   content,
   _id,
   screen,
-  userId
+  userId,
 }) {
   function getFirstTenWords(text) {
     const words = text.split(/\s+/);
@@ -57,7 +58,7 @@ export default function PostDesignCardB({
           <small>Published:{createdAt.split('T')[0]}</small>
         </p>
         <p className="mb-3 font-ibm-flex text-gray-700 dark:text-gray-400">
-          {`${getFirstTenWords(content)}...`}
+          {`${titleTrimmer(content)}...`}
         </p>
         <div
           //style={{ border: '1px solid red' }}

@@ -11,6 +11,9 @@ import { loader as loaderBlogPost } from '../pages/BlogDetailPostPage';
 import NewBlogPostPage from '../pages/NewBlogPostPage';
 import { action as actionNewPost } from '../pages/NewBlogPostPage';
 import { action as combinedAction } from '../components//componentsUI/UserActions';
+import EditBlogPostPage from '../pages/EditBlogPostPage';
+import { action as actionUpdatePost } from '../pages/EditBlogPostPage';
+
 //import { action as actionLike } from '../pages/HomePage';
 //mport { action as actionNewComment } from '../pages/BlogDetailPostPage';
 
@@ -53,6 +56,11 @@ const router = createBrowserRouter([
             element: <BlogDetailPostPage />,
             action: combinedAction,
             //action: actionNewComment,
+          },
+          {
+            path: 'edit',
+            element: <EditBlogPostPage />,
+            action: actionUpdatePost,
           },
         ],
       },

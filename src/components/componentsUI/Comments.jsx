@@ -25,12 +25,8 @@ export default function Comments() {
               (i + 1) % 2 === 1 ? 'items-start' : 'items-end'
             } `}
           >
-            <div
-              className="w-full rounded-2xl border border-themeBrown p-5 my-3 max-w-lg"
-            >
-              <div
-                className="flex items-center mb-6"
-              >
+            <div className="w-full rounded-2xl border border-themeBrown p-5 my-3 max-w-lg">
+              <div className="flex items-center mb-6">
                 <div className="w-12 h-12 rounded-full mr-2 overflow-hidden">
                   <img
                     src="./assets/useravatar.svg"
@@ -60,13 +56,17 @@ export default function Comments() {
           disabled={isEnd ? true : false}
           onClick={handleCommentsShow}
           className={`text-themeCream  hover:text-themeCream hover:bg-themeGreen rounded py-2 px-5 md:px-6 ${
-            isEnd ? 'bg-themeGreen' : 'bg-themeGreenDark'
+            isEnd && post.comments.length > 0
+              ? 'bg-themeGreen'
+              : 'bg-themeGreenDark'
           }`}
         >
           {currentShown === 0 && !isEnd
             ? 'Show comments'
             : isEnd && currentShown !== 0
             ? 'No more comments'
+            : post.comments.length === 0
+            ? 'No comments yet'
             : 'Load more comments'}
         </button>
       </div>
