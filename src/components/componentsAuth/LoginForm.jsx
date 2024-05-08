@@ -10,34 +10,33 @@ const registerationFields = [
 
 export default function LoginForm({ isSubmitting }) {
   const authActionData = useActionData();
-  const [open, setOpen] = useState(false);
+ 
   const navigate = useNavigate();
   const isSuccess = authActionData?.error === false ? true : false;
 
-  const handleClose = () => {
-    setOpen(false);
-    navigate('/');
-  };
+  if(isSuccess){
+    setTimeout(() => {
+      navigate('/');
+    }, 600);
+  }
 
   return (
     <>
       {isSuccess && (
-        <ModalCustom 
-        open={isSuccess}>
-
-          <div>
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-              Welcome !
-            </h1>
-            <p className="text-sm font-medium leading-tight text-gray-900 dark:text-white">
-              You successfully logged in!
-            </p>
-            <button
-              onClick={handleClose}
-              className="py-2.5 px-5 ms-3 text-sm font-medium text-themeCream focus:outline-none bg-themeGreenDark rounded-lg border-2 border-themeGreenDark hover:bg-themeGreen focus:z-10 focus:ring-1 focus:ring-themeGreenDark "
+        <ModalCustom open={isSuccess}>
+          <div
+            //style={{ border: '1px solid red' }}
+            className="p-4 md:p-5 text-center w-full"
+          >
+            <h3 className="mb-5 text-lg font-normal text-gray-500 ">
+              Successfully logged in!
+            </h3>
+            {/* <button
+              //onClick={handleClose}
+              className="w-[100px] py-2.5 px-5 ms-3 text-sm font-medium text-themeCream focus:outline-none bg-themeGreenDark rounded-lg border-2 border-themeGreenDark hover:bg-themeGreen focus:z-10 focus:ring-1 focus:ring-themeGreenDark "
             >
               Ok
-            </button>
+            </button> */}
           </div>
         </ModalCustom>
       )}
@@ -52,7 +51,7 @@ export default function LoginForm({ isSubmitting }) {
         >
           <div className="w-full bg-white rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 ">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
                 Create and account
               </h1>
               <Form method="POST" className="space-y-4 md:space-y-6">

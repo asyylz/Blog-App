@@ -1,13 +1,14 @@
 import { Form, Link } from 'react-router-dom';
-
+import { useAuth } from '../../hooks/useAuth';
 const menuList = [
   { label: 'Home', path: '/' },
   { label: 'Search', path: '/' },
   { label: 'Create Your Own', path: '/new' },
 ];
 export default function Navbar() {
-  const user = JSON.parse(localStorage.getItem('user')) || '';
-  //console.log(user);
+  const { user } = useAuth();
+  //const user = JSON.parse(localStorage.getItem('user')) || '';
+ 
 
   return (
     <nav
@@ -47,27 +48,25 @@ export default function Navbar() {
               className="container flex mb-4 sm:mb-0"
             >
               <span>Hi {user.userName}</span>
-              <img
-                className="h-8 ml-3 "
-                src="./navbar/user.svg"
-                alt="user"
-              />
+              <img className="h-8 ml-3 " src="./navbar/user.svg" alt="user" />
             </div>
           )}
-          <Form
-            action="/logout"
-            method="POST"
-            className={`p-3 pr-7 bg-themeGreenDark hover:bg-themeCream hover:text-themeBrown rounded-xl flex items-center gap-2 ${
-              !user && 'animate-pulse'
-            } cursor-pointer`}
-          >
-            <img src="./navbar/login.svg" alt="login" className="h-5 w-5" />
-            {user ? (
-              <button>Logout</button>
-            ) : (
-              <Link to="auth?mode=login">Login</Link>
-            )}
-          </Form>
+          <button>
+            <Form
+              action="/logout"
+              method="POST"
+              className={`p-3 pr-7 bg-themeGreenDark hover:bg-themeCream hover:text-themeBrown rounded-xl flex items-center gap-2 ${
+                !user && 'animate-pulse'
+              } cursor-pointer`}
+            >
+              <img src="./navbar/login.svg" alt="login" className="h-5 w-5" />
+              {user ? (
+                <button>Logout</button>
+              ) : (
+                <Link to="auth?mode=login">Login</Link>
+              )}
+            </Form>
+          </button>
         </div>
       </div>
     </nav>

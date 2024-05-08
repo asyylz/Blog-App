@@ -55,15 +55,15 @@ export async function action({ request, _ }) {
       //return redirect('/');
     } catch (error) {
       if (error.response) {
-        console.log(error.response.data);
+        //console.log(error.response.data);
         throw error.response;
       } else if (error.request) {
         // The request was made but no response was received
-        console.error('No response received:', error.request);
+        //console.error('No response received:', error.request);
         throw new Error('No response received');
       } else {
         // Something happened in setting up the request that triggered an Error
-        console.error('Error', error.message);
+        //console.error('Error', error.message);
         throw new Error(error.message);
       }
     }
