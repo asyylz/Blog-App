@@ -5,6 +5,8 @@ import axios from 'axios';
 import ModalNotification from './ModalNotification';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+
 
 export default function UserActions({
   likes,
@@ -13,17 +15,19 @@ export default function UserActions({
   id,
   userId,
 }) {
+  const location = useLocation();
+  const isIdInURL = location.pathname === `/${id}`;
+
   const [openModal, setOpenModal] = useState({
     modalType: '',
     text: '',
     status: false,
   });
 
-  //const [confirm, setConfirm] = useState(false);
   const navigate = useNavigate();
 
   const { user } = useAuth();
-  //const data = useActionData();
+
   const submit = useSubmit();
 
   const handleLikeClick = () => {
@@ -39,7 +43,11 @@ export default function UserActions({
   };
 
   const handleEditClick = () => {
-    navigate('edit');
+    if (isIdInURL) {
+      navigate('edit');
+    } else {
+      navigate(`${id}/edit`);
+    }
   };
 
   return (
@@ -53,69 +61,62 @@ export default function UserActions({
         />
       )}
 
-      <div
-        //style={{ border: '1px solid purple' }}
-        className="container flex  w-full justify-between items-center "
-      >
-        <div 
-         //style={{ border: '1px solid purple' }}
-        className='flex lg:ml-4'>
-        <div onClick={handleLikeClick}>
-          <p className="text-themeBrown text-center">
-            <small>{likes?.length}</small>
-          </p>
+      <div className="container flex  w-full justify-between items-center ">
+        <div className="flex lg:ml-4">
+          <div onClick={handleLikeClick}>
+            <p className="text-themeBrown text-center">
+              <small>{likes?.length}</small>
+            </p>
 
-          <img
-            src={`./card/heart${
-              likes.some((like) => like === user?.userId) ? 'Filled' : ''
-            }.svg`}
-            alt="heart"
-            className="h-6 w-6 lg:h-7 lg:w-7 cursor-pointer mr-2"
-          />
-        </div>
-        <div>
-          <p className="text-themeBrown text-center">
-            <small>{comments?.length}</small>
-          </p>
-          <img
-            src="./card/comments.svg"
-            alt="comments"
-            className="h-6 w-6 lg:h-7 lg:w-7 cursor-pointer mr-2"
-          />
-        </div>
-        <div>
-          <p className="text-themeBrown text-center">
-            <small>{countOfVisitors}</small>
-          </p>
-          <img
-            src="./card/views.svg"
-            alt="views"
-            className="h- w-5 lg:h-7 lg:w-7 cursor-pointer mr-2"
-          />
-        </div>
-      </div>
-      <div 
-      //style={{border:'1px solid red'}}
-      className='flex'>
-        {userId === user?.userId && (
-          <div className="mt-5 ml-3 md:ml-0" onClick={handleDeleteClick}>
             <img
-              src={`./card/delete.svg`}
+              src={`./card/heart${
+                likes.some((like) => like === user?.userId) ? 'Filled' : ''
+              }.svg`}
               alt="heart"
-              className="h-6 w-6 lg:h-7 lg:w-7 cursor-pointer"
+              className="h-6 w-6 lg:h-7 lg:w-7 cursor-pointer mr-2"
             />
           </div>
-        )}
-
-        {userId === user?.userId && (
-          <div className="mt-5 md:mx-1 lg:mx-3" onClick={handleEditClick}>
+          <div>
+            <p className="text-themeBrown text-center">
+              <small>{comments?.length}</small>
+            </p>
             <img
-              src={`./card/edit.svg`}
-              alt="heart"
-              className="h-6 w-6 lg:h-7 lg:w-7 cursor-pointer"
+              src="./card/comments.svg"
+              alt="comments"
+              className="h-6 w-6 lg:h-7 lg:w-7 cursor-pointer mr-2"
             />
           </div>
-        )}
+          <div>
+            <p className="text-themeBrown text-center">
+              <small>{countOfVisitors}</small>
+            </p>
+            <img
+              src="./card/views.svg"
+              alt="views"
+              className="h- w-5 lg:h-7 lg:w-7 cursor-pointer mr-2"
+            />
+          </div>
+        </div>
+        <div className="flex">
+          {userId === user?.userId && (
+            <div className="mt-5 ml-3 md:ml-0" onClick={handleDeleteClick}>
+              <img
+                src={`./card/delete.svg`}
+                alt="heart"
+                className="h-6 w-6 lg:h-7 lg:w-7 cursor-pointer"
+              />
+            </div>
+          )}
+
+          {userId === user?.userId && (
+            <div className="mt-5 md:mx-1 lg:mx-3" onClick={handleEditClick}>
+              <img
+                src={`./card/edit.svg`}
+                alt="heart"
+                className="h-6 w-6 lg:h-7 lg:w-7 cursor-pointer"
+              />
+            </div>
+          )}
         </div>
       </div>
     </>
@@ -126,7 +127,6 @@ export async function action({ request, params }) {
   const formData = await request.formData();
   const { user } = useAuth();
   const actionType = formData.get('actionType');
-  // console.log(actionType)
 
   /* ---------------------- like case --------------------- */
   if (actionType === 'like') {

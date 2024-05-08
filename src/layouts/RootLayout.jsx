@@ -3,8 +3,12 @@ import Navbar from '../components/componentsUI/Navbar';
 import axios from 'axios';
 import Footer from '../components/componentsUI/Footer';
 import { useLocation } from 'react-router-dom';
+import { useActionData } from 'react-router-dom';
 
 export default function RootLayout() {
+  const data = useActionData();
+  console.log(data?.searchedBlogPosts);
+
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const isAuthPage =
@@ -15,11 +19,8 @@ export default function RootLayout() {
   return (
     <>
       <Navbar />
-      <main
-        //style={{border:'2px solid blue'}}
-        className="bg-themeDirtyWhite"
-      >
-        <Outlet />
+      <main className="bg-themeDirtyWhite">
+        <Outlet context={data?.searchedBlogPosts} />
         {!isAuthPage && (
           <>
             <Footer />
@@ -49,7 +50,7 @@ export async function loaderBlogs({ request }) {
     const totalData = response2.data.data;
     const blogPosts = response1.data.data;
     const categories = response3.data.data;
-    console.log(totalData);
+    //console.log(totalData);
     return { blogPosts, totalData, categories };
   } catch (error) {
     console.error(error);
@@ -58,20 +59,18 @@ export async function loaderBlogs({ request }) {
   }
 }
 
-// async function loadCategories() {
-//   try {
-//     const response = await axios.get(
-//       'https://38110.fullstack.clarusway.com/categories/'
-//     );
-//     const categories = response.data.data;
-//     console.log(categories);
-//     return categories;
-//   } catch (error) {
-//     console.error(error);
-//     throw error;
-//   }
-// }
+export async function action({ request }) {
+  const searchBarData = await request.formData();
+  const search = searchBarData.get('search');
+  const categoryId = searchBarData.get('categoryId');
+  try {
+    const response = await axios.get(
+      `https://38110.fullstack.clarusway.com/blogs/?page=1&limit=10&filter[categoryId]=${categoryId}&search[title]=a&search[content]=${search}`
+    );
+    const searchedBlogPosts = response.data.data;
 
-// export async function loader({ request, params }) {
-//   return { categories: loadCategories(), };
-// }
+    return { searchedBlogPosts };
+  } catch (error) {
+    throw error;
+  }
+}

@@ -5,11 +5,12 @@ import ScreenLargeHomePageLayout from '../layouts/ScreenLargeHomePageLayout';
 import SearchBar from '../components/componentsUI/SearchBar';
 import Pagination from '../components/componentsUI/Pagination';
 import { useRouteLoaderData } from 'react-router-dom';
-
 export default function HomePage() {
   const [isScreenSmall, setIsScreenSmall] = useState(false);
   const { totalData } = useRouteLoaderData('root');
   const length = totalData.length;
+
+
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -31,13 +32,11 @@ export default function HomePage() {
       </p>
       {isScreenSmall ? (
         <>
-          <Pagination dataLength={length} />
           <ScreenSmallHomePageLayout />
           <Pagination dataLength={length} />
         </>
       ) : (
         <>
-          <Pagination dataLength={length} />
           <ScreenLargeHomePageLayout />
           <Pagination dataLength={length} />
         </>

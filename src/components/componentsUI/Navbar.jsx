@@ -30,7 +30,7 @@ export default function Navbar() {
                   key={index}
                   className=" py-1 sm:px-2 text-textColor hover:text-themeBrown"
                 >
-                  <a href={item.path}>{item.label}</a>
+                  <Link href={item.path}>{item.label}</Link>
                 </li>
               ))}
             </ul>
@@ -49,21 +49,21 @@ export default function Navbar() {
               <img className="h-8 ml-3 " src="./navbar/user.svg" alt="user" />
             </div>
           )}
-            <Form
-              action="/logout"
-              //style={{ border: '1px solid red' }}
-              method="POST"
-              className={`p-3 pr-7 bg-themeGreenDark hover:bg-themeCream hover:text-themeBrown rounded-xl flex items-center gap-2 ${
-                !user && 'animate-pulse'
-              } cursor-pointer`}
-            >
-              <img src="./navbar/login.svg" alt="login" className="h-5 w-5" />
-              {user ? (
-                <button>Logout</button>
-              ) : (
-                <Link to="auth?mode=login">Login</Link>
-              )}
-            </Form>
+          <Form
+            action="/logout"
+            //style={{ border: '1px solid red' }}
+            method="POST"
+            className={`p-3 pr-7 bg-themeGreenDark hover:bg-themeCream hover:text-themeBrown rounded-xl flex items-center gap-2 ${
+              !user && 'animate-pulse'
+            } cursor-pointer`}
+          >
+            <img src="./navbar/login.svg" alt="login" className="h-5 w-5" />
+            {user ? (
+              <button>Logout</button>
+            ) : (
+              <Link to="auth?mode=login">Login</Link>
+            )}
+          </Form>
         </div>
       </div>
     </nav>

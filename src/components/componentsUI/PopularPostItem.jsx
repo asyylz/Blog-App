@@ -26,7 +26,7 @@ export default function PopularPostItem({
                 <a href="#" className="text-themeGreenDark">
                   Asiye Yaliz
                 </a>{' '}
-                in{' '}
+                in 
                 <a href="#" className="text-themeGreenDark">
                   {category}
                 </a>

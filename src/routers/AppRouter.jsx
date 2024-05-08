@@ -14,9 +14,7 @@ import { action as combinedAction } from '../components//componentsUI/UserAction
 import EditBlogPostPage from '../pages/EditBlogPostPage';
 import { action as actionUpdatePost } from '../pages/EditBlogPostPage';
 import Logout from '../pages/Logout';
-
-//import { action as actionLike } from '../pages/HomePage';
-//mport { action as actionNewComment } from '../pages/BlogDetailPostPage';
+import { action as searchAction } from '../layouts/RootLayout';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +22,7 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     id: 'root',
+    action: searchAction,
     loader: loaderBlogs,
     children: [
       {
