@@ -5,8 +5,8 @@ import { useRouteLoaderData } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 export default function BlogPostDetails() {
   const post = useRouteLoaderData('blog-detail');
-  const { user } = useAuth();
-console.log(post)
+  //const { user } = useAuth();
+  //console.log(post);
   return (
     <section
       key={post._id}
@@ -18,12 +18,6 @@ console.log(post)
         className="container px-4 mx-auto"
       >
         <div className="grid grid-cols-12">
-          <Link
-            to={-1}
-            className="px-3 py-2 my-4 w-[100px]  sm:w-[200px] text-themeCream bg-themeGreenDark hover:bg-themeGreen hover:animate-bounce delay-150 duration-300 focus:ring-4 focus:outline-none focus:ring-themeGreenDark rounded-xl  text-xs md:text-sm lg:text-lg text-center"
-          >
-            Back
-          </Link>
           <div className="col-span-12 flex flex-col items-center">
             <div
               //style={{ border: '2px solid red' }}

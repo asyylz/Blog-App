@@ -6,12 +6,6 @@ export default function EditBlogPostPage() {
   const post = useRouteLoaderData('blog-detail');
   return (
     <>
-      <Link
-        to={-1}
-        className="px-3 py-2 my-4 w-[100px]  sm:w-[200px] text-themeCream bg-themeGreenDark hover:bg-themeGreen hover:animate-bounce delay-150 duration-300 focus:ring-4 focus:outline-none focus:ring-themeGreenDark rounded-xl  text-xs md:text-sm lg:text-lg text-center"
-      >
-        Back
-      </Link>
       <NewBlogForm post={post} />
     </>
   );

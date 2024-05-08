@@ -1,6 +1,8 @@
 import { Form } from 'react-router-dom';
 import CategoryDropDown from '../componentsUI/CategoryDropDown';
 import { useRouteLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import BackPageButton from './BackPageButton';
 
 const fields = [
   { label: 'Title', type: 'text', name: 'title' },
@@ -11,10 +13,15 @@ const listDropDown = [{ name: 'Published' }, { name: 'Draft' }];
 
 export default function NewBlogForm({ post }) {
   const { categories } = useRouteLoaderData('root');
-  
+
   return (
-    <section className="flex items-center flex-col text-themeBrown mb-40 bg-themeDirtyWhite">
-      <div className="text-center py-8 border-b-4  border-themeGreenDark">
+    <section
+      //style={{ border: '1px solid red' }}
+      className="flex items-center flex-col text-themeBrown mb-40 bg-themeDirtyWhite"
+    >
+      <BackPageButton />
+
+      <div className="text-center py-2 pt-20 border-b-4  border-themeGreenDark">
         <h4 className="text-3xl sm:text-5xl font-bold leading-none">
           Create you own post
         </h4>
