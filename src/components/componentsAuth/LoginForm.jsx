@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useActionData } from 'react-router-dom';
 import { Link, Form } from 'react-router-dom';
-import { useState } from 'react';
 import ModalCustom from '../componentsUI/ModalCustom';
 const registerationFields = [
   { label: 'Email', identifier: 'email', type: 'email' },
@@ -10,11 +9,10 @@ const registerationFields = [
 
 export default function LoginForm({ isSubmitting }) {
   const authActionData = useActionData();
- 
   const navigate = useNavigate();
   const isSuccess = authActionData?.error === false ? true : false;
 
-  if(isSuccess){
+  if (isSuccess) {
     setTimeout(() => {
       navigate('/');
     }, 600);
@@ -26,17 +24,11 @@ export default function LoginForm({ isSubmitting }) {
         <ModalCustom open={isSuccess}>
           <div
             //style={{ border: '1px solid red' }}
-            className="p-4 md:p-5 text-center w-full"
+            className="container w-full flex items-center px-5"
           >
-            <h3 className="mb-5 text-lg font-normal text-gray-500 ">
-              Successfully logged in!
-            </h3>
-            {/* <button
-              //onClick={handleClose}
-              className="w-[100px] py-2.5 px-5 ms-3 text-sm font-medium text-themeCream focus:outline-none bg-themeGreenDark rounded-lg border-2 border-themeGreenDark hover:bg-themeGreen focus:z-10 focus:ring-1 focus:ring-themeGreenDark "
-            >
-              Ok
-            </button> */}
+            <h2 className="w-full p-4 font-ibm-flex text-[30px] text-center text-themeDirtyWhite italic font-thin bg-themeGreenDark rounded-lg border-2 ">
+              You successfuly logged in!
+            </h2>
           </div>
         </ModalCustom>
       )}

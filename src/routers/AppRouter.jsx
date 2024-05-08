@@ -13,6 +13,7 @@ import { action as actionNewPost } from '../pages/NewBlogPostPage';
 import { action as combinedAction } from '../components//componentsUI/UserActions';
 import EditBlogPostPage from '../pages/EditBlogPostPage';
 import { action as actionUpdatePost } from '../pages/EditBlogPostPage';
+import Logout from '../pages/Logout';
 
 //import { action as actionLike } from '../pages/HomePage';
 //mport { action as actionNewComment } from '../pages/BlogDetailPostPage';
@@ -40,6 +41,7 @@ const router = createBrowserRouter([
       {
         path: 'logout',
         action: logoutAction,
+        element: <Logout />,
       },
       {
         path: 'new',

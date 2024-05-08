@@ -9,7 +9,8 @@ export default function RootLayout() {
   const query = new URLSearchParams(location.search);
   const isAuthPage =
     (location.pathname === '/auth' && query.get('mode') === 'register') ||
-    query.get('mode') === 'login';
+    query.get('mode') === 'login' ||
+    location.pathname === '/logout';
 
   return (
     <>

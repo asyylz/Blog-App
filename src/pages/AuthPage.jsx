@@ -41,7 +41,7 @@ export async function action({ request, _ }) {
         'https://38110.fullstack.clarusway.com/auth/login/',
         userData
       );
-      console.log(response.data);
+      //console.log(response.data);
 
       if (response?.data.token && response?.data.user) {
         const userData = {

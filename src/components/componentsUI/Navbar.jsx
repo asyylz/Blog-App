@@ -7,8 +7,6 @@ const menuList = [
 ];
 export default function Navbar() {
   const { user } = useAuth();
-  //const user = JSON.parse(localStorage.getItem('user')) || '';
- 
 
   return (
     <nav
@@ -51,9 +49,9 @@ export default function Navbar() {
               <img className="h-8 ml-3 " src="./navbar/user.svg" alt="user" />
             </div>
           )}
-          <button>
             <Form
               action="/logout"
+              //style={{ border: '1px solid red' }}
               method="POST"
               className={`p-3 pr-7 bg-themeGreenDark hover:bg-themeCream hover:text-themeBrown rounded-xl flex items-center gap-2 ${
                 !user && 'animate-pulse'
@@ -66,7 +64,6 @@ export default function Navbar() {
                 <Link to="auth?mode=login">Login</Link>
               )}
             </Form>
-          </button>
         </div>
       </div>
     </nav>
