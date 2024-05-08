@@ -3,14 +3,8 @@ import RegisterForm from '../components/componentsAuth/RegisterForm';
 import { useLocation } from 'react-router-dom';
 import { redirect } from 'react-router-dom';
 import axios from 'axios';
-import { useState } from 'react';
 import { useNavigation } from 'react-router-dom';
-import { useActionData } from 'react-router-dom';
 export default function AuthPage() {
-
-  
-  const errors = useActionData();
-  console.log(errors);
 
   const location = useLocation();
   const query = new URLSearchParams(location.search);
@@ -40,7 +34,6 @@ export async function action({ request, _ }) {
       email: data.get('email'),
       password: data.get('password'),
     };
-    const errors = {};
 
     console.log(userData);
     try {
@@ -58,7 +51,8 @@ export async function action({ request, _ }) {
         };
         localStorage.setItem('user', JSON.stringify(userData));
       }
-      return redirect('/');
+      return response.data;
+      //return redirect('/');
     } catch (error) {
       if (error.response) {
         console.log(error.response.data);
@@ -118,4 +112,3 @@ export async function action({ request, _ }) {
     }
   }
 }
-
