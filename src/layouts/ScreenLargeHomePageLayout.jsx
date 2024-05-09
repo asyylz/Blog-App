@@ -20,7 +20,7 @@ export default function ScreenLargeHomePageLayout() {
     } else {
       setShownPosts(blogPosts);
     }
-  }, [searchedData]);
+  }, [searchedData,blogPosts]);
 
   return (
     <>

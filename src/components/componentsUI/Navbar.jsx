@@ -30,7 +30,7 @@ export default function Navbar() {
                   key={index}
                   className=" py-1 sm:px-2 text-textColor hover:text-themeBrown"
                 >
-                  <Link href={item.path}>{item.label}</Link>
+                  <Link to={item.path}>{item.label}</Link>
                 </li>
               ))}
             </ul>

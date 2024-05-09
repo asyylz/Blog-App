@@ -4,7 +4,7 @@ import { useRouteLoaderData } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 export default function SearchBar() {
   const { categories } = useRouteLoaderData('root');
-
+  
   return (
     <div
       className="min-w-full container flex items-center justify-center"
@@ -41,10 +41,10 @@ export default function SearchBar() {
         </div>
       </Form>
       <Link
-        to={'/'}
-        className='px-3 py-2 w-[70px] sm:w-[100px] md:w-[130px] text-themeCream bg-themeGreenDark hover:bg-themeGreen hover:animate-pulse focus:ring-2 focus:outline-none focus:ring-themeGreenDark rounded-xl  text-xs md:text-sm lg:text-lg text-center"'
+        to={-1}
+        className='text-center px-3 py-2 w-[70px] sm:w-[100px] md:w-[130px] text-themeCream bg-themeGreenDark hover:bg-themeGreen hover:animate-pulse focus:ring-2 focus:outline-none focus:ring-themeGreenDark rounded-xl  text-xs md:text-sm lg:text-lg text-center"'
       >
-        Clear Search
+        Back
       </Link>
     </div>
   );

@@ -35,7 +35,7 @@ export async function loaderBlogs({ request }) {
   const url = new URL(request.url);
   const page = url.searchParams.get('page') || '1';
   const limit = url.searchParams.get('limit') || '6';
-
+console.log("onClick")
   try {
     const response1 = await axios.get(
       `https://38110.fullstack.clarusway.com/blogs/?page=${page}&limit=${limit}`
