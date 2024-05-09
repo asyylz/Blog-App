@@ -2,25 +2,27 @@ import { useRouteLoaderData } from 'react-router-dom';
 import PostDesignCardA from '../components/componentsUI/PostDesignCardA';
 import PostDesignCardB from '../components/componentsUI/PostDesignCardB';
 import PopularPostItem from '../components/componentsUI/PopularPostItem';
-import { useOutletContext } from 'react-router-dom';
+
 import { useEffect, useState } from 'react';
 
-export default function ScreenLargeHomePageLayout() {
+export default function ScreenLargeHomePageLayout({
+  shownPosts,
+  setShownPosts,
+  searchedData,
+}) {
   const { totalData, blogPosts, categories } = useRouteLoaderData('root');
-  const [shownPosts, setShownPosts] = useState();
-  const searchedData = useOutletContext();
 
   const sortedData = [...totalData].sort(
     (a, b) => b.countOfVisitors - a.countOfVisitors
   );
-  //console.log(shownPosts);
+
   useEffect(() => {
     if (searchedData) {
       setShownPosts(searchedData);
     } else {
       setShownPosts(blogPosts);
     }
-  }, [searchedData,blogPosts]);
+  }, [searchedData, blogPosts]);
 
   return (
     <>

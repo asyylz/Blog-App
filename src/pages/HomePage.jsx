@@ -5,9 +5,12 @@ import ScreenLargeHomePageLayout from '../layouts/ScreenLargeHomePageLayout';
 import SearchBar from '../components/componentsUI/SearchBar';
 import Pagination from '../components/componentsUI/Pagination';
 import { useRouteLoaderData } from 'react-router-dom';
+import { useOutletContext } from 'react-router-dom';
 export default function HomePage() {
   const [isScreenSmall, setIsScreenSmall] = useState(false);
+  const [shownPosts, setShownPosts] = useState();
   const { totalData } = useRouteLoaderData('root');
+  const searchedData = useOutletContext();
   const length = totalData.length;
 
   useEffect(() => {
@@ -30,12 +33,20 @@ export default function HomePage() {
       </p>
       {isScreenSmall ? (
         <>
-          <ScreenSmallHomePageLayout />
+          <ScreenSmallHomePageLayout
+            shownPosts={shownPosts}
+            setShownPosts={setShownPosts}
+            searchedData={searchedData}
+          />
           <Pagination dataLength={length} />
         </>
       ) : (
         <>
-          <ScreenLargeHomePageLayout />
+          <ScreenLargeHomePageLayout
+            shownPosts={shownPosts}
+            setShownPosts={setShownPosts}
+            searchedData={searchedData}
+          />
           <Pagination dataLength={length} />
         </>
       )}

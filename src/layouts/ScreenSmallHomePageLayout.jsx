@@ -1,8 +1,21 @@
 import PostDesignCardB from '../components/componentsUI/PostDesignCardB';
 import { useRouteLoaderData } from 'react-router-dom';
+import { useEffect } from 'react';
 
-export default function ScreenSmallHomePageLayout() {
-  const {blogPosts} = useRouteLoaderData('root');
+export default function ScreenSmallHomePageLayout({
+  shownPosts,
+  setShownPosts,
+  searchedData,
+}) {
+  const { blogPosts } = useRouteLoaderData('root');
+
+  useEffect(() => {
+    if (searchedData) {
+      setShownPosts(searchedData);
+    } else {
+      setShownPosts(blogPosts);
+    }
+  }, [searchedData, blogPosts]);
 
   return (
     <div
@@ -13,12 +26,12 @@ export default function ScreenSmallHomePageLayout() {
         //style={{ border: '3px solid green' }}
         className="container flex gap-y-10 justify-center items-center flex-wrap lg:flex-row"
       >
-        {blogPosts.map((post) => (
+        {shownPosts.map((post) => (
           <div
             key={post._id}
             className="w-full sm:w-1/2 lg:px-2 lg:w-1/2 flex  justify-center"
           >
-            <PostDesignCardB {...post} screen='small'/>
+            <PostDesignCardB {...post} screen="small" />
           </div>
         ))}
       </div>
