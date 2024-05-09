@@ -2,15 +2,27 @@ import { Form } from 'react-router-dom';
 import CategoryDropDown from './CategoryDropDown';
 import { useRouteLoaderData } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
 export default function SearchBar() {
   const { categories } = useRouteLoaderData('root');
-  
+  const navigate = useNavigate();
+  const formRef = useRef(null);
+
+  const handleBack = () => {
+    if (formRef.current) {
+      formRef.current.reset();
+    }
+    navigate(-1);
+  };
+
   return (
     <div
       className="min-w-full container flex items-center justify-center"
       style={{ border: '3px solid red' }}
     >
       <Form
+        ref={formRef}
         method="post"
         action="/"
         className="relative w-[250px] sm:min-w-[300px] md:min-w-[500px]  py-5 mr-7"
@@ -40,12 +52,12 @@ export default function SearchBar() {
           </div>
         </div>
       </Form>
-      <Link
-        to={-1}
+      <button
+        onClick={handleBack}
         className='text-center px-3 py-2 w-[70px] sm:w-[100px] md:w-[130px] text-themeCream bg-themeGreenDark hover:bg-themeGreen hover:animate-pulse focus:ring-2 focus:outline-none focus:ring-themeGreenDark rounded-xl  text-xs md:text-sm lg:text-lg text-center"'
       >
         Back
-      </Link>
+      </button>
     </div>
   );
 }
