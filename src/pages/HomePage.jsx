@@ -10,8 +10,6 @@ export default function HomePage() {
   const { totalData } = useRouteLoaderData('root');
   const length = totalData.length;
 
-
-
   useEffect(() => {
     const checkScreenSize = () => {
       const isScreenSmall = window.matchMedia('(max-width: 768px)').matches;
