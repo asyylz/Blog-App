@@ -2,7 +2,6 @@ import { Form, Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 const menuList = [
   { label: 'Home', path: '/' },
-  { label: 'Search', path: '/' },
   { label: 'Create Your Own', path: '/new' },
 ];
 export default function Navbar() {

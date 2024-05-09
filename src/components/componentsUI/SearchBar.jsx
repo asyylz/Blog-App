@@ -19,7 +19,7 @@ export default function SearchBar() {
   return (
     <div
       className="min-w-full container flex items-center justify-center"
-      style={{ border: '3px solid red' }}
+      //style={{ border: '3px solid red' }}
     >
       <Form
         ref={formRef}

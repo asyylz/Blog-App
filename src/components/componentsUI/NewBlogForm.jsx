@@ -1,9 +1,9 @@
 import { Form } from 'react-router-dom';
 import CategoryDropDown from '../componentsUI/CategoryDropDown';
 import { useRouteLoaderData } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import BackPageButton from './BackPageButton';
 
+import ModalCustom from './ModalCustom';
 const fields = [
   { label: 'Title', type: 'text', name: 'title' },
   { label: 'Image URL', type: 'text', name: 'image' },
