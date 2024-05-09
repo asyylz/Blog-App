@@ -1,12 +1,14 @@
-import { useSubmit } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { json } from 'react-router-dom';
 import axios from 'axios';
-import ModalNotification from './ModalNotification';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-
+import { useActionData } from 'react-router-dom';
+import ModalCustom from './ModalCustom';
+import DeleteModalContent from './DeleteModalContent';
+import { Link } from 'react-router-dom';
+import { useSubmit } from 'react-router-dom';
 
 export default function UserActions({
   likes,
@@ -15,24 +17,42 @@ export default function UserActions({
   id,
   userId,
 }) {
+  const submit =useSubmit()
   const location = useLocation();
   const isIdInURL = location.pathname === `/${id}`;
+  const navigate = useNavigate();
+  const { user } = useAuth();
 
+  /* --------------------- action data -------------------- */
+  const userActionData = useActionData();
+  //console.log(userActionData);
+  const isSuccess = userActionData?.error === false ? true : false;
+  //console.log(isSuccess);
+  if (isSuccess) {
+    setTimeout(() => {
+      navigate('/');
+    }, 600);
+  }
+
+  /* ------------------------ Like ------------------------ */
+  const handleLikeClick = () => {
+    submit({ id: id, actionType: 'like' }, { method: 'POST' });
+  };
+
+  /* ------------------------ Edit ------------------------ */
+  const handleEditClick = () => {
+    if (isIdInURL) {
+      navigate('edit');
+    } else {
+      navigate(`${id}/edit`);
+    }
+  };
+  /* ----------------------- Delete ----------------------- */
   const [openModal, setOpenModal] = useState({
     modalType: '',
     text: '',
     status: false,
   });
-
-  const navigate = useNavigate();
-
-  const { user } = useAuth();
-
-  const submit = useSubmit();
-
-  const handleLikeClick = () => {
-    submit({ id: id, actionType: 'like' }, { method: 'POST' });
-  };
 
   const handleDeleteClick = () => {
     setOpenModal({
@@ -42,23 +62,30 @@ export default function UserActions({
     });
   };
 
-  const handleEditClick = () => {
-    if (isIdInURL) {
-      navigate('edit');
-    } else {
-      navigate(`${id}/edit`);
-    }
-  };
 
   return (
     <>
       {openModal.status && (
-        <ModalNotification
-          //setConfirm={setConfirm}
-          openModal={openModal}
-          setOpenModal={setOpenModal}
-          id={id}
-        />
+        <ModalCustom>
+          <DeleteModalContent
+            setOpenModal={setOpenModal}
+            openModal={openModal}
+            id={id}
+          />
+        </ModalCustom>
+      )}
+
+      {isSuccess && (
+        <ModalCustom>
+          <div
+            //style={{ border: '1px solid red' }}
+            className="container w-full flex items-center px-5"
+          >
+            <h2 className="w-full p-4 font-ibm-flex text-[30px] text-center text-themeDirtyWhite italic font-thin bg-themeGreenDark rounded-lg border-2 ">
+              Blog post successfuly deleted!
+            </h2>
+          </div>
+        </ModalCustom>
       )}
 
       <div className="container flex  w-full justify-between items-center ">
@@ -76,7 +103,8 @@ export default function UserActions({
               className="h-6 w-6 lg:h-7 lg:w-7 cursor-pointer mr-2"
             />
           </div>
-          <div>
+          <Link
+          to={id}>
             <p className="text-themeBrown text-center">
               <small>{comments?.length}</small>
             </p>
@@ -85,7 +113,7 @@ export default function UserActions({
               alt="comments"
               className="h-6 w-6 lg:h-7 lg:w-7 cursor-pointer mr-2"
             />
-          </div>
+          </Link>
           <div>
             <p className="text-themeBrown text-center">
               <small>{countOfVisitors}</small>
@@ -197,8 +225,9 @@ export async function action({ request, params }) {
           },
         }
       );
-      console.log(response.data);
-      return response.data;
+      if (response) {
+        return { error: false ,actionType:'delete'};
+      }
     } catch (error) {
       console.log(error);
       throw error.response;

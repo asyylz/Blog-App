@@ -48,7 +48,7 @@ export async function loaderBlogs({ request }) {
     const totalData = response2.data.data;
     const blogPosts = response1.data.data;
     const categories = response3.data.data;
-    //console.log(totalData);
+    console.log(totalData);
     return { blogPosts, totalData, categories };
   } catch (error) {
     console.error(error);

@@ -21,7 +21,7 @@ export default function LoginForm({ isSubmitting }) {
   return (
     <>
       {isSuccess && (
-        <ModalCustom open={isSuccess}>
+        <ModalCustom>
           <div
             //style={{ border: '1px solid red' }}
             className="container w-full flex items-center px-5"

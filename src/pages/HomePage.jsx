@@ -13,6 +13,7 @@ export default function HomePage() {
   const searchedData = useOutletContext();
   const length = totalData.length;
 
+  
   useEffect(() => {
     const checkScreenSize = () => {
       const isScreenSmall = window.matchMedia('(max-width: 768px)').matches;

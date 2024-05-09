@@ -9,14 +9,13 @@ export default function EditBlogPostPage() {
   const post = useRouteLoaderData('blog-detail');
   const navigate = useNavigate();
   const updateActionData = useActionData();
-
-  console.log(updateActionData);
   const isSuccess = updateActionData?.error === false ? true : false;
+  //console.log(isSuccess);
 
   if (isSuccess) {
     setTimeout(() => {
-      navigate(`/${post._id}`);
-      //navigate(-1);
+      //navigate(`/${post._id}`);
+      navigate(-1);
     }, 700);
   }
 

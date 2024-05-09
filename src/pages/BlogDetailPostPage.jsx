@@ -3,7 +3,6 @@ import { json } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../hooks/useAuth';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import BackPageButton from '../components/componentsUI/BackPageButton';
 export default function BlogDetailPostPage() {
   const { isAuthenticated } = useAuth();
