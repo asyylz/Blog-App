@@ -76,10 +76,10 @@ export default function UserActions({
       )}
 
       {isSuccess && (
-        <ModalCustom>
-          <div
+        <ModalCustom isSuccess={isSuccess}>
+        <div
             //style={{ border: '1px solid red' }}
-            className="container w-full flex items-center px-5"
+            className="container bg-themeDirtyWhite h-[250px] w-full flex items-center px-5 flex-col justify-center rounded-lg"
           >
             <h2 className="w-full p-4 font-ibm-flex text-[30px] text-center text-themeDirtyWhite italic font-thin bg-themeGreenDark rounded-lg border-2 ">
               Blog post successfuly deleted!

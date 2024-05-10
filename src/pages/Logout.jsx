@@ -13,18 +13,11 @@ export default function Logout() {
   console.log(isSuccess);
   return (
     isSuccess && (
-      <section
-        className="bg-palePattern bg-center h-screen"
-      >
+      <section className="bg-palePattern bg-center h-screen">
         <ModalCustom isSuccess={isSuccess}>
-          <div
-            //style={{ border: '1px solid red' }}
-            className="container bg-themeDirtyWhite h-[250px] w-full flex items-center px-5 flex-col justify-center rounded-lg"
-          >
-            <h2 className="w-full p-4 font-ibm-flex text-[30px] text-center text-themeDirtyWhite italic font-thin bg-themeGreenDark rounded-lg border-2 ">
-              You successfuly logged out!
-            </h2>
-          </div>
+          <h2 className="w-full p-4 font-ibm-flex text-[30px] text-center text-themeDirtyWhite italic font-thin bg-themeGreenDark rounded-lg border-2 ">
+            You successfuly logged out!
+          </h2>
         </ModalCustom>
       </section>
     )
