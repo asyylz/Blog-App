@@ -6,14 +6,14 @@ import { useActionData } from 'react-router-dom';
 import ModalCustom from '../components/componentsUI/ModalCustom';
 export default function EditBlogPostPage() {
   const post = useRouteLoaderData('blog-detail');
-
+console.log(post._id)
   const updateActionData = useActionData();
   const isSuccess = updateActionData?.error === false ? true : false;
 
   return (
     <>
       {isSuccess && (
-        <ModalCustom isSuccess={isSuccess}>
+        <ModalCustom isSuccess={isSuccess} comingFromUpdate postId={post._id}>
           <h2 className="w-full p-4 font-ibm-flex text-[30px] text-center text-themeDirtyWhite italic font-thin bg-themeGreenDark rounded-lg border-2 ">
             You successfuly update your post!
           </h2>

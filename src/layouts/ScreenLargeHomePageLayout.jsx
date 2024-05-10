@@ -3,53 +3,18 @@ import PostDesignCardA from '../components/componentsUI/PostDesignCardA';
 import PostDesignCardB from '../components/componentsUI/PostDesignCardB';
 import PopularPostItem from '../components/componentsUI/PopularPostItem';
 import { useEffect } from 'react';
-import useSWR from 'swr';
-import useHttp from '../hooks/useHttp';
 export default function ScreenLargeHomePageLayout({
   shownPosts,
   setShownPosts,
   searchedData,
 }) {
-  const { fetcher } = useHttp();
-
-  const {
-    blogPosts,
-    totalData: initialTotalData,
-    categories: initialCategories,
-  } = useRouteLoaderData('root');
-
-  //console.log(initialTotalData);
-
-  const { data: totalData, errorTotalData } = useSWR(
-    'https://38110.fullstack.clarusway.com/blogs/',
-    fetcher,
-    {
-      initialData: initialTotalData, // Use initial data from the loader
-      revalidateOnMount: false, // Do not revalidate immediately
-      revalidateOnFocus: false,
-      revalidateOnReconnect: true,
-      refreshWhenHidden: false,
-    }
-  );
-
-  const { data: categories, errorCategories } = useSWR(
-    'https://38110.fullstack.clarusway.com/categories/',
-    fetcher,
-    {
-      initialData: initialCategories, // Use initial data from the loader
-      revalidateOnMount: false, // Do not revalidate immediately
-      revalidateOnFocus: false,
-      revalidateOnReconnect: true,
-      refreshWhenHidden: false,
-    }
-  );
 
 
-  const sortedData = [...initialTotalData].sort(
+  const { blogPosts, totalData, categories } = useRouteLoaderData('root');
+
+  const sortedData = [...totalData].sort(
     (a, b) => b.countOfVisitors - a.countOfVisitors
   );
-
-  
 
   useEffect(() => {
     if (searchedData) {
@@ -119,7 +84,7 @@ export default function ScreenLargeHomePageLayout({
                   {...post}
                   rank={index + 1}
                   category={(() => {
-                    const match = initialCategories.find(
+                    const match = categories.find(
                       (category) => category._id === post.categoryId
                     );
                     return match ? match.name : 'Default Category Name';

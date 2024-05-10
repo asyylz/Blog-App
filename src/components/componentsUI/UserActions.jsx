@@ -29,7 +29,6 @@ export default function UserActions({
   const isSuccess = userActionData?.error === false ? true : false;
   //console.log(isSuccess);
 
-
   /* ------------------------ Like ------------------------ */
   const handleLikeClick = () => {
     submit({ id: id, actionType: 'like' }, { method: 'POST' });
@@ -61,7 +60,7 @@ export default function UserActions({
   return (
     <>
       {openModal.status && (
-        <ModalCustom>
+        <ModalCustom comingFromDelete>
           <DeleteModalContent
             setOpenModal={setOpenModal}
             openModal={openModal}
@@ -71,7 +70,7 @@ export default function UserActions({
       )}
 
       {isSuccess && (
-        <ModalCustom isSuccess={isSuccess}>
+        <ModalCustom>
           <h2 className="w-full p-4 font-ibm-flex text-[30px] text-center text-themeDirtyWhite italic font-thin bg-themeGreenDark rounded-lg border-2 ">
             Blog post successfuly deleted!
           </h2>
@@ -217,6 +216,7 @@ export async function action({ request, params }) {
       if (response) {
         return { error: false, actionType: 'delete' };
       }
+      console.log(response)
     } catch (error) {
       console.log(error);
       throw error.response;

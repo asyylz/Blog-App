@@ -41,10 +41,11 @@ export async function loader({ params }) {
       }
     );
     const post = response.data.data;
+    console.log(post)
     return post;
   } catch (error) {
     console.log(error);
-    //return  error
+    throw error;
     //json({}, { status: 401, statusText: 'You should login.' });
   }
 }

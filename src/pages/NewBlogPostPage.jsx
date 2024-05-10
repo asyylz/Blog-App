@@ -8,7 +8,7 @@ import ModalCustom from '../components/componentsUI/ModalCustom';
 export default function NewBlogPostPage() {
   const updateData = useActionData();
   const { isAuthenticated } = useAuth();
-
+ // console.log(updateData);
   const isSuccess = updateData?.error === false ? true : false;
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function NewBlogPostPage() {
       )}
 
       {isSuccess && (
-        <ModalCustom isSuccess={isSuccess}>
+        <ModalCustom isSuccess={isSuccess} newPostId={updateData.data._id}>
           <h2 className="w-full p-4 font-ibm-flex text-[30px] text-center text-themeDirtyWhite italic font-thin bg-themeGreenDark rounded-lg border-2 ">
             You successfuly created a new blog post.
           </h2>
@@ -57,14 +57,6 @@ export async function action({ request }) {
       }
     );
     console.log(response.data);
-    // return new Response(JSON.stringify({ redirect: '/' }), {
-    //   status: 303,
-    //   headers: {
-    //     Location: '/',
-    //     'Content-Type': 'application/json',
-    //   },
-    // });
-
     return response.data;
   } catch (error) {
     if (error.response) {

@@ -13,11 +13,6 @@ export default function HomePage() {
   const searchedData = useOutletContext();
   const length = totalData.length;
 
-  
-
-
-
-
 
   /* -------------------- screen check -------------------- */
   useEffect(() => {

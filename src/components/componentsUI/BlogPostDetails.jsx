@@ -1,12 +1,10 @@
-import { Link } from 'react-router-dom';
 import CommentsBlockHeader from './CommentsBlockHeader';
 import UserActions from '../componentsUI/UserActions';
 import { useRouteLoaderData } from 'react-router-dom';
-import { useAuth } from '../../hooks/useAuth';
+
 export default function BlogPostDetails() {
   const post = useRouteLoaderData('blog-detail');
-  //const { user } = useAuth();
-  //console.log(post);
+
   return (
     <section
       key={post._id}
@@ -38,7 +36,7 @@ export default function BlogPostDetails() {
                 </i>
                 <i className="fas fa-calendar-alt ml-4 mr-2">
                   {' '}
-                  Updated:{post.updatedAt?.split('T')[0]}
+                  Updated:{post?.updatedAt?.split('T')[0]}
                 </i>
               </p>
             </div>
@@ -50,7 +48,7 @@ export default function BlogPostDetails() {
               <UserActions
                 likes={post.likes}
                 comments={post.comments}
-                countOfVisitors={post.countOfVisitors}
+                countOfVisitors={post?.countOfVisitors}
                 id={post._id}
                 userId={post.userId._id}
               />
@@ -77,7 +75,7 @@ export default function BlogPostDetails() {
                 <div>
                   <p>
                     by{' '}
-                    <b>{`${post.userId?.firstName} ${post.userId?.lastName}`}</b>
+                    <b>{`${post?.userId?.firstName} ${post?.userId?.lastName}`}</b>
                   </p>
                 </div>
               </div>

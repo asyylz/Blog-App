@@ -2,12 +2,10 @@ import { Outlet } from 'react-router-dom';
 import Navbar from '../components/componentsUI/Navbar';
 import axios from 'axios';
 import Footer from '../components/componentsUI/Footer';
-import { useLocation } from 'react-router-dom';
-import { useActionData } from 'react-router-dom';
+import { useLocation, useActionData } from 'react-router-dom';
 
 export default function RootLayout() {
   const data = useActionData();
-
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const isAuthPage =
@@ -47,7 +45,7 @@ export async function loaderBlogs({ request }) {
     );
     const totalData = response2.data.data;
     const blogPosts = response1.data.data;
-    console.log(blogPosts)
+    console.log(blogPosts);
     const categories = response3.data.data;
     console.log(totalData);
     return { blogPosts, totalData, categories };
@@ -67,6 +65,7 @@ export async function action({ request }) {
       `https://38110.fullstack.clarusway.com/blogs/?page=1&limit=10&filter[categoryId]=${categoryId}&search[title]=a&search[content]=${search}`
     );
     const searchedBlogPosts = response.data.data;
+    console.log(searchedBlogPosts)
 
     return { searchedBlogPosts };
   } catch (error) {
