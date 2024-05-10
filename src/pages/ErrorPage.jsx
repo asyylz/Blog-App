@@ -39,7 +39,7 @@ export default function ErrorPage() {
   return (
     <>
       <section
-        style={{ backgroundImage: "url('/assets/background.jpg')" }}
+        //style={{ backgroundImage: "url('/assets/background.jpg')" }}
         className="bg-palePattern bg-center h-screen"
       >
         <Navbar />

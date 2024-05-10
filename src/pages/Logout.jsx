@@ -4,32 +4,29 @@ import { useAuth } from '../hooks/useAuth';
 import { useActionData } from 'react-router-dom';
 import React from 'react';
 import ModalCustom from '../components/componentsUI/ModalCustom';
-import { useNavigate } from 'react-router-dom';
 
 export default function Logout() {
   const authActionData = useActionData();
   console.log(authActionData);
-  const navigate = useNavigate();
   const isSuccess = authActionData?.error === false ? true : false;
 
-  if (isSuccess) {
-    setTimeout(() => {
-      navigate('/');
-    }, 800);
-  }
   console.log(isSuccess);
   return (
     isSuccess && (
-      <ModalCustom open={isSuccess}>
-        <div
-          //style={{ border: '1px solid red' }}
-          className="container w-full flex items-center px-5"
-        >
-          <h2 className="w-full p-4 font-ibm-flex text-[30px] text-center text-themeDirtyWhite italic font-thin bg-themeGreenDark rounded-lg border-2 ">
-            You successfuly logged out!
-          </h2>
-        </div>
-      </ModalCustom>
+      <section
+        className="bg-palePattern bg-center h-screen"
+      >
+        <ModalCustom isSuccess={isSuccess}>
+          <div
+            //style={{ border: '1px solid red' }}
+            className="container bg-themeDirtyWhite h-[250px] w-full flex items-center px-5 flex-col justify-center rounded-lg"
+          >
+            <h2 className="w-full p-4 font-ibm-flex text-[30px] text-center text-themeDirtyWhite italic font-thin bg-themeGreenDark rounded-lg border-2 ">
+              You successfuly logged out!
+            </h2>
+          </div>
+        </ModalCustom>
+      </section>
     )
   );
 }

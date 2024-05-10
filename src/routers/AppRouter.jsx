@@ -15,7 +15,7 @@ import EditBlogPostPage from '../pages/EditBlogPostPage';
 import { action as actionUpdatePost } from '../pages/EditBlogPostPage';
 import Logout from '../pages/Logout';
 import { action as searchAction } from '../layouts/RootLayout';
-import BlogPosts from '../PersonalUse/swrFetchPosts';
+import { action as newsletterAction } from '../components/componentsUI/NewsletterSignUp';
 
 const router = createBrowserRouter([
   {
@@ -57,7 +57,6 @@ const router = createBrowserRouter([
             index: true,
             element: <BlogDetailPostPage />,
             action: combinedAction,
-            //action: actionNewComment,
           },
           {
             path: 'edit',
@@ -65,6 +64,10 @@ const router = createBrowserRouter([
             action: actionUpdatePost,
           },
         ],
+      },
+      {
+        path: 'newsletter',
+        action: newsletterAction,
       },
     ],
   },

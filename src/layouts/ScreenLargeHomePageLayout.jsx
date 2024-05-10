@@ -18,7 +18,7 @@ export default function ScreenLargeHomePageLayout({
     categories: initialCategories,
   } = useRouteLoaderData('root');
 
-  console.log(initialTotalData);
+  //console.log(initialTotalData);
 
   const { data: totalData, errorTotalData } = useSWR(
     'https://38110.fullstack.clarusway.com/blogs/',
@@ -48,7 +48,7 @@ export default function ScreenLargeHomePageLayout({
     console.log('Component mounted or updated');
   }, []);
 
-  console.log('Fetching data with SWR:', totalData);
+  //console.log('Fetching data with SWR:', totalData);
 
   const sortedData = [...initialTotalData].sort(
     (a, b) => b.countOfVisitors - a.countOfVisitors

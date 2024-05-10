@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import NewsletterSignUp from '../componentsUI/NewsletterSignUp';
 
 const fields = [
   {
@@ -13,7 +14,9 @@ export default function Footer() {
       //style={{ border: '1px solid red' }}
       className="bg-themeCream p-8 sm:p-6 bg-fixed bottom-0 mt-20 shadow-themeShadow"
     >
-      <div className="mx-auto max-w-screen-xl">
+      <div 
+      //style={{ border: '1px solid red' }}
+      className="mx-auto max-w-screen-2xl">
         <div className="md:flex md:justify-between">
           <div
             //style={{ border: '1px solid red' }}
@@ -21,6 +24,7 @@ export default function Footer() {
           >
             BLOG WORLD
           </div>
+          <NewsletterSignUp />
           <div
             //style={{ border: '1px solid red' }}
             className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3"

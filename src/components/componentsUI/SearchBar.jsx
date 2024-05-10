@@ -1,7 +1,6 @@
 import { Form } from 'react-router-dom';
 import CategoryDropDown from './CategoryDropDown';
 import { useRouteLoaderData } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
 export default function SearchBar() {
@@ -56,7 +55,7 @@ export default function SearchBar() {
         onClick={handleBack}
         className='text-center px-3 py-2 w-[70px] sm:w-[100px] md:w-[130px] text-themeCream bg-themeGreenDark hover:bg-themeGreen hover:animate-pulse focus:ring-2 focus:outline-none focus:ring-themeGreenDark rounded-xl  text-xs md:text-sm lg:text-lg text-center"'
       >
-        Back
+        Clear
       </button>
     </div>
   );

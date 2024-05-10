@@ -9,22 +9,15 @@ const registerationFields = [
 
 export default function LoginForm({ isSubmitting }) {
   const authActionData = useActionData();
-  const navigate = useNavigate();
   const isSuccess = authActionData?.error === false ? true : false;
-
-  if (isSuccess) {
-    setTimeout(() => {
-      navigate('/');
-    }, 600);
-  }
 
   return (
     <>
       {isSuccess && (
-        <ModalCustom>
+        <ModalCustom isSuccess={isSuccess}>
           <div
             //style={{ border: '1px solid red' }}
-            className="container w-full flex items-center px-5"
+            className="container bg-themeDirtyWhite h-[250px] w-full flex items-center px-5 flex-col justify-center rounded-lg"
           >
             <h2 className="w-full p-4 font-ibm-flex text-[30px] text-center text-themeDirtyWhite italic font-thin bg-themeGreenDark rounded-lg border-2 ">
               You successfuly logged in!
