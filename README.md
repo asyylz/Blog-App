@@ -10,16 +10,22 @@
         <h2>Key Features
         </h2>
         <ul>
-            <li><strong>Responsive Design:</strong></li>Two distinct layouts to accommodate mobile screens and large screens.
-            <li><strong>React Router</strong></li>Utilizes React Router for efficient, client-side page navigation.
-            <li><strong>Private Routes</strong></li> Ensures secure access to authenticated user pages using Firebase
+            <li><strong>Responsive Design:</strong></li>Two distinct layouts to accommodate mobile screens and large
+            screens.
+            <li><strong>React Router:</strong></li>Utilizes React Router for efficient, client-side page navigation.
+            <li><strong>Private Routes:</strong></li> Ensures secure access to authenticated user pages using Firebase
             authentication.
-            <li><strong>Axios: </strong></li>Handles HTTP requests to fetch blog data from a backend server.
-            <li><strong>Modal Window: </strong></li> Custom modal windows display success and error messages, enhancing user interactions.
-            <li><strong>Tailwind</strong></li> Offers a comprehensive suite of UI tools to create intuitive and
+            <li><strong>Axios:</strong></li>Handles HTTP requests to fetch blog data from a backend server.
+            <li><strong>Modal Window: </strong></li> Custom modal windows display success and error messages, enhancing
+            user interactions.
+            <li><strong>Tailwind:</strong></li> Offers a comprehensive suite of UI tools to create intuitive and
             responsive designs.
-            <li><strong>Blog Post Cards: </strong></li> Features two different designs for blog post cards on large screens, providing a visually engaging user interface.
-            <li><strong>Custom Notification</strong></li> Provides elegant notifications and alerts for user interactions.
+            <li><strong>Blog Post Cards: </strong></li> Features two different designs for blog post cards on large
+            screens, providing a visually engaging user interface.
+            <li><strong>Custom Notification:</strong></li> Provides elegant notifications and alerts for user
+            interactions.
+            <li><strong>Newsletter Signup:</strong></li>Allows users to subscribe to updates and newsletters, keeping
+            them informed about the latest blog posts and news.
         </ul>
     </section>
     <section id="getting-started">
@@ -34,9 +40,9 @@
         <h3>1.Installation</h3>
         <ol>
             <li>Clone the repository to your local machine using the following command:</li>
-            <pre><code>git clone https://github.com/yourusername/BlogApp.git</code></pre>
+            <pre><code>git clone https://github.com/asyylz/Blog-App.git</code></pre>
             <li>Navigate to the project directory you choose:</li>
-            <pre><code>cd blog-app</code></pre>
+            <pre><code>cd Blog-App</code></pre>
             <li>Install project dependencies using npm:</li>
             <pre><code>npm install</code></pre>
         </ol>
