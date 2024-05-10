@@ -3,8 +3,13 @@ import NewBlogForm from '../components/componentsUI/NewBlogForm';
 import { useAuth } from '../hooks/useAuth';
 import axios from 'axios';
 import { json } from 'react-router-dom';
+import { useActionData } from 'react-router-dom';
+import ModalCustom from '../components/componentsUI/ModalCustom';
 export default function NewBlogPostPage() {
+  const updateData = useActionData();
   const { isAuthenticated } = useAuth();
+
+  const isSuccess = updateData?.error === false ? true : false;
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -13,16 +18,24 @@ export default function NewBlogPostPage() {
   }, []);
 
   return (
-    isAuthenticated && (
-      <div
-        //style={{ border: '1px solid red' }}
-        className="min-h-screen py-10 "
-      >
-        <NewBlogForm />
-      </div>
-    )
+    <>
+      {isAuthenticated && (
+        <div className="min-h-screen py-10">
+          <NewBlogForm />
+        </div>
+      )}
+
+      {isSuccess && (
+        <ModalCustom isSuccess={isSuccess}>
+          <h2 className="w-full p-4 font-ibm-flex text-[30px] text-center text-themeDirtyWhite italic font-thin bg-themeGreenDark rounded-lg border-2 ">
+            You successfuly created a new blog post.
+          </h2>
+        </ModalCustom>
+      )}
+    </>
   );
 }
+
 export async function action({ request }) {
   const { user } = useAuth();
   const data = await request.formData();
@@ -44,13 +57,15 @@ export async function action({ request }) {
       }
     );
     console.log(response.data);
-    return new Response(JSON.stringify({ redirect: '/' }), {
-      status: 303,
-      headers: {
-        Location: '/',
-        'Content-Type': 'application/json',
-      },
-    });
+    // return new Response(JSON.stringify({ redirect: '/' }), {
+    //   status: 303,
+    //   headers: {
+    //     Location: '/',
+    //     'Content-Type': 'application/json',
+    //   },
+    // });
+
+    return response.data;
   } catch (error) {
     if (error.response) {
       throw error.response;

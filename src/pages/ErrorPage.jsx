@@ -39,12 +39,12 @@ export default function ErrorPage() {
   return (
     <>
       <section
-        //style={{ backgroundImage: "url('/assets/background.jpg')" }}
-        className="bg-palePattern bg-center h-screen"
+        style={{ backgroundImage: "url('/assets/background.jpg')" }}
+        className="bg-center h-screen"
       >
         <Navbar />
         {error && (
-          <ModalCustom>
+          <ModalCustom comingFromErrorPage>
             <PageContent title={title}>
               <p>{subTitle}</p>
               <p>{message}</p>

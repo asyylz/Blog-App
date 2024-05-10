@@ -17,7 +17,7 @@ export default function UserActions({
   id,
   userId,
 }) {
-  const submit =useSubmit()
+  const submit = useSubmit();
   const location = useLocation();
   const isIdInURL = location.pathname === `/${id}`;
   const navigate = useNavigate();
@@ -28,11 +28,7 @@ export default function UserActions({
   //console.log(userActionData);
   const isSuccess = userActionData?.error === false ? true : false;
   //console.log(isSuccess);
-  if (isSuccess) {
-    setTimeout(() => {
-      navigate('/');
-    }, 1000);
-  }
+
 
   /* ------------------------ Like ------------------------ */
   const handleLikeClick = () => {
@@ -62,7 +58,6 @@ export default function UserActions({
     });
   };
 
-
   return (
     <>
       {openModal.status && (
@@ -77,14 +72,9 @@ export default function UserActions({
 
       {isSuccess && (
         <ModalCustom isSuccess={isSuccess}>
-        <div
-            //style={{ border: '1px solid red' }}
-            className="container bg-themeDirtyWhite h-[250px] w-full flex items-center px-5 flex-col justify-center rounded-lg"
-          >
-            <h2 className="w-full p-4 font-ibm-flex text-[30px] text-center text-themeDirtyWhite italic font-thin bg-themeGreenDark rounded-lg border-2 ">
-              Blog post successfuly deleted!
-            </h2>
-          </div>
+          <h2 className="w-full p-4 font-ibm-flex text-[30px] text-center text-themeDirtyWhite italic font-thin bg-themeGreenDark rounded-lg border-2 ">
+            Blog post successfuly deleted!
+          </h2>
         </ModalCustom>
       )}
 
@@ -103,8 +93,7 @@ export default function UserActions({
               className="h-6 w-6 lg:h-7 lg:w-7 cursor-pointer mr-2"
             />
           </div>
-          <Link
-          to={id}>
+          <Link to={id}>
             <p className="text-themeBrown text-center">
               <small>{comments?.length}</small>
             </p>
@@ -226,7 +215,7 @@ export async function action({ request, params }) {
         }
       );
       if (response) {
-        return { error: false ,actionType:'delete'};
+        return { error: false, actionType: 'delete' };
       }
     } catch (error) {
       console.log(error);

@@ -14,6 +14,12 @@ export default function HomePage() {
   const length = totalData.length;
 
   
+
+
+
+
+
+  /* -------------------- screen check -------------------- */
   useEffect(() => {
     const checkScreenSize = () => {
       const isScreenSmall = window.matchMedia('(max-width: 768px)').matches;

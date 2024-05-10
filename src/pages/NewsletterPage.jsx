@@ -3,12 +3,7 @@ import NewsletterSignup from '../components/componentsUI/NewsletterSignUp';
 import { useActionData } from 'react-router-dom';
 
 export default function NewsletterPage() {
-
-  return (
-    <PageContent title="Join our awesome newsletter!">
-      <NewsletterSignup />
-    </PageContent>
-  );
+  return <NewsletterSignup />;
 }
 
 export async function action({ request }) {

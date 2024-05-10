@@ -1,24 +1,27 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useFetcher } from 'react-router-dom';
 import ModalCustom from './ModalCustom';
 
 export default function NewsletterSignup() {
+  const [open, setOpen] = useState(false);
   const fetcher = useFetcher();
   const { data, state } = fetcher;
-  console.log(state);
-  console.log(data);
-  console.log(data?.message);
-
   const isSuccess = state === 'idle' && data && data?.message && true;
-  console.log(isSuccess);
 
-  if (isSuccess) {
+  useEffect(() => {
+    if (isSuccess) {
+      setOpen(true);
+    }
+  }, [isSuccess]);
+
+  const handleCloseModal = () => {
+    setOpen(false);
+  };
+
+  if (open) {
     return (
-      <ModalCustom isSuccess={isSuccess}>
-        <div
-          //style={{ border: '1px solid red' }}
-          className="container bg-themeDirtyWhite h-[250px] w-full flex items-center px-5 flex-col justify-center rounded-lg"
-        >
+      <ModalCustom onClose={handleCloseModal} >
+        <div className="container bg-themeDirtyWhite h-[250px] w-full flex items-center px-5 flex-col justify-center rounded-lg">
           <h2 className="w-full p-4 font-ibm-flex text-[30px] text-center text-themeDirtyWhite italic font-thin bg-themeGreenDark rounded-lg border-2 ">
             {data?.email}
             <br />

@@ -44,15 +44,12 @@ export default function ScreenLargeHomePageLayout({
     }
   );
 
-  useEffect(() => {
-    console.log('Component mounted or updated');
-  }, []);
-
-  //console.log('Fetching data with SWR:', totalData);
 
   const sortedData = [...initialTotalData].sort(
     (a, b) => b.countOfVisitors - a.countOfVisitors
   );
+
+  
 
   useEffect(() => {
     if (searchedData) {

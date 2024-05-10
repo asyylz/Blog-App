@@ -4,30 +4,19 @@ import { useAuth } from '../hooks/useAuth';
 import NewBlogForm from '../components/componentsUI/NewBlogForm';
 import { useActionData } from 'react-router-dom';
 import ModalCustom from '../components/componentsUI/ModalCustom';
-import { useNavigate } from 'react-router-dom';
 export default function EditBlogPostPage() {
   const post = useRouteLoaderData('blog-detail');
-  const navigate = useNavigate();
+
   const updateActionData = useActionData();
   const isSuccess = updateActionData?.error === false ? true : false;
-  //console.log(isSuccess);
-
-  if (isSuccess) {
-    setTimeout(() => {
-      //navigate(`/${post._id}`);
-      navigate(-1);
-    }, 700);
-  }
 
   return (
     <>
       {isSuccess && (
-        <ModalCustom open={isSuccess}>
-          <div className="container w-full flex items-center px-5">
-            <h2 className="w-full p-4 font-ibm-flex text-[30px] text-center text-themeDirtyWhite italic font-thin bg-themeGreenDark rounded-lg border-2 ">
-              You successfuly update your post!
-            </h2>
-          </div>
+        <ModalCustom isSuccess={isSuccess}>
+          <h2 className="w-full p-4 font-ibm-flex text-[30px] text-center text-themeDirtyWhite italic font-thin bg-themeGreenDark rounded-lg border-2 ">
+            You successfuly update your post!
+          </h2>
         </ModalCustom>
       )}
       <NewBlogForm post={post} />

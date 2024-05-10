@@ -1,4 +1,3 @@
-import { redirect } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../hooks/useAuth';
 import { useActionData } from 'react-router-dom';
@@ -7,14 +6,14 @@ import ModalCustom from '../components/componentsUI/ModalCustom';
 
 export default function Logout() {
   const authActionData = useActionData();
-  console.log(authActionData);
   const isSuccess = authActionData?.error === false ? true : false;
 
-  console.log(isSuccess);
   return (
     isSuccess && (
-      <section className="bg-palePattern bg-center h-screen">
-        <ModalCustom isSuccess={isSuccess}>
+      <section 
+      style={{ backgroundImage: "url('/assets/background.jpg')" }}
+      className="bg-palePattern bg-center h-screen">
+        <ModalCustom>
           <h2 className="w-full p-4 font-ibm-flex text-[30px] text-center text-themeDirtyWhite italic font-thin bg-themeGreenDark rounded-lg border-2 ">
             You successfuly logged out!
           </h2>
@@ -28,7 +27,7 @@ export async function action() {
   const { user } = useAuth();
   if (!user) {
     console.log('No user found in localStorage.');
-    return redirect('/');
+    //return redirect('/');
   }
 
   try {
