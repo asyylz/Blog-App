@@ -15,6 +15,7 @@ import EditBlogPostPage from '../pages/EditBlogPostPage';
 import { action as actionUpdatePost } from '../pages/EditBlogPostPage';
 import Logout from '../pages/Logout';
 import { action as searchAction } from '../layouts/RootLayout';
+import BlogPosts from '../PersonalUse/swrFetchPosts';
 
 const router = createBrowserRouter([
   {

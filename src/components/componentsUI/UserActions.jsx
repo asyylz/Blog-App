@@ -31,7 +31,7 @@ export default function UserActions({
   if (isSuccess) {
     setTimeout(() => {
       navigate('/');
-    }, 600);
+    }, 1000);
   }
 
   /* ------------------------ Like ------------------------ */

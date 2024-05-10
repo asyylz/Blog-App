@@ -2,17 +2,55 @@ import { useRouteLoaderData } from 'react-router-dom';
 import PostDesignCardA from '../components/componentsUI/PostDesignCardA';
 import PostDesignCardB from '../components/componentsUI/PostDesignCardB';
 import PopularPostItem from '../components/componentsUI/PopularPostItem';
-
-import { useEffect, useState } from 'react';
-
+import { useEffect } from 'react';
+import useSWR from 'swr';
+import useHttp from '../hooks/useHttp';
 export default function ScreenLargeHomePageLayout({
   shownPosts,
   setShownPosts,
   searchedData,
 }) {
-  const { totalData, blogPosts, categories } = useRouteLoaderData('root');
+  const { fetcher } = useHttp();
 
-  const sortedData = [...totalData].sort(
+  const {
+    blogPosts,
+    totalData: initialTotalData,
+    categories: initialCategories,
+  } = useRouteLoaderData('root');
+
+  console.log(initialTotalData);
+
+  const { data: totalData, errorTotalData } = useSWR(
+    'https://38110.fullstack.clarusway.com/blogs/',
+    fetcher,
+    {
+      initialData: initialTotalData, // Use initial data from the loader
+      revalidateOnMount: false, // Do not revalidate immediately
+      revalidateOnFocus: false,
+      revalidateOnReconnect: true,
+      refreshWhenHidden: false,
+    }
+  );
+
+  const { data: categories, errorCategories } = useSWR(
+    'https://38110.fullstack.clarusway.com/categories/',
+    fetcher,
+    {
+      initialData: initialCategories, // Use initial data from the loader
+      revalidateOnMount: false, // Do not revalidate immediately
+      revalidateOnFocus: false,
+      revalidateOnReconnect: true,
+      refreshWhenHidden: false,
+    }
+  );
+
+  useEffect(() => {
+    console.log('Component mounted or updated');
+  }, []);
+
+  console.log('Fetching data with SWR:', totalData);
+
+  const sortedData = [...initialTotalData].sort(
     (a, b) => b.countOfVisitors - a.countOfVisitors
   );
 
@@ -84,7 +122,7 @@ export default function ScreenLargeHomePageLayout({
                   {...post}
                   rank={index + 1}
                   category={(() => {
-                    const match = categories.find(
+                    const match = initialCategories.find(
                       (category) => category._id === post.categoryId
                     );
                     return match ? match.name : 'Default Category Name';

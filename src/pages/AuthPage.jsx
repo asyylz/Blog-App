@@ -51,6 +51,7 @@ export async function action({ request, _ }) {
         };
         localStorage.setItem('user', JSON.stringify(userData));
       }
+      //console.log(response.data)
       return response.data;
       //return redirect('/');
     } catch (error) {

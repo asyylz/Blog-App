@@ -1,12 +1,13 @@
 import { Form, Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
+
 const menuList = [
   { label: 'Home', path: '/' },
   { label: 'Create Your Own', path: '/new' },
 ];
+
 export default function Navbar() {
   const { user } = useAuth();
-
   return (
     <nav
       //style={{ border: '2px solid red' }}

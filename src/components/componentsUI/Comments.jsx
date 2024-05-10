@@ -14,6 +14,19 @@ export default function Comments() {
       setCurrentShown(0);
     }
   }
+  console.log(currentShown);
+  // Assuming post.comments is always defined and is an array
+  let displayText;
+  if (post.comments.length === 0) {
+    displayText = 'No comments yet';
+  } else if (currentShown === 0) {
+    displayText = 'Show comments';
+  } else if (isEnd || currentShown > post.comments.length) {
+    displayText = 'No more comments';
+  } else {
+    displayText = 'Load more comments';
+  }
+
   return (
     <>
       {post.comments
@@ -61,13 +74,14 @@ export default function Comments() {
               : 'bg-themeGreenDark'
           }`}
         >
-          {currentShown === 0 && !isEnd
+          {/* {currentShown === 0 && !isEnd
             ? 'Show comments'
             : isEnd && currentShown !== 0
             ? 'No more comments'
             : post.comments.length === 0
             ? 'No comments yet'
-            : 'Load more comments'}
+            : 'Load more comments'} */}
+          {displayText}
         </button>
       </div>
     </>
