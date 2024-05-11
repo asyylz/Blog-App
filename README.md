@@ -53,7 +53,7 @@
     <section>
         <h2>Output Gif </h2>
         <img width="100%" height="auto"
-            src=" https://github.com/asyylz/Blog-App/blob/cdaca8a2b2cffc3331241989eff73c386627744e/public/blog-appgif.gif"
+            src="https://github.com/asyylz/Blog-App/blob/cdaca8a2b2cffc3331241989eff73c386627744e/public/blog-appgif.gif"
             alt="">
     </section>
     <section>
