@@ -26,6 +26,7 @@
             interactions.
             <li><strong>Newsletter Signup:</strong></li>Allows users to subscribe to updates and newsletters, keeping
             them informed about the latest blog posts and news.
+            <li><strong>Social Sharing Buttons:</strong></li> Integrate social sharing buttons directly into your blog posts, providing users with quick access to share content on platforms such as Facebook, Twitter, LinkedIn, Pinterest, WhatsApp, and via email.
         </ul>
     </section>
     <section id="getting-started">
