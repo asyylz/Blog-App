@@ -26,7 +26,9 @@
             interactions.
             <li><strong>Newsletter Signup:</strong></li>Allows users to subscribe to updates and newsletters, keeping
             them informed about the latest blog posts and news.
-            <li><strong>Social Sharing Buttons:</strong></li> Integrate social sharing buttons directly into your blog posts, providing users with quick access to share content on platforms such as Facebook, Twitter, LinkedIn, Pinterest, WhatsApp, and via email.
+            <li><strong>Social Sharing Buttons:</strong></li> Integrate social sharing buttons directly into your blog
+            posts, providing users with quick access to share content on platforms such as Facebook, Twitter, LinkedIn,
+            Pinterest, WhatsApp, and via email.
         </ul>
     </section>
     <section id="getting-started">
@@ -49,8 +51,16 @@
         </ol>
     </section>
     <section>
-        <h1>Component Flow Graph  </h1>
-        <img   width="100%" height="auto"src="https://github.com/asyylz/Blog-App/blob/735032932ada6e2787efab1550b3a699de06bc9f/component_flowchart.png" alt="">
+        <h2>Output Gif </h2>
+        <img width="100%" height="auto"
+            src=" https://github.com/asyylz/Blog-App/blob/cdaca8a2b2cffc3331241989eff73c386627744e/public/blog-appgif.gif"
+            alt="">
+    </section>
+    <section>
+        <h2>Component Flow Graph </h2>
+        <img width="100%" height="auto"
+            src="https://github.com/asyylz/Blog-App/blob/735032932ada6e2787efab1550b3a699de06bc9f/component_flowchart.png"
+            alt="">
     </section>
     <section>
         <h1>Outcome</h1>
