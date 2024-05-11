@@ -49,7 +49,8 @@
         </ol>
     </section>
     <section>
-        <img   width="80wh" height="60vh"src="https://github.com/asyylz/Blog-App/blob/735032932ada6e2787efab1550b3a699de06bc9f/component_flowchart.png" alt="">
+        <h1>Component Flow Graph  </h1>
+        <img   width="100%" height="auto"src="https://github.com/asyylz/Blog-App/blob/735032932ada6e2787efab1550b3a699de06bc9f/component_flowchart.png" alt="">
     </section>
     <section>
         <h1>Outcome</h1>
