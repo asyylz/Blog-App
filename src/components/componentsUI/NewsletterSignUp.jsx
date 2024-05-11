@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useFetcher } from 'react-router-dom';
 import ModalCustom from './ModalCustom';
+import { EmailIcon } from 'react-share';
 
 export default function NewsletterSignup() {
   const [open, setOpen] = useState(false);
@@ -20,7 +21,7 @@ export default function NewsletterSignup() {
 
   if (open) {
     return (
-      <ModalCustom onClose={handleCloseModal} >
+      <ModalCustom onClose={handleCloseModal}>
         <div className="container bg-themeDirtyWhite h-[250px] w-full flex items-center px-5 flex-col justify-center rounded-lg">
           <h2 className="w-full p-4 font-ibm-flex text-[30px] text-center text-themeDirtyWhite italic font-thin bg-themeGreenDark rounded-lg border-2 ">
             {data?.email}
@@ -48,7 +49,7 @@ export default function NewsletterSignup() {
               Email address
             </label>
             <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-              <img className="h-5 w-5" src="public/footer/envelop.svg" alt="" />
+           <EmailIcon size={32} round  bgStyle={{ fill: 'none' }} iconFillColor='#838280'/>
             </div>
             <input
               className="block p-3 pl-10 w-full text-sm text-themeBrown bg-gray-50 rounded-lg border border-gray-300 sm:rounded-none sm:rounded-l-lg focus:outline-none focus:ring-2 focus:ring-themeGreenDark  "

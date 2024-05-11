@@ -1,7 +1,7 @@
 import CommentsBlockHeader from './CommentsBlockHeader';
 import UserActions from '../componentsUI/UserActions';
 import { useRouteLoaderData } from 'react-router-dom';
-
+import ShareActions from './ShareActions';
 export default function BlogPostDetails() {
   const post = useRouteLoaderData('blog-detail');
 
@@ -84,9 +84,17 @@ export default function BlogPostDetails() {
               <h3 className="text-2xl md:text-3xl leading-snug font-medium mb-6">
                 {post.title}
               </h3>
-              <p className="text-lg leading-relaxed opacity-75">
+              <p className="text-lg leading-relaxed opacity-75 mb-10">
                 {post.content}
               </p>
+
+              <ShareActions
+                title={post.title}
+                image={post.image}
+                content={post.content}
+                id={post._id}
+                comingFromDetailPage
+              />
             </div>
           </div>
         </div>

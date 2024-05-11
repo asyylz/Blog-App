@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import UserActions from '../componentsUI/UserActions';
 import { titleTrimmer } from '../../utils/titleTrimmer';
+import ShareActions from './ShareActions';
 export default function PostDesignCardB({
   image,
   title,
@@ -13,19 +14,20 @@ export default function PostDesignCardB({
   screen,
   userId,
 }) {
-
   const animate = 'animate-fade-left';
   return (
     <div
       //style={{ border: '1px solid purple' }}
       key={_id}
-      className={`rounded-lg  mx-5 shadow-themeShadow bg-[#C2B6B6]/50 ${
-        screen === 'small' ? 'my-5 w-[400px]' : 'my-20'
+      className={`relative rounded-lg  mx-5 shadow-themeShadow bg-[#C2B6B6]/50 ${
+        screen === 'small'
+          ? 'my-5 w-[280px] xs0:w-[320px] xs1:w-[230px] xs1: min-h-[610px]'
+          : 'my-20'
       } ${animate}`}
     >
       <div
         //style={{ border: '1px solid yellow' }}
-        className={`container ${screen ==='small' ? "px-10":""}`}
+        className={`container ${screen === 'small' ? 'px-6' : ''}`}
       >
         <UserActions
           likes={likes}
@@ -42,40 +44,45 @@ export default function PostDesignCardB({
           alt={title}
         />
       </a>
-      <div
-        //style={{ border: '3px solid yellow' }}
-        className="p-5"
-      >
-        <p className="mb-2 font-bold tracking-tight text-themeGray dark:text-white">
-          {title}
-        </p>
-        <p className="text-themeBrown">
-          <small>Published:{createdAt.split('T')[0]}</small>
-        </p>
-        <p className="mb-3 font-ibm-flex text-gray-700 dark:text-gray-400">
-          {`${titleTrimmer(content,30)}...`}
-        </p>
+      <div className="flex">
+        <ShareActions
+          title={title}
+          image={image}
+          content={content}
+          id={_id}
+          designCardB
+        />
+
         <div
-          //style={{ border: '1px solid red' }}
-          className="container flex flex-col xl:flex-row justify-between mx-auto gap-3"
+          //style={{ border: '3px solid yellow' }}
+          className="p-5"
         >
-          <Link
-            to={_id}
-            className={`px-3 py-2 text-themeDirtyWhite bg-themeGreenDark hover:bg-themeGreen hover:animate-bounce delay-150 duration-300 rounded-xl flex  items-center justify-center flex-none text-xs md:text-sm ${screen === 'small' ? 'w-full':''} lg:w-[150px]`}
+          <p className="mb-2 font-bold tracking-tight text-themeGray dark:text-white">
+            {title}
+          </p>
+          <p className="text-themeBrown">
+            <small>Published:{createdAt.split('T')[0]}</small>
+          </p>
+          <p className="mb-3 font-ibm-flex text-gray-700 dark:text-gray-400">
+            {`${titleTrimmer(content, 30)}...`}
+          </p>
+          <div
+            //style={{ border: '1px solid red' }}
+            className="container flex flex-col xl:flex-row justify-between mx-auto gap-3"
           >
-            <img
-              src="./card/arrowRight.svg"
-              alt="login"
-              className="h-5 w-5 mr-2 sm:ml-0"
-            />
-            <span>Read more</span>
-          </Link>
-          <div className="ml-3 mt-4">
-            <img
-              src="./card/share.svg"
-              alt="views"
-              className="h-6 w-6 cursor-pointer"
-            />
+            <Link
+              to={_id}
+              className={`px-3 py-2 text-themeDirtyWhite bg-themeGreenDark hover:bg-themeGreen hover:animate-bounce delay-150 duration-300 rounded-xl flex  items-center justify-center flex-none text-xs md:text-sm ${
+                screen === 'small' ? 'w-full' : ''
+              } lg:w-[150px]`}
+            >
+              <img
+                src="./card/arrowRight.svg"
+                alt="login"
+                className="h-5 w-5 mr-2 sm:ml-0"
+              />
+              <span>Read more</span>
+            </Link>
           </div>
         </div>
       </div>

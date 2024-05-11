@@ -59,16 +59,23 @@ export async function loaderBlogs({ request }) {
 export async function action({ request }) {
   const searchBarData = await request.formData();
   const search = searchBarData.get('search');
+  const capitalizedSearch = search.charAt(0).toUpperCase() + search.slice(1); // Capitalize the first
+
   const categoryId = searchBarData.get('categoryId');
   try {
-    const response = await axios.get(
+    let response = await axios.get(
       `https://38110.fullstack.clarusway.com/blogs/?page=1&limit=10&filter[categoryId]=${categoryId}&search[title]=a&search[content]=${search}`
     );
-    const searchedBlogPosts = response.data.data;
-    console.log(searchedBlogPosts)
+    if (response.data.data.length === 0) {
+      response = await axios.get(
+        `https://38110.fullstack.clarusway.com/blogs/?page=1&limit=10&filter[categoryId]=${categoryId}&search[title]=a&search[content]=${capitalizedSearch}`
+      );
+    }
 
+    const searchedBlogPosts = response.data.data;
     return { searchedBlogPosts };
   } catch (error) {
-    throw error;
+    console.log(error);
+    throw error.response;
   }
 }

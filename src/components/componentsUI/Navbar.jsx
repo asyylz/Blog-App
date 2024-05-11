@@ -53,7 +53,7 @@ export default function Navbar() {
             action="/logout"
             //style={{ border: '1px solid red' }}
             method="POST"
-            className={`p-3 pr-7 bg-themeGreenDark hover:bg-themeCream hover:text-themeBrown rounded-xl flex items-center gap-2 ${
+            className={`xxs:pr-3 p-3 xs0:pr-9 bg-themeGreenDark hover:bg-themeCream hover:text-themeBrown rounded-xl flex items-center gap-2 ${
               !user && 'animate-pulse'
             } cursor-pointer`}
           >

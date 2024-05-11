@@ -3,6 +3,12 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      screens: {
+        xxs:'350px',
+        xs0: '412px',
+        xs1:'639px'
+      },
+
       fontFamily: {
         'ibm-flex': ['"IBM Plex Sans"', 'sans-serif'],
       },

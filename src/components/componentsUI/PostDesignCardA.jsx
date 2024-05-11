@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import UserActions from '../componentsUI/UserActions';
 import { titleTrimmer } from '../../utils/titleTrimmer';
+import ShareActions from './ShareActions';
+
 export default function PostDesignCardA({
   image,
   likes,
@@ -71,15 +73,9 @@ export default function PostDesignCardA({
             <small>Published:{createdAt.split('T')[0]}</small>
           </p>
           <p className="mb-3 pl-20 font-ibm-flex text-gray-700">
-            {titleTrimmer(content,50)}
+            {titleTrimmer(content, 50)}
           </p>
-
-          <img
-            //style={{ border: '1px solid purple' }}
-            src="./card/share.svg"
-            alt="views"
-            className="h-6 w-6 ml-20 cursor-pointer"
-          />
+          <ShareActions title={title} image={image} content={content}  id={_id} />
         </div>
       </div>
     </div>
