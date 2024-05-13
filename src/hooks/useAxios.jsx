@@ -7,7 +7,7 @@ import  {useAuth} from './useAuth';
 
 const useAxios = () => {
   const { user } = useAuth();
-  console.log(user?.token);
+  //console.log(user?.token);
 
   const axiosWithToken = axios.create({
     baseURL: import.meta.env.VITE_BASE_URL,

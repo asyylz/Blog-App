@@ -1,6 +1,5 @@
 import { useAuth } from '../../hooks/useAuth';
 import { json } from 'react-router-dom';
-import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
@@ -9,7 +8,8 @@ import ModalCustom from './ModalCustom';
 import DeleteModalContent from './DeleteModalContent';
 import { Link } from 'react-router-dom';
 import { useSubmit } from 'react-router-dom';
-
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+import useAxios from '../../hooks/useAxios';
 export default function UserActions({
   likes,
   comments,
@@ -142,21 +142,18 @@ export default function UserActions({
 export async function action({ request, params }) {
   const formData = await request.formData();
   const { user } = useAuth();
+  const axiosWithToken = useAxios();
   const actionType = formData.get('actionType');
 
   /* ---------------------- like case --------------------- */
   if (actionType === 'like') {
     const postId = formData.get('id');
     try {
-      const response = await axios.post(
-        `https://38110.fullstack.clarusway.com/blogs/${postId}/postLike`,
-        {},
-        {
-          headers: {
-            Authorization: `Token ${user?.token}`,
-          },
-        }
+      const response = await axiosWithToken.post(
+        `${BASE_URL}blogs/${postId}/postLike`,
+        {}
       );
+
       console.log('Like Data:', response.data);
 
       return new Response(
@@ -185,14 +182,9 @@ export async function action({ request, params }) {
     };
     console.log(commentData);
     try {
-      const response = await axios.post(
-        'https://38110.fullstack.clarusway.com/comments/',
-        commentData,
-        {
-          headers: {
-            Authorization: `Token ${user?.token}`,
-          },
-        }
+      const response = await axiosWithToken.post(
+        `${BASE_URL}comments/`,
+        commentData
       );
       console.log(response.data);
       return response.data;
@@ -205,18 +197,13 @@ export async function action({ request, params }) {
   if (actionType === 'delete') {
     const postId = formData.get('id');
     try {
-      const response = await axios.delete(
-        `https://38110.fullstack.clarusway.com/blogs/${postId}`,
-        {
-          headers: {
-            Authorization: `Token ${user?.token}`,
-          },
-        }
+      const response = await axiosWithToken.delete(
+        `${BASE_URL}blogs/${postId}`
       );
       if (response) {
         return { error: false, actionType: 'delete' };
       }
-      console.log(response)
+      console.log(response);
     } catch (error) {
       console.log(error);
       throw error.response;

@@ -31,7 +31,6 @@ export default function BlogDetailPostPage() {
 
 export async function loader({ params }) {
   const axiosWithToken = useAxios();
-  console.log(axiosWithToken)
   const id = params.postId;
   try {
     // const response = await axios.get(

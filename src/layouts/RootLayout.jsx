@@ -38,7 +38,6 @@ export async function loaderBlogs({ request }) {
       `${BASE_URL}blogs/?page=${page}&limit=${limit}`
     );
     const response2 = await axios.get(`${BASE_URL}blogs/`);
-
     const response3 = await axios.get(`${BASE_URL}categories/`);
     const totalData = response2.data.data;
     const blogPosts = response1.data.data;

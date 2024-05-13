@@ -10,7 +10,7 @@ export default function NewBlogPostPage() {
   const { isAuthenticated } = useAuth();
  // console.log(updateData);
   const isSuccess = updateData?.error === false ? true : false;
-
+console.log(isSuccess)
   useEffect(() => {
     if (!isAuthenticated) {
       throw json({}, { status: 401, statusText: 'You should login.' });
