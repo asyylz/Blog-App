@@ -36,7 +36,7 @@ export default function SearchBar() {
           <div className="relative w-full">
             <input
               name="search"
-              className="block p-2.5 w-full h-[50px] text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ml-1 focus:ring-2 focus:ring-themeGreenDark focus:border-themeGreenDark focus:outline-none"
+              className="block p-1 w-full h-[50px] text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ml-1 focus:ring-2 focus:ring-themeGreenDark focus:border-themeGreenDark focus:outline-none"
               placeholder="To best choice..."
               required
             />
