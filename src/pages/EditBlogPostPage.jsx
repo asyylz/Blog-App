@@ -1,15 +1,17 @@
-import { useRouteLoaderData, Link } from 'react-router-dom';
-import axios from 'axios';
+import { useRouteLoaderData } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import NewBlogForm from '../components/componentsUI/NewBlogForm';
 import { useActionData } from 'react-router-dom';
 import ModalCustom from '../components/componentsUI/ModalCustom';
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+import useAxios from '../hooks/useAxios';
 export default function EditBlogPostPage() {
   const post = useRouteLoaderData('blog-detail');
-console.log(post._id)
+  console.log(post._id);
   const updateActionData = useActionData();
+  console.log(updateActionData);
   const isSuccess = updateActionData?.error === false ? true : false;
-
+  console.log(isSuccess);
   return (
     <>
       {isSuccess && (
@@ -26,6 +28,7 @@ console.log(post._id)
 
 export async function action({ request }) {
   const { user } = useAuth();
+  const axiosWithToken = useAxios();
   const data = await request.formData();
   const postId = data.get('postId');
   const postData = {
@@ -39,15 +42,11 @@ export async function action({ request }) {
   };
   console.log(postData);
   try {
-    const response = await axios.put(
-      `https://38110.fullstack.clarusway.com/blogs/${postId}`,
-      postData,
-      {
-        headers: {
-          Authorization: `Token ${user?.token}`,
-        },
-      }
+    const response = await axiosWithToken.put(
+      `${BASE_URL}blogs/${postId}`,
+      postData
     );
+
     return response.data;
   } catch (error) {
     if (error.response) {

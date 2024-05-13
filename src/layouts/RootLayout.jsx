@@ -3,6 +3,7 @@ import Navbar from '../components/componentsUI/Navbar';
 import axios from 'axios';
 import Footer from '../components/componentsUI/Footer';
 import { useLocation, useActionData } from 'react-router-dom';
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export default function RootLayout() {
   const data = useActionData();
@@ -34,20 +35,16 @@ export async function loaderBlogs({ request }) {
   const limit = url.searchParams.get('limit') || '6';
   try {
     const response1 = await axios.get(
-      `https://38110.fullstack.clarusway.com/blogs/?page=${page}&limit=${limit}`
+      `${BASE_URL}blogs/?page=${page}&limit=${limit}`
     );
-    const response2 = await axios.get(
-      'https://38110.fullstack.clarusway.com/blogs/'
-    );
+    const response2 = await axios.get(`${BASE_URL}blogs/`);
 
-    const response3 = await axios.get(
-      'https://38110.fullstack.clarusway.com/categories/'
-    );
+    const response3 = await axios.get(`${BASE_URL}categories/`);
     const totalData = response2.data.data;
     const blogPosts = response1.data.data;
-    console.log(blogPosts);
+    //console.log(blogPosts);
     const categories = response3.data.data;
-    console.log(totalData);
+    //console.log(totalData);
     return { blogPosts, totalData, categories };
   } catch (error) {
     console.error(error);
@@ -64,11 +61,11 @@ export async function action({ request }) {
   const categoryId = searchBarData.get('categoryId');
   try {
     let response = await axios.get(
-      `https://38110.fullstack.clarusway.com/blogs/?page=1&limit=10&filter[categoryId]=${categoryId}&search[title]=a&search[content]=${search}`
+      `${BASE_URL}blogs/?page=1&limit=10&filter[categoryId]=${categoryId}&search[title]=a&search[content]=${search}`
     );
     if (response.data.data.length === 0) {
       response = await axios.get(
-        `https://38110.fullstack.clarusway.com/blogs/?page=1&limit=10&filter[categoryId]=${categoryId}&search[title]=a&search[content]=${capitalizedSearch}`
+        `${BASE_URL}blogs/?page=1&limit=10&filter[categoryId]=${categoryId}&search[title]=a&search[content]=${capitalizedSearch}`
       );
     }
 

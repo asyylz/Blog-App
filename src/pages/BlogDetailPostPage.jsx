@@ -1,9 +1,10 @@
 import BlogPostDetails from '../components/componentsUI/BlogPostDetails';
 import { json } from 'react-router-dom';
-import axios from 'axios';
 import { useAuth } from '../hooks/useAuth';
 import { useEffect } from 'react';
+import useAxios from '../hooks/useAxios';
 import BackPageButton from '../components/componentsUI/BackPageButton';
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 export default function BlogDetailPostPage() {
   const { isAuthenticated } = useAuth();
 
@@ -29,19 +30,24 @@ export default function BlogDetailPostPage() {
 }
 
 export async function loader({ params }) {
-  const { user } = useAuth();
+  const axiosWithToken = useAxios();
+  console.log(axiosWithToken)
   const id = params.postId;
   try {
-    const response = await axios.get(
-      `https://38110.fullstack.clarusway.com/blogs/${id}/`,
-      {
-        headers: {
-          Authorization: `Token ${user?.token}`,
-        },
-      }
-    );
-    const post = response.data.data;
-    console.log(post)
+    // const response = await axios.get(
+    //   `https://38110.fullstack.clarusway.com/blogs/${id}/`,
+    //   {
+    //     headers: {
+    //       Authorization: `Token ${user?.token}`,
+    //     },
+    //   }
+    // );
+    const { data } = await axiosWithToken.get(`${BASE_URL}blogs/${id}/`);
+    console.log(data);
+    const post = data.data;
+
+    //const post = response.data.data;
+    console.log(post);
     return post;
   } catch (error) {
     console.log(error);
