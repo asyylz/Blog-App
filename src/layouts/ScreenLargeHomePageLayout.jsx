@@ -3,12 +3,28 @@ import PostDesignCardA from '../components/componentsUI/PostDesignCardA';
 import PostDesignCardB from '../components/componentsUI/PostDesignCardB';
 import PopularPostItem from '../components/componentsUI/PopularPostItem';
 import { useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { fetchAllBlogPosts } from '../utils/http';
 export default function ScreenLargeHomePageLayout({
   shownPosts,
   setShownPosts,
   searchedData,
 }) {
-  const { blogPosts, totalData, categories } = useRouteLoaderData('root');
+  const { totalData, categories } = useRouteLoaderData('root');
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const page = urlParams.get('page') || '1';
+  const limit = urlParams.get('limit') || '6';
+
+  const { data, isError, error } = useQuery({
+    queryKey: ['blogs', { page: page, limit: limit }],
+    queryFn: ({ signal, queryKey }) =>
+      fetchAllBlogPosts({ signal, ...queryKey[1] }),
+    staleTime: 10000,
+    //gcTime: 1000,
+  });
+
+  const blogPosts = data.data;
 
   const sortedData = [...totalData].sort(
     (a, b) => b.countOfVisitors - a.countOfVisitors

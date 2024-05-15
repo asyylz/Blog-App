@@ -16,6 +16,9 @@ import { action as actionUpdatePost } from '../pages/EditBlogPostPage';
 import Logout from '../pages/Logout';
 import { action as searchAction } from '../layouts/RootLayout';
 import { action as newsletterAction } from '../components/componentsUI/NewsletterSignUp';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from '../utils/http';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -71,6 +74,10 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-export default function AppRouter() {
-  return <RouterProvider router={router} />;
+export default function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
 }

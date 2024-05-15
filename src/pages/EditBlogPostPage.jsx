@@ -26,6 +26,7 @@ export default function EditBlogPostPage() {
   );
 }
 
+
 export async function action({ request }) {
   const { user } = useAuth();
   const axiosWithToken = useAxios();

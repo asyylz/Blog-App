@@ -4,11 +4,17 @@ import axios from 'axios';
 import Footer from '../components/componentsUI/Footer';
 import { useLocation, useActionData } from 'react-router-dom';
 const BASE_URL = import.meta.env.VITE_BASE_URL;
-
+import {
+  fetchAllBlogPosts,
+  fetchCategories,
+  fetchBlogsForPageLength,
+} from '../utils/http';
+import { queryClient } from '../utils/http';
 export default function RootLayout() {
   const data = useActionData();
   const location = useLocation();
   const query = new URLSearchParams(location.search);
+
   const isAuthPage =
     (location.pathname === '/auth' && query.get('mode') === 'register') ||
     query.get('mode') === 'login' ||
@@ -33,17 +39,25 @@ export async function loaderBlogs({ request }) {
   const url = new URL(request.url);
   const page = url.searchParams.get('page') || '1';
   const limit = url.searchParams.get('limit') || '6';
+  console.log(page);
   try {
-    const response1 = await axios.get(
-      `${BASE_URL}blogs/?page=${page}&limit=${limit}`
-    );
-    const response2 = await axios.get(`${BASE_URL}blogs/`);
-    const response3 = await axios.get(`${BASE_URL}categories/`);
-    const totalData = response2.data.data;
-    const blogPosts = response1.data.data;
-    //console.log(blogPosts);
-    const categories = response3.data.data;
-    //console.log(totalData);
+    const { data: blogPosts } = await queryClient.fetchQuery({
+      queryKey: ['blogs', { page: page, limit: limit }],
+      queryFn: ({ signal, queryKey }) =>
+        fetchAllBlogPosts({ signal, ...queryKey[1] }),
+      staleTime: 10000,
+    });
+    const { data: categories } = await queryClient.fetchQuery({
+      queryKey: ['categories'],
+      queryFn: ({ signal }) => fetchCategories({ signal }),
+      staleTime: 10000,
+    });
+    const { data: totalData } = await queryClient.fetchQuery({
+      queryKey: ['pages'],
+      queryFn: ({ signal }) => fetchBlogsForPageLength({ signal }),
+      staleTime: 10000,
+    });
+console.log(totalData)
     return { blogPosts, totalData, categories };
   } catch (error) {
     console.error(error);
@@ -51,6 +65,8 @@ export async function loaderBlogs({ request }) {
     throw error;
   }
 }
+
+
 
 export async function action({ request }) {
   const searchBarData = await request.formData();
