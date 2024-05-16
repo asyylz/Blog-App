@@ -1,16 +1,14 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/componentsUI/Navbar';
-import axios from 'axios';
 import Footer from '../components/componentsUI/Footer';
 import { useLocation, useActionData } from 'react-router-dom';
-const BASE_URL = import.meta.env.VITE_BASE_URL;
 import {
-  fetchAllBlogPosts,
+  fetchBlogPosts,
   fetchCategories,
-  fetchBlogsForPageLength,
   fetchSearchedBlogPost,
+  queryClient,
 } from '../utils/http';
-import { queryClient } from '../utils/http';
+
 export default function RootLayout() {
   const data = useActionData();
   const location = useLocation();
@@ -45,7 +43,7 @@ export async function loaderBlogs({ request }) {
     const { data: blogPosts } = await queryClient.fetchQuery({
       queryKey: ['blogs', { page: page, limit: limit }],
       queryFn: ({ signal, queryKey }) =>
-        fetchAllBlogPosts({ signal, ...queryKey[1] }),
+        fetchBlogPosts({ signal, ...queryKey[1] }),
       staleTime: 10000,
     });
     const { data: categories } = await queryClient.fetchQuery({
@@ -55,14 +53,12 @@ export async function loaderBlogs({ request }) {
     });
     const { data: totalData } = await queryClient.fetchQuery({
       queryKey: ['pages'],
-      queryFn: ({ signal }) => fetchBlogsForPageLength({ signal }),
+      queryFn: ({ signal }) => fetchBlogPosts({ signal }),
       staleTime: 10000,
     });
-    console.log(totalData);
     return { blogPosts, totalData, categories };
   } catch (error) {
     console.error(error);
-
     throw error;
   }
 }

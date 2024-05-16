@@ -4,7 +4,8 @@ import PostDesignCardB from '../components/componentsUI/PostDesignCardB';
 import PopularPostItem from '../components/componentsUI/PopularPostItem';
 import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { fetchAllBlogPosts } from '../utils/http';
+import { fetchBlogPosts } from '../utils/http';
+import useAxios from '../hooks/useAxios.jsx'
 export default function ScreenLargeHomePageLayout({
   shownPosts,
   setShownPosts,
@@ -19,7 +20,7 @@ export default function ScreenLargeHomePageLayout({
   const { data, isError, error } = useQuery({
     queryKey: ['blogs', { page: page, limit: limit }],
     queryFn: ({ signal, queryKey }) =>
-      fetchAllBlogPosts({ signal, ...queryKey[1] }),
+      fetchBlogPosts({ signal, ...queryKey[1] }),
     staleTime: 10000,
     //gcTime: 1000,
   });
@@ -40,15 +41,12 @@ export default function ScreenLargeHomePageLayout({
 
   return (
     <div
-      //style={{ border: '3px solid blue' }}
       className="grid grid-cols-12 w-full px-10 gap-2"
     >
       <div
-        //style={{ border: '3px solid red' }}
         className="col-span-9 bg-themeDirtyWhite container mx-auto w-full  min-h-full py-6"
       >
         <div
-          //style={{ border: '3px solid yellow' }}
           className="grid grid-cols-3 gap-2"
         >
           {shownPosts?.map((post, index) => {
@@ -81,7 +79,6 @@ export default function ScreenLargeHomePageLayout({
         </div>
       </div>
       <div
-        //style={{ border: '3px solid green' }}
         className="col-span-3 border-l-2 border-[#C2B6B6]"
       >
         <h3 className="text-themeBrown text-center py-2 text-3xl font-ibm-flex italic  font-thin">

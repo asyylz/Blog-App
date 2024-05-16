@@ -1,16 +1,17 @@
 import { useEffect } from 'react';
 import NewBlogForm from '../components/componentsUI/NewBlogForm';
 import { useAuth } from '../hooks/useAuth';
-import axios from 'axios';
 import { json } from 'react-router-dom';
 import { useActionData } from 'react-router-dom';
 import ModalCustom from '../components/componentsUI/ModalCustom';
+import useAxios from '../hooks/useAxios';
 export default function NewBlogPostPage() {
-  const updateData = useActionData();
+  const postData = useActionData();
   const { isAuthenticated } = useAuth();
- // console.log(updateData);
-  const isSuccess = updateData?.error === false ? true : false;
-console.log(isSuccess)
+  console.log(isAuthenticated);
+
+  const isSuccess = postData?.error === false ? true : false;
+  console.log(isSuccess);
   useEffect(() => {
     if (!isAuthenticated) {
       throw json({}, { status: 401, statusText: 'You should login.' });
@@ -26,7 +27,7 @@ console.log(isSuccess)
       )}
 
       {isSuccess && (
-        <ModalCustom isSuccess={isSuccess} newPostId={updateData.data._id}>
+        <ModalCustom isSuccess={isSuccess} newPostId={postData.data._id}>
           <h2 className="w-full p-4 font-ibm-flex text-[30px] text-center text-themeDirtyWhite italic font-thin bg-themeGreenDark rounded-lg border-2 ">
             You successfuly created a new blog post.
           </h2>
@@ -37,7 +38,7 @@ console.log(isSuccess)
 }
 
 export async function action({ request }) {
-  const { user } = useAuth();
+  const axiosWithToken = useAxios();
   const data = await request.formData();
   const postData = {
     title: data.get('title'),
@@ -46,17 +47,12 @@ export async function action({ request }) {
     content: data.get('content'),
     isPublish: data.get('isPublish') === 'Published' ? true : false,
   };
+  console.log('clicked');
   try {
-    const response = await axios.post(
+    const response = await axiosWithToken.post(
       'https://38110.fullstack.clarusway.com/blogs/',
-      postData,
-      {
-        headers: {
-          Authorization: `Token ${user?.token}`,
-        },
-      }
+      postData
     );
-    console.log(response.data);
     return response.data;
   } catch (error) {
     if (error.response) {
