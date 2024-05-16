@@ -5,7 +5,6 @@ import PopularPostItem from '../components/componentsUI/PopularPostItem';
 import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchBlogPosts } from '../utils/http';
-import useAxios from '../hooks/useAxios.jsx';
 export default function ScreenLargeHomePageLayout({
   shownPosts,
   setShownPosts,

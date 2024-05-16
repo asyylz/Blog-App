@@ -8,17 +8,14 @@ export default function BlogPostDetails() {
   return (
     <section
       key={post._id}
-      //style={{ border: '1px solid blue' }}
       className="md:py-10 bg-themeDirtyWhite flex flex-col "
     >
       <div
-        //style={{ border: '1px solid blue' }}
         className="container px-4 mx-auto"
       >
         <div className="grid grid-cols-12">
           <div className="col-span-12 flex flex-col items-center">
             <div
-              //style={{ border: '2px solid red' }}
               className="my-6 md:my-12 w-full flex flex-col  justify-center items-center"
             >
               <img
@@ -27,7 +24,6 @@ export default function BlogPostDetails() {
                 className="max-h-[500px] object-cover"
               />
               <p
-                //style={{ border: '1px solid red' }}
                 className="opacity-75 py-6"
               >
                 <i className="fas fa-calendar-alt ml-4 mr-2">
@@ -42,7 +38,6 @@ export default function BlogPostDetails() {
             </div>
 
             <div
-              //style={{ border: '1px solid red' }}
               className="container flex justify-end sm:w[600px] lg:max-w-[700px]"
             >
               <UserActions
@@ -61,7 +56,6 @@ export default function BlogPostDetails() {
             <div className="md:px-20">
               {/* avatar */}
               <div
-                //style={{border:'1px solid red'}}
                 className="flex items-center mb-6"
               >
                 <div className="mr-2">

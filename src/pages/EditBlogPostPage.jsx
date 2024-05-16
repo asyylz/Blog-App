@@ -8,6 +8,7 @@ import useAxios from '../hooks/useAxios';
 export default function EditBlogPostPage() {
   const post = useRouteLoaderData('blog-detail');
   console.log(post._id);
+  
   const updateActionData = useActionData();
   console.log(updateActionData);
   const isSuccess = updateActionData?.error === false ? true : false;

@@ -39,7 +39,6 @@ export async function loaderBlogs({ request }) {
   const url = new URL(request.url);
   const page = url.searchParams.get('page') || '1';
   const limit = url.searchParams.get('limit') || '6';
-  console.log(page);
   try {
     const { data: blogPosts } = await queryClient.fetchQuery({
       queryKey: ['blogs', { page: page, limit: limit }],
@@ -86,9 +85,10 @@ export async function action({ request }) {
       staleTime: 10000,
     });
 
+
     return { searchedBlogPosts };
   } catch (error) {
     console.log(error);
-    throw error.response;
+    throw error;
   }
 }

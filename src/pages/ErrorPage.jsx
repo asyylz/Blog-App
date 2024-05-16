@@ -8,7 +8,6 @@ export default function ErrorPage() {
   console.log(error);
   console.log(error.status);
   console.log(error.data);
-  console.log(error.response);
   let title = 'An error occured!';
   let subTitle = '';
   let message = 'Something went wrong !';
@@ -46,7 +45,7 @@ export default function ErrorPage() {
         className="bg-center h-screen"
       >
         <Navbar />
-        {error && (
+        {error  && (
           <ModalCustom comingFromErrorPage>
             <PageContent title={title}>
               <p>{subTitle}</p>

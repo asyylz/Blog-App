@@ -2,9 +2,9 @@ import { QueryClient } from '@tanstack/react-query';
 export const queryClient = new QueryClient();
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 import axios from 'axios';
+import useAxios from '../hooks/useAxios';
 export async function fetchBlogPosts({ signal, page, limit }) {
-
-let url;
+  let url;
   if (page && limit) {
     url = `${BASE_URL}blogs/?page=${page}&limit=${limit}`;
   } else {
@@ -50,5 +50,18 @@ export async function fetchSearchedBlogPost({
   } catch (error) {
     console.log(error);
     throw error.response;
+  }
+}
+
+export async function fetchBlogPost({ id, signal }) {
+  const axiosWithToken = useAxios();
+  try {
+    const response = await axiosWithToken.get(`${BASE_URL}blogs/${id}/`, {
+      signal: signal
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 }

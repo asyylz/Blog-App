@@ -2,9 +2,9 @@ import BlogPostDetails from '../components/componentsUI/BlogPostDetails';
 import { json } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { useEffect } from 'react';
-import useAxios from '../hooks/useAxios';
 import BackPageButton from '../components/componentsUI/BackPageButton';
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+import { fetchBlogPost, queryClient } from '../utils/http';
+
 export default function BlogDetailPostPage() {
   const { isAuthenticated } = useAuth();
 
@@ -19,7 +19,6 @@ export default function BlogDetailPostPage() {
       <>
         <BackPageButton />
         <div
-          //style={{ border: '1px solid red' }}
           className="min-h-screen py-10 "
         >
           <BlogPostDetails />
@@ -30,23 +29,15 @@ export default function BlogDetailPostPage() {
 }
 
 export async function loader({ params }) {
-  const axiosWithToken = useAxios();
   const id = params.postId;
   try {
-    // const response = await axios.get(
-    //   `https://38110.fullstack.clarusway.com/blogs/${id}/`,
-    //   {
-    //     headers: {
-    //       Authorization: `Token ${user?.token}`,
-    //     },
-    //   }
-    // );
-    const { data } = await axiosWithToken.get(`${BASE_URL}blogs/${id}/`);
-    console.log(data);
-    const post = data.data;
-
-    //const post = response.data.data;
-    console.log(post);
+    const { data: post } = await queryClient.fetchQuery({
+      queryKey: ['blog-detail', { id: id }],
+      queryFn: ({ signal, queryKey }) =>
+        fetchBlogPost({ signal, ...queryKey[1] }),
+      staleTime: 8000,
+    });
+    
     return post;
   } catch (error) {
     console.log(error);
