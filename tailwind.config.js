@@ -4,9 +4,9 @@ export default {
   theme: {
     extend: {
       screens: {
-        xxs:'350px',
+        xxs: '350px',
         xs0: '412px',
-        xs1:'639px'
+        xs1: '639px',
       },
 
       fontFamily: {
@@ -29,15 +29,20 @@ export default {
         palePattern: "url('./public/assets/background.jpg')",
       },
       keyframes: {
-        fadeLeft: {
-          from: { opacity: '0', transform: 'translateX(-100%)' },
-          to: { opacity: '1', transform: 'translateX(0)' },
+        fromButtom: {
+          '0%': { transform: 'translateY(200px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
         },
       },
-      animation: {
-        'fade-left': 'fadeLeft 1s ease-in-out forwards',
+      fadeLeft: {
+        from: { opacity: '0', transform: 'translateX(-100%)' },
+        to: { opacity: '1', transform: 'translateX(0)' },
       },
     },
-    plugins: [],
+    animation: {
+      'fade-left': 'fadeLeft 1s ease-in-out forwards',
+      fromButtom: 'fromButtom 0.3s ease-out forwards',
+    },
   },
+  plugins: [],
 };
