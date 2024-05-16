@@ -5,7 +5,7 @@ import PopularPostItem from '../components/componentsUI/PopularPostItem';
 import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchBlogPosts } from '../utils/http';
-import useAxios from '../hooks/useAxios.jsx'
+import useAxios from '../hooks/useAxios.jsx';
 export default function ScreenLargeHomePageLayout({
   shownPosts,
   setShownPosts,
@@ -17,6 +17,7 @@ export default function ScreenLargeHomePageLayout({
   const page = urlParams.get('page') || '1';
   const limit = urlParams.get('limit') || '6';
 
+  //it is better to keep useQuery around even we have same  request call in loader.So that for example, if we tab out of this window and come back to it later, it triggers a behind the scenes fetch to look for updated data.
   const { data, isError, error } = useQuery({
     queryKey: ['blogs', { page: page, limit: limit }],
     queryFn: ({ signal, queryKey }) =>
@@ -40,15 +41,9 @@ export default function ScreenLargeHomePageLayout({
   }, [searchedData, blogPosts]);
 
   return (
-    <div
-      className="grid grid-cols-12 w-full px-10 gap-2"
-    >
-      <div
-        className="col-span-9 bg-themeDirtyWhite container mx-auto w-full  min-h-full py-6"
-      >
-        <div
-          className="grid grid-cols-3 gap-2"
-        >
+    <div className="grid grid-cols-12 w-full px-10 gap-2">
+      <div className="col-span-9 bg-themeDirtyWhite container mx-auto w-full  min-h-full py-6">
+        <div className="grid grid-cols-3 gap-2">
           {shownPosts?.map((post, index) => {
             const patternIndex = index % 4;
 
@@ -78,9 +73,7 @@ export default function ScreenLargeHomePageLayout({
           })}
         </div>
       </div>
-      <div
-        className="col-span-3 border-l-2 border-[#C2B6B6]"
-      >
+      <div className="col-span-3 border-l-2 border-[#C2B6B6]">
         <h3 className="text-themeBrown text-center py-2 text-3xl font-ibm-flex italic  font-thin">
           Popular posts
         </h3>

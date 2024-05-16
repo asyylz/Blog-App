@@ -25,9 +25,7 @@ export default function UserActions({
 
   /* --------------------- action data -------------------- */
   const userActionData = useActionData();
-  //console.log(userActionData);
   const isSuccess = userActionData?.error === false ? true : false;
-  //console.log(isSuccess);
 
   /* ------------------------ Like ------------------------ */
   const handleLikeClick = () => {

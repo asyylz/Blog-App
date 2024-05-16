@@ -10,6 +10,7 @@ import {
 } from '../utils/http';
 
 export default function RootLayout() {
+  
   const data = useActionData();
   const location = useLocation();
   const query = new URLSearchParams(location.search);
