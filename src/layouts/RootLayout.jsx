@@ -8,6 +8,7 @@ import {
   fetchAllBlogPosts,
   fetchCategories,
   fetchBlogsForPageLength,
+  fetchSearchedBlogPost,
 } from '../utils/http';
 import { queryClient } from '../utils/http';
 export default function RootLayout() {
@@ -57,7 +58,7 @@ export async function loaderBlogs({ request }) {
       queryFn: ({ signal }) => fetchBlogsForPageLength({ signal }),
       staleTime: 10000,
     });
-console.log(totalData)
+    console.log(totalData);
     return { blogPosts, totalData, categories };
   } catch (error) {
     console.error(error);
@@ -66,25 +67,28 @@ console.log(totalData)
   }
 }
 
-
-
 export async function action({ request }) {
   const searchBarData = await request.formData();
-  const search = searchBarData.get('search');
-  const capitalizedSearch = search.charAt(0).toUpperCase() + search.slice(1); // Capitalize the first
-
+  const searchTerm = searchBarData.get('search');
+  const capitalizedSearchTerm =
+    searchTerm.charAt(0).toUpperCase() + searchTerm.slice(1); // Capitalize the first
   const categoryId = searchBarData.get('categoryId');
-  try {
-    let response = await axios.get(
-      `${BASE_URL}blogs/?page=1&limit=10&filter[categoryId]=${categoryId}&search[title]=a&search[content]=${search}`
-    );
-    if (response.data.data.length === 0) {
-      response = await axios.get(
-        `${BASE_URL}blogs/?page=1&limit=10&filter[categoryId]=${categoryId}&search[title]=a&search[content]=${capitalizedSearch}`
-      );
-    }
 
-    const searchedBlogPosts = response.data.data;
+  try {
+    const { data: searchedBlogPosts } = await queryClient.fetchQuery({
+      queryKey: [
+        'searchedBlogs',
+        {
+          searchTerm: searchTerm,
+          categoryId: categoryId,
+          capitalizedSearchTerm: capitalizedSearchTerm,
+        },
+      ],
+      queryFn: ({ signal, queryKey }) =>
+        fetchSearchedBlogPost({ signal, ...queryKey[1] }),
+      staleTime: 10000,
+    });
+
     return { searchedBlogPosts };
   } catch (error) {
     console.log(error);
