@@ -29,6 +29,7 @@
             <li><strong>Social Sharing Buttons:</strong></li> Integrate social sharing buttons directly into your blog
             posts, providing users with quick access to share content on platforms such as Facebook, Twitter, LinkedIn,
             Pinterest, WhatsApp, and via email.
+            <li><strong>TanStack/React Query:</strong></li>TanStack React Query  is used for efficient data fetching and caching. React Query simplifies the process of fetching, caching, synchronizing, and updating server state in your React applications, making it a powerful tool for managing asynchronous operations and improving the performance and user experience of your application.
         </ul>
     </section>
     <section id="getting-started">
